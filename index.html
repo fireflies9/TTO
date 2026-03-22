@@ -6,7 +6,7 @@
   <title>The Toshi Order</title>
   <meta
     name="description"
-    content="The Toshi Order — a premium Bitcoin Ordinals collection built for holders."
+    content="The Toshi Order — a premium Bitcoin-native community page built for holders."
   />
   <meta name="theme-color" content="#050505" />
   <style>
@@ -48,7 +48,7 @@
     }
 
     .wrap{
-      max-width:1200px;
+      max-width:1180px;
       margin:0 auto;
       padding:0 14px;
     }
@@ -79,9 +79,9 @@
     }
 
     .brand-icon{
-      width:42px;
-      height:42px;
-      border-radius:13px;
+      width:44px;
+      height:44px;
+      border-radius:14px;
       overflow:hidden;
       display:grid;
       place-items:center;
@@ -448,9 +448,6 @@
 
     @media (min-width:700px){
       .nav-right{width:auto}
-      .feature-grid{
-        grid-template-columns:repeat(3,1fr);
-      }
       .link-grid{
         grid-template-columns:repeat(3,1fr);
       }
@@ -460,12 +457,18 @@
       .hero-card{
         padding:22px;
       }
+
       .hero-grid{
-        grid-template-columns:1.2fr .8fr;
+        grid-template-columns:1.15fr .85fr;
         gap:20px;
       }
+
       .hero-stats{
         grid-template-columns:repeat(4,1fr);
+      }
+
+      .feature-grid{
+        grid-template-columns:repeat(3,1fr);
       }
     }
   </style>
@@ -510,7 +513,7 @@
             <h1>The Toshi Order</h1>
 
             <p class="sub">
-              A premium Bitcoin Ordinals collection built for holders, collectors, and the community pushing The Toshi Order forward.
+              A premium Bitcoin-native community page built for holders, collectors, and the people pushing The Toshi Order forward.
             </p>
 
             <div class="hero-actions">
@@ -542,7 +545,11 @@
 
           <div class="art-card">
             <div class="art-frame">
-              <img src="./toshi-hero.jpg" alt="The Toshi Order artwork" />
+              <img
+                src="./toshi-hero.jpg"
+                alt="The Toshi Order artwork"
+                onerror="this.src='https://via.placeholder.com/800x800/0c0c0c/f97316?text=TTO';"
+              />
             </div>
 
             <div class="art-meta">
@@ -565,7 +572,7 @@
         </div>
 
         <p class="muted">
-          The Toshi Order is a community-driven Bitcoin Ordinals collection with a strong identity, strong holders, and a growing vision around culture, provenance, and long-term ecosystem value.
+          The Toshi Order is a community-driven Bitcoin collection with a strong identity, strong holders, and a growing vision around culture, provenance, and long-term ecosystem value.
         </p>
 
         <div class="feature-grid">
