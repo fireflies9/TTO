@@ -3,32 +3,35 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Toshi Order | Official Marketplace</title>
+  <title>The Toshi Order | Bitcoin Native Collector Destination</title>
   <meta
     name="description"
-    content="Official Toshi-only marketplace. Bitcoin-native home for The Toshi Order with 0% platform fees and holder-first UX."
+    content="The Toshi Order is a Bitcoin-native collector destination built for the community. Explore the collection and prepare for a Toshi-only marketplace with 0% fees."
   />
-  <meta name="theme-color" content="#050505" />
+  <meta name="theme-color" content="#ff8c1a" />
 
   <style>
     :root {
-      --bg: #050505;
-      --panel: rgba(255, 255, 255, 0.03);
-      --border: rgba(255, 255, 255, 0.08);
-      --text: #ffffff;
-      --muted: rgba(255, 255, 255, 0.62);
-      --soft: rgba(255, 255, 255, 0.38);
-      --orange: #f97316;
-      --orange-2: #fb923c;
-      --green: #10b981;
-      --shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
-      --radius-xl: 28px;
-      --radius-lg: 22px;
+      --bg: #090909;
+      --bg-soft: #111111;
+      --card: rgba(20, 20, 20, 0.85);
+      --card-border: rgba(255, 140, 26, 0.15);
+      --text: #f5f5f5;
+      --muted: #b9b9b9;
+      --accent: #ff8c1a;
+      --accent-2: #ffb347;
+      --accent-glow: rgba(255, 140, 26, 0.25);
+      --white-soft: rgba(255, 255, 255, 0.08);
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+      --radius: 20px;
+      --radius-sm: 14px;
+      --max-width: 1200px;
     }
 
     * {
+      margin: 0;
+      padding: 0;
       box-sizing: border-box;
-      -webkit-tap-highlight-color: transparent;
     }
 
     html {
@@ -36,21 +39,14 @@
     }
 
     body {
-      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
       background:
-        radial-gradient(circle at 85% 0%, rgba(249, 115, 22, 0.10), transparent 28%),
-        radial-gradient(circle at 10% 20%, rgba(249, 115, 22, 0.05), transparent 30%),
-        var(--bg);
+        radial-gradient(circle at 20% 0%, rgba(255, 140, 26, 0.08), transparent 35%),
+        radial-gradient(circle at 80% 20%, rgba(255, 179, 71, 0.05), transparent 30%),
+        linear-gradient(180deg, #080808 0%, #0d0d0d 50%, #090909 100%);
       color: var(--text);
-      font-family:
-        Inter,
-        ui-sans-serif,
-        system-ui,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        sans-serif;
-      line-height: 1.4;
+      line-height: 1.6;
+      overflow-x: hidden;
     }
 
     a {
@@ -58,639 +54,940 @@
       text-decoration: none;
     }
 
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
     .container {
       width: 100%;
-      max-width: 1180px;
+      max-width: var(--max-width);
       margin: 0 auto;
-      padding: 0 18px;
+      padding: 0 20px;
     }
 
-    .topbar {
+    .section {
+      padding: 80px 0;
+      position: relative;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height: 1.1;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      font-size: clamp(1rem, 1.8vw, 1.15rem);
+      max-width: 760px;
+    }
+
+    .site-header {
       position: sticky;
       top: 0;
-      z-index: 50;
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      background: rgba(5, 5, 5, 0.78);
-      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+      backdrop-filter: blur(14px);
+      background: rgba(8, 8, 8, 0.7);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
     }
 
-    .topbar-inner {
+    .nav {
+      height: 76px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 14px;
-      padding: 14px 0;
-      flex-wrap: wrap;
+      gap: 20px;
     }
 
     .brand {
       display: flex;
       align-items: center;
       gap: 12px;
-      min-width: 0;
+      font-weight: 800;
+      font-size: 1.05rem;
+      letter-spacing: -0.02em;
     }
 
-    .brand-icon {
-      width: 42px;
-      height: 42px;
-      border-radius: 16px;
+    .brand-badge {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, var(--accent-2), var(--accent));
+      box-shadow: 0 0 20px rgba(255, 140, 26, 0.25);
       display: grid;
       place-items: center;
-      font-size: 20px;
+      color: #111;
       font-weight: 900;
-      color: var(--orange);
-      border: 1px solid rgba(249, 115, 22, 0.25);
-      background: rgba(249, 115, 22, 0.10);
-      flex-shrink: 0;
+      font-size: 0.95rem;
     }
 
-    .brand-kicker {
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--soft);
-      font-weight: 800;
-    }
-
-    .brand-title {
-      font-size: 18px;
-      font-weight: 900;
-      letter-spacing: -0.03em;
-    }
-
-    .topbar-right {
+    .nav-links {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 22px;
       flex-wrap: wrap;
     }
 
-    .pill {
-      padding: 10px 12px;
-      border-radius: 16px;
-      border: 1px solid var(--border);
-      background: var(--panel);
-      min-width: 92px;
+    .nav-links a {
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: 0.25s ease;
     }
 
-    .pill-label {
-      font-size: 9px;
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-cta {
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #111;
       font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--soft);
-    }
-
-    .pill-value {
-      margin-top: 4px;
-      font-size: 14px;
-      font-weight: 900;
-      white-space: nowrap;
-    }
-
-    .btc {
-      color: var(--orange);
+      box-shadow: 0 10px 24px rgba(255, 140, 26, 0.25);
     }
 
     .hero {
-      padding: 26px 0 18px;
+      padding: 80px 0 50px;
     }
 
-    .hero-card {
-      border-radius: var(--radius-xl);
-      border: 1px solid var(--border);
-      background:
-        radial-gradient(circle at top right, rgba(249, 115, 22, 0.12), transparent 32%),
-        rgba(255, 255, 255, 0.03);
-      box-shadow: var(--shadow);
-      padding: 22px;
-      overflow: hidden;
+    .hero-wrap {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 36px;
+      align-items: center;
     }
 
-    .hero-badge {
+    .eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 8px 12px;
+      padding: 8px 14px;
+      border: 1px solid rgba(255, 140, 26, 0.2);
       border-radius: 999px;
-      border: 1px solid rgba(249, 115, 22, 0.28);
-      background: rgba(249, 115, 22, 0.10);
-      color: #fdba74;
-      font-size: 10px;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
+      background: rgba(255, 140, 26, 0.06);
+      color: var(--accent-2);
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 20px;
     }
 
-    .hero-title {
-      margin: 16px 0 0;
-      font-size: clamp(40px, 10vw, 86px);
+    .hero h1 {
+      font-size: clamp(2.8rem, 8vw, 6rem);
       line-height: 0.95;
-      font-weight: 950;
-      letter-spacing: -0.06em;
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      margin-bottom: 18px;
     }
 
-    .hero-sub {
-      margin: 14px 0 0;
-      max-width: 760px;
+    .hero h1 .accent {
+      color: var(--accent);
+      text-shadow: 0 0 24px rgba(255, 140, 26, 0.18);
+    }
+
+    .hero p {
       color: var(--muted);
-      font-size: clamp(15px, 3.8vw, 19px);
+      font-size: clamp(1.05rem, 2vw, 1.2rem);
+      max-width: 700px;
+      margin-bottom: 28px;
     }
 
     .hero-actions {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 10px;
-      margin-top: 22px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 28px;
     }
 
     .btn {
-      height: 52px;
-      border-radius: 18px;
-      display: grid;
-      place-items: center;
-      padding: 0 18px;
-      font-size: 14px;
-      font-weight: 900;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 0.98rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
       border: 1px solid transparent;
-      transition: 0.2s ease;
       cursor: pointer;
-      text-align: center;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
     }
 
     .btn-primary {
-      background: var(--orange);
-      color: #111111;
-    }
-
-    .btn-primary:hover {
-      background: var(--orange-2);
-      transform: translateY(-1px);
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #111;
+      box-shadow: 0 12px 28px rgba(255, 140, 26, 0.25);
     }
 
     .btn-secondary {
-      border-color: var(--border);
-      background: var(--panel);
-      color: rgba(255,255,255,0.9);
+      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(255, 255, 255, 0.08);
+      color: var(--text);
     }
 
-    .btn-secondary:hover {
-      border-color: rgba(249, 115, 22, 0.35);
-      color: #fdba74;
+    .hero-mini-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
     }
 
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-      margin-top: 18px;
+    .mini-stat {
+      padding: 12px 16px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      min-width: 150px;
     }
 
-    .card {
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border);
-      background: var(--panel);
-      padding: 16px;
+    .mini-stat strong {
+      display: block;
+      font-size: 1rem;
+      margin-bottom: 4px;
     }
 
-    .stat-label {
-      font-size: 10px;
+    .mini-stat span {
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .hero-visual {
+      position: relative;
+    }
+
+    .visual-card {
+      position: relative;
+      border-radius: 28px;
+      padding: 22px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
+      border: 1px solid rgba(255, 140, 26, 0.14);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .visual-glow {
+      position: absolute;
+      inset: -20%;
+      background: radial-gradient(circle at 50% 30%, rgba(255, 140, 26, 0.18), transparent 45%);
+      pointer-events: none;
+    }
+
+    .preview-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .preview-title {
       font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--soft);
+      font-size: 1rem;
     }
 
-    .stat-value {
-      margin-top: 8px;
-      font-size: 22px;
-      font-weight: 950;
-      letter-spacing: -0.04em;
+    .preview-badge {
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      background: rgba(255, 140, 26, 0.08);
+      color: var(--accent-2);
+      border: 1px solid rgba(255, 140, 26, 0.16);
     }
 
-    .section {
-      padding: 14px 0 6px;
-    }
-
-    .section-kicker {
-      font-size: 10px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--soft);
-    }
-
-    .section-title {
-      margin-top: 4px;
-      font-size: 28px;
-      font-weight: 950;
-      letter-spacing: -0.04em;
-    }
-
-    .grid-3 {
+    .preview-grid {
+      position: relative;
+      z-index: 2;
       display: grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(3, 1fr);
       gap: 12px;
     }
 
-    .feature-card {
-      border-radius: 24px;
-      border: 1px solid var(--border);
-      background: var(--panel);
-      padding: 18px;
+    .preview-item {
+      aspect-ratio: 1 / 1;
+      border-radius: 18px;
+      overflow: hidden;
+      background: linear-gradient(135deg, #1a1a1a, #101010);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      position: relative;
     }
 
-    .feature-icon {
-      width: 42px;
-      height: 42px;
+    .preview-fallback {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.92);
+      background:
+        radial-gradient(circle at 30% 20%, rgba(255, 140, 26, 0.35), transparent 30%),
+        linear-gradient(135deg, #202020, #111111);
+    }
+
+    .preview-label {
+      position: absolute;
+      left: 10px;
+      bottom: 10px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 6px 8px;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .trust-strip {
+      padding: 18px 0 10px;
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .trust-item {
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      text-align: center;
+      font-weight: 800;
+      color: #f0f0f0;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 32px;
+    }
+
+    .glass-card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .glass-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 12px;
+      font-weight: 800;
+    }
+
+    .glass-card p {
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+    }
+
+    .collection-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .toshi-card {
+      border-radius: 22px;
+      overflow: hidden;
+      background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.02));
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.28);
+    }
+
+    .toshi-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(255, 140, 26, 0.18);
+      box-shadow: 0 20px 38px rgba(0,0,0,0.36);
+    }
+
+    .toshi-thumb {
+      aspect-ratio: 1 / 1;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255, 140, 26, 0.22), transparent 28%),
+        linear-gradient(135deg, #1c1c1c, #111111);
+      display: grid;
+      place-items: center;
+      font-size: 1.1rem;
+      font-weight: 900;
+      color: rgba(255,255,255,0.95);
+      position: relative;
+    }
+
+    .toshi-info {
+      padding: 16px;
+    }
+
+    .toshi-info h4 {
+      font-size: 1rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .toshi-info p {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 12px;
+    }
+
+    .toshi-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255, 140, 26, 0.08);
+      border: 1px solid rgba(255, 140, 26, 0.12);
+      color: var(--accent-2);
+    }
+
+    .market-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-top: 28px;
+    }
+
+    .market-card {
+      padding: 24px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: 0.25s ease;
+    }
+
+    .market-card:hover {
+      border-color: rgba(255, 140, 26, 0.18);
+      transform: translateY(-4px);
+    }
+
+    .market-icon {
+      width: 52px;
+      height: 52px;
       border-radius: 16px;
       display: grid;
       place-items: center;
-      background: rgba(249, 115, 22, 0.10);
-      border: 1px solid rgba(249, 115, 22, 0.22);
-      color: var(--orange);
-      font-size: 18px;
-      font-weight: 900;
+      font-size: 1.4rem;
+      margin-bottom: 14px;
+      background: rgba(255, 140, 26, 0.08);
+      border: 1px solid rgba(255, 140, 26, 0.14);
     }
 
-    .feature-title {
-      margin-top: 14px;
-      font-size: 18px;
-      font-weight: 900;
-      letter-spacing: -0.03em;
-    }
-
-    .feature-text {
-      margin-top: 8px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .market-preview {
-      margin-top: 10px;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-    }
-
-    .asset-card {
-      border-radius: 24px;
-      border: 1px solid var(--border);
-      background: var(--panel);
-      padding: 16px;
-    }
-
-    .asset-kicker {
-      font-size: 10px;
+    .market-card h3 {
+      font-size: 1.05rem;
+      margin-bottom: 8px;
       font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--soft);
     }
 
-    .asset-name {
-      margin-top: 4px;
-      font-size: 18px;
-      font-weight: 900;
-      letter-spacing: -0.03em;
-    }
-
-    .price-box {
-      margin-top: 14px;
-      border-radius: 18px;
-      border: 1px solid var(--border);
-      background: rgba(0, 0, 0, 0.22);
-      padding: 12px;
-    }
-
-    .price-label {
-      font-size: 10px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--soft);
-    }
-
-    .price-main {
-      margin-top: 8px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 18px;
-      font-weight: 950;
-      letter-spacing: -0.03em;
-    }
-
-    .price-usd {
-      margin-top: 5px;
-      font-size: 12px;
-      color: var(--soft);
-    }
-
-    .links-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 10px;
-      margin-top: 14px;
-    }
-
-    .link-card {
-      border-radius: 22px;
-      border: 1px solid var(--border);
-      background: var(--panel);
-      padding: 16px;
-    }
-
-    .link-title {
-      font-size: 15px;
-      font-weight: 900;
-    }
-
-    .link-text {
-      margin-top: 6px;
-      font-size: 13px;
+    .market-card p {
       color: var(--muted);
+      font-size: 0.94rem;
     }
 
-    .footer {
-      padding: 24px 0 36px;
+    .integration-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 28px;
     }
 
-    .footer-card {
-      border-radius: 24px;
-      border: 1px solid var(--border);
-      background: var(--panel);
-      padding: 18px;
+    .integration-card {
+      padding: 22px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .integration-card h3 {
+      font-size: 1rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .integration-card p {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .cta-box {
+      border-radius: 28px;
+      padding: 36px;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255, 140, 26, 0.12), transparent 30%),
+        linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
+      border: 1px solid rgba(255, 140, 26, 0.14);
+      box-shadow: var(--shadow);
       text-align: center;
     }
 
-    .footer-copy {
-      color: var(--soft);
-      font-size: 12px;
-      margin-top: 8px;
+    .cta-box h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      margin-bottom: 12px;
     }
 
-    .tiny {
-      font-size: 11px;
-      color: var(--soft);
-      margin-top: 8px;
+    .cta-box p {
+      color: var(--muted);
+      max-width: 700px;
+      margin: 0 auto 24px;
     }
 
-    @media (min-width: 640px) {
-      .hero-actions {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        max-width: 520px;
+    .cta-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .footer {
+      padding: 36px 0 60px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .footer-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer p {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 0.92rem;
+      transition: 0.25s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--text);
+    }
+
+    @media (max-width: 1024px) {
+      .hero-wrap,
+      .about-grid {
+        grid-template-columns: 1fr;
       }
 
-      .stats {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
+      .collection-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
 
-      .market-preview {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+      .market-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
 
-      .links-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+      .integration-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .trust-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav {
+        height: auto;
+        padding: 14px 0;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        width: 100%;
+        gap: 12px;
+      }
+
+      .nav-links a {
+        font-size: 0.9rem;
+      }
+
+      .hero {
+        padding-top: 46px;
+      }
+
+      .hero-actions,
+      .cta-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .trust-grid,
+      .collection-grid,
+      .market-grid,
+      .preview-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .mini-stat {
+        width: 100%;
+      }
+
+      .section {
+        padding: 64px 0;
+      }
+
+      .cta-box {
+        padding: 28px 20px;
       }
     }
   </style>
 </head>
 <body>
-  <header class="topbar">
-    <div class="container topbar-inner">
-      <a class="brand" href="#">
-        <div class="brand-icon">₿</div>
-        <div>
-          <div class="brand-kicker">Official Market</div>
-          <div class="brand-title">The Toshi Order</div>
-        </div>
-      </a>
 
-      <div class="topbar-right">
-        <div class="pill">
-          <div class="pill-label">BTC</div>
-          <div class="pill-value"><span class="btc">₿</span> <span id="btcPrice">Loading...</span></div>
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav">
+        <a href="#" class="brand">
+          <span class="brand-badge">₿</span>
+          <span>The Toshi Order</span>
+        </a>
+
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#collection">Collection</a>
+          <a href="#marketplace">Marketplace</a>
+          <a href="#integrations">Roadmap</a>
+          <a href="#community" class="nav-cta">Enter The Order</a>
         </div>
-        <div class="pill">
-          <div class="pill-label">Gas</div>
-          <div class="pill-value" id="feeRate">Loading...</div>
-        </div>
-      </div>
+      </nav>
     </div>
   </header>
 
-  <main>
-    <section class="hero">
-      <div class="container">
-        <div class="hero-card">
-          <div class="hero-badge">Public Beta Live • Toshi-only • 0% Fees</div>
+  <section class="hero section">
+    <div class="container">
+      <div class="hero-wrap">
+        <div class="hero-copy">
+          <div class="eyebrow">🟠 Bitcoin Native • Toshi Only • 0% Fees Vision</div>
 
-          <h1 class="hero-title">The Toshi Order</h1>
+          <h1>
+            The <span class="accent">Toshi</span> Order
+          </h1>
 
-          <p class="hero-sub">
-            The Bitcoin-native home for The Toshi Order. Built exclusively for holders with a clean, premium,
-            holder-first marketplace experience and zero platform fees.
+          <p>
+            A Bitcoin-native collector destination built for The Toshi Order — explore the collection,
+            discover the culture, and prepare for a Toshi-only marketplace built for collectors with
+            <strong style="color:#fff;">0% platform fees</strong>.
           </p>
 
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#market-preview">Enter Marketplace</a>
-            <a class="btn btn-secondary" href="https://ordinals.com/inscription/1a4487aeb9de2c8dcf36f3e531a038d8a3acfeeb0bd123aeb7212a82c334ad15i0" target="_blank" rel="noreferrer">
-              Browse On-Chain Gallery
-            </a>
+            <a href="#collection" class="btn btn-primary">View Collection</a>
+            <a href="#marketplace" class="btn btn-secondary">Enter Marketplace</a>
+            <a href="#community" class="btn btn-secondary">Join the Community</a>
           </div>
 
-          <div class="stats">
-            <div class="card">
-              <div class="stat-label">Platform Fee</div>
-              <div class="stat-value">0%</div>
+          <div class="hero-mini-stats">
+            <div class="mini-stat">
+              <strong>Bitcoin Native</strong>
+              <span>Built for permanence on Bitcoin</span>
             </div>
-            <div class="card">
-              <div class="stat-label">Collection Access</div>
-              <div class="stat-value">Toshi-only</div>
+            <div class="mini-stat">
+              <strong>Toshi Only</strong>
+              <span>Focused exclusively on the Order</span>
             </div>
-            <div class="card">
-              <div class="stat-label">Trading Model</div>
-              <div class="stat-value">BTC Native</div>
+            <div class="mini-stat">
+              <strong>0% Fees</strong>
+              <span>Marketplace direction for collectors</span>
             </div>
-            <div class="card">
-              <div class="stat-label">Launch Status</div>
-              <div class="stat-value" style="color: #10b981;">Live</div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="visual-card">
+            <div class="visual-glow"></div>
+
+            <div class="preview-top">
+              <div class="preview-title">Collection Preview</div>
+              <div class="preview-badge">V4 LIVE</div>
+            </div>
+
+            <div class="preview-grid">
+              <div class="preview-item">
+                <div class="preview-fallback">Toshi #1</div>
+                <div class="preview-label">#1</div>
+              </div>
+              <div class="preview-item">
+                <div class="preview-fallback">Toshi #27</div>
+                <div class="preview-label">#27</div>
+              </div>
+              <div class="preview-item">
+                <div class="preview-fallback">Toshi #108</div>
+                <div class="preview-label">#108</div>
+              </div>
+              <div class="preview-item">
+                <div class="preview-fallback">Toshi #333</div>
+                <div class="preview-label">#333</div>
+              </div>
+              <div class="preview-item">
+                <div class="preview-fallback">Toshi #777</div>
+                <div class="preview-label">#777</div>
+              </div>
+              <div class="preview-item">
+                <div class="preview-fallback">Toshi #1337</div>
+                <div class="preview-label">#1337</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="section">
-      <div class="container">
-        <div class="section-kicker">Why this exists</div>
-        <div class="section-title">Built for holders first</div>
+  <section class="trust-strip">
+    <div class="container">
+      <div class="trust-grid">
+        <div class="trust-item">Bitcoin Native</div>
+        <div class="trust-item">Toshi-Only Marketplace</div>
+        <div class="trust-item">0% Platform Fees</div>
+        <div class="trust-item">Built for Collectors</div>
+      </div>
+    </div>
+  </section>
 
-        <div class="grid-3" style="margin-top:14px;">
-          <div class="feature-card">
-            <div class="feature-icon">₿</div>
-            <div class="feature-title">Bitcoin-native experience</div>
-            <div class="feature-text">
-              Clean Toshi-only destination built around Bitcoin culture, BTC-denominated pricing, and real-time fee awareness.
+  <section id="about" class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Built for the Order</h2>
+          <p class="section-subtitle">
+            The Toshi Order is more than a collection — it’s a Bitcoin-native movement built around
+            culture, permanence, and community. Every Toshi represents a piece of on-chain identity.
+          </p>
+        </div>
+      </div>
+
+      <div class="about-grid">
+        <div class="glass-card">
+          <h3>Collector-First Vision</h3>
+          <p>
+            This site is being built as a dedicated destination for The Toshi Order — a premium home
+            for collectors to explore, discover, and prepare for the next era of Toshi trading on Bitcoin.
+          </p>
+        </div>
+
+        <div class="glass-card">
+          <h3>Marketplace Foundation</h3>
+          <p>
+            V4 establishes the premium front-end experience. Next comes the Collection Explorer, wallet-ready
+            marketplace UI, and future integrations with Satflow, Trio, and Ordinals wallet support.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="collection" class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Featured Collection</h2>
+          <p class="section-subtitle">
+            A preview of the Order. This section can later connect directly to your full JSON dataset and evolve
+            into the full Frogs-style Toshi Collection Explorer.
+          </p>
+        </div>
+        <a href="#community" class="btn btn-secondary">Explore the Order</a>
+      </div>
+
+      <div class="collection-grid">
+        <div class="toshi-card">
+          <div class="toshi-thumb">Toshi #1</div>
+          <div class="toshi-info">
+            <h4>Toshi #1</h4>
+            <p>Bitcoin-native collectible prepared for the Order.</p>
+            <div class="toshi-tags">
+              <span class="tag">Background</span>
+              <span class="tag">Head</span>
+              <span class="tag">Eyes</span>
             </div>
           </div>
+        </div>
 
-          <div class="feature-card">
-            <div class="feature-icon">0%</div>
-            <div class="feature-title">Zero platform fees</div>
-            <div class="feature-text">
-              The marketplace is designed with 0% platform fees for holders. Only Bitcoin network fees apply.
+        <div class="toshi-card">
+          <div class="toshi-thumb">Toshi #27</div>
+          <div class="toshi-info">
+            <h4>Toshi #27</h4>
+            <p>Community-driven collectible preserved on Bitcoin.</p>
+            <div class="toshi-tags">
+              <span class="tag">Base</span>
+              <span class="tag">Clothing</span>
+              <span class="tag">Mouth</span>
             </div>
           </div>
+        </div>
 
-          <div class="feature-card">
-            <div class="feature-icon">◎</div>
-            <div class="feature-title">Public beta now live</div>
-            <div class="feature-text">
-              This is the official public beta launch page. Full wallet-signed decentralized trading flows are coming next.
+        <div class="toshi-card">
+          <div class="toshi-thumb">Toshi #108</div>
+          <div class="toshi-info">
+            <h4>Toshi #108</h4>
+            <p>Part of the expanding Toshi collector experience.</p>
+            <div class="toshi-tags">
+              <span class="tag">Jewellery</span>
+              <span class="tag">Ear</span>
+              <span class="tag">Eyes</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="toshi-card">
+          <div class="toshi-thumb">Toshi #333</div>
+          <div class="toshi-info">
+            <h4>Toshi #333</h4>
+            <p>Built for culture, rarity discovery, and collector energy.</p>
+            <div class="toshi-tags">
+              <span class="tag">Head</span>
+              <span class="tag">Facial Hair</span>
+              <span class="tag">Clothing</span>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="section" id="market-preview">
-      <div class="container">
-        <div class="section-kicker">Marketplace preview</div>
-        <div class="section-title">Featured Toshis</div>
-
-        <div class="market-preview">
-          <div class="asset-card">
-            <div class="asset-kicker">The Toshi Order</div>
-            <div class="asset-name">Toshi #21</div>
-            <div class="price-box">
-              <div class="price-label">Price</div>
-              <div class="price-main"><span class="btc">₿</span> 0.0180</div>
-              <div class="price-usd" data-btc="0.0180">≈ $--</div>
-            </div>
-          </div>
-
-          <div class="asset-card">
-            <div class="asset-kicker">The Toshi Order</div>
-            <div class="asset-name">Toshi #42</div>
-            <div class="price-box">
-              <div class="price-label">Price</div>
-              <div class="price-main"><span class="btc">₿</span> 0.0240</div>
-              <div class="price-usd" data-btc="0.0240">≈ $--</div>
-            </div>
-          </div>
-
-          <div class="asset-card">
-            <div class="asset-kicker">The Toshi Order</div>
-            <div class="asset-name">Toshi #144</div>
-            <div class="price-box">
-              <div class="price-label">Top Bid</div>
-              <div class="price-main"><span class="btc">₿</span> 0.0190</div>
-              <div class="price-usd" data-btc="0.0190">≈ $--</div>
-            </div>
-          </div>
+  <section id="marketplace" class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Marketplace Coming Online</h2>
+          <p class="section-subtitle">
+            A Toshi-only marketplace is coming — built for collectors, designed for Bitcoin, and focused on zero platform fees.
+          </p>
         </div>
       </div>
-    </section>
 
-    <section class="section">
-      <div class="container">
-        <div class="section-kicker">Official links</div>
-        <div class="section-title">Stay connected</div>
+      <div class="market-grid">
+        <div class="market-card">
+          <div class="market-icon">🛒</div>
+          <h3>Browse Listings</h3>
+          <p>Discover listed Toshis in a clean collector-first marketplace experience.</p>
+        </div>
 
-        <div class="links-grid">
-          <a class="link-card" href="https://ordinals.com/inscription/1a4487aeb9de2c8dcf36f3e531a038d8a3acfeeb0bd123aeb7212a82c334ad15i0" target="_blank" rel="noreferrer">
-            <div class="link-title">On-chain Gallery</div>
-            <div class="link-text">View the collection on ordinals.com.</div>
-          </a>
+        <div class="market-card">
+          <div class="market-icon">💸</div>
+          <h3>Make Offers</h3>
+          <p>Future-ready offer flow built around Bitcoin-native trading and negotiation.</p>
+        </div>
 
-          <a class="link-card" href="https://x.com/thetoshiorder?s=21" target="_blank" rel="noreferrer">
-            <div class="link-title">Official X</div>
-            <div class="link-text">Follow The Toshi Order on X.</div>
-          </a>
+        <div class="market-card">
+          <div class="market-icon">📦</div>
+          <h3>List Your Toshi</h3>
+          <p>Prepare for streamlined listing flows designed specifically for Toshi holders.</p>
+        </div>
 
-          <a class="link-card" href="https://x.com/sat_toshis?s=21" target="_blank" rel="noreferrer">
-            <div class="link-title">Founder X</div>
-            <div class="link-text">Follow the founder and project updates.</div>
-          </a>
-
-          <a class="link-card" href="https://discord.gg/3Z5bBkhQs" target="_blank" rel="noreferrer">
-            <div class="link-title">Discord</div>
-            <div class="link-text">Join the holder community.</div>
-          </a>
+        <div class="market-card">
+          <div class="market-icon">📊</div>
+          <h3>Track Traits & Rarity</h3>
+          <p>Trait visibility, rarity discovery, and collector insights are part of the next phase.</p>
         </div>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
+
+  <section id="integrations" class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Next Integrations</h2>
+          <p class="section-subtitle">
+            The next phase of The Toshi Order will connect live market infrastructure, wallet support,
+            and decentralized trading flows — all focused exclusively on Toshi.
+          </p>
+        </div>
+      </div>
+
+      <div class="integration-grid">
+        <div class="integration-card">
+          <h3>Satflow</h3>
+          <p>Marketplace data and listing infrastructure integration path for live trading experiences.</p>
+        </div>
+
+        <div class="integration-card">
+          <h3>Trio</h3>
+          <p>Trading and liquidity ecosystem compatibility as TTO expands into a true collector marketplace.</p>
+        </div>
+
+        <div class="integration-card">
+          <h3>Ordinals Wallet</h3>
+          <p>Wallet-ready UI foundation for holder interaction, listing actions, and future decentralized flows.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="community" class="section">
+    <div class="container">
+      <div class="cta-box">
+        <h2>Enter The Order</h2>
+        <p>
+          Explore the collection today. Prepare for the next generation of Toshi trading on Bitcoin.
+          V4 is live — and the Collection Explorer + Marketplace Beta are next.
+        </p>
+
+        <div class="cta-actions">
+          <a href="#collection" class="btn btn-primary">View Collection</a>
+          <a href="https://thetoshiorder.org" class="btn btn-secondary">Visit Website</a>
+          <a href="#" class="btn btn-secondary">Follow on X</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <footer class="footer">
     <div class="container">
-      <div class="footer-card">
-        <div style="font-size: 18px; font-weight: 950;">The Toshi Order</div>
-        <div class="footer-copy">
-          Official Toshi-only marketplace • Built for holders • 0% platform fees
-        </div>
-        <div class="tiny">
-          Public Beta live now. Full wallet-signed decentralized marketplace flows coming next.
+      <div class="footer-wrap">
+        <p>Built for The Toshi Order on Bitcoin 🟠₿</p>
+        <div class="footer-links">
+          <a href="#about">About</a>
+          <a href="#collection">Collection</a>
+          <a href="#marketplace">Marketplace</a>
+          <a href="#integrations">Roadmap</a>
         </div>
       </div>
     </div>
   </footer>
 
-  <script>
-    const FALLBACK_BTC = 69000;
-    const FALLBACK_FEE = 12;
-
-    function formatUSD(value) {
-      return new Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: "USD",
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
-      }).format(value);
-    }
-
-    async function loadBtcPrice() {
-      try {
-        const res = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd");
-        if (!res.ok) throw new Error("BTC fetch failed");
-        const data = await res.json();
-        const btc = data?.bitcoin?.usd || FALLBACK_BTC;
-
-        document.getElementById("btcPrice").textContent = formatUSD(btc);
-        document.querySelectorAll(".price-usd").forEach((el) => {
-          const amount = Number(el.getAttribute("data-btc") || "0");
-          if (!amount) return;
-          el.textContent = "≈ " + formatUSD(amount * btc);
-        });
-      } catch {
-        document.getElementById("btcPrice").textContent = formatUSD(FALLBACK_BTC);
-        document.querySelectorAll(".price-usd").forEach((el) => {
-          const amount = Number(el.getAttribute("data-btc") || "0");
-          if (!amount) return;
-          el.textContent = "≈ " + formatUSD(amount * FALLBACK_BTC);
-        });
-      }
-    }
-
-    async function loadFees() {
-      try {
-        const res = await fetch("https://mempool.space/api/v1/fees/recommended");
-        if (!res.ok) throw new Error("Fee fetch failed");
-        const data = await res.json();
-        const fee = data?.halfHourFee || data?.fastestFee || data?.hourFee || FALLBACK_FEE;
-        document.getElementById("feeRate").textContent = `${fee} sats/vB`;
-      } catch {
-        document.getElementById("feeRate").textContent = `${FALLBACK_FEE} sats/vB`;
-      }
-    }
-
-    loadBtcPrice();
-    loadFees();
-    setInterval(loadBtcPrice, 30000);
-    setInterval(loadFees, 30000);
-  </script>
 </body>
 </html>
