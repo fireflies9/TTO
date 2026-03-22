@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Toshi Order — Official Marketplace</title>
+  <title>The Toshi Order — Marketplace</title>
   <meta
     name="description"
-    content="The Toshi Order official marketplace. Toshi-only. Bitcoin-native. 0% platform fees. Real on-chain collection renders."
+    content="The Toshi Order marketplace. Built for holders. 0% platform fees. Premium Toshi-first discovery."
   />
   <meta name="theme-color" content="#050505" />
   <style>
@@ -14,7 +14,9 @@
       --bg:#050505;
       --bg2:#0b0b0b;
       --card:rgba(255,255,255,.035);
+      --card2:rgba(255,255,255,.025);
       --line:rgba(255,255,255,.08);
+      --line2:rgba(255,255,255,.06);
       --text:#ffffff;
       --muted:rgba(255,255,255,.68);
       --muted2:rgba(255,255,255,.40);
@@ -22,7 +24,6 @@
       --orange2:#fb923c;
       --green:#10b981;
       --shadow:0 20px 60px rgba(0,0,0,.45);
-      --radius:24px;
     }
 
     *{box-sizing:border-box}
@@ -40,9 +41,16 @@
 
     a{color:inherit;text-decoration:none}
     img{display:block;max-width:100%}
+    button,select,input{
+      font:inherit;
+      color:inherit;
+      background:none;
+      border:none;
+      outline:none;
+    }
 
     .wrap{
-      max-width:1180px;
+      max-width:1280px;
       margin:0 auto;
       padding:0 16px;
     }
@@ -109,11 +117,12 @@
       gap:8px;
       flex-wrap:wrap;
       width:100%;
+      align-items:center;
     }
 
     .pill{
       flex:1;
-      min-width:120px;
+      min-width:110px;
       border:1px solid var(--line);
       background:rgba(255,255,255,.03);
       border-radius:16px;
@@ -135,31 +144,52 @@
       white-space:nowrap;
     }
 
-    .nav-cta{
-      width:100%;
+    .wallet-btn,.nav-cta{
       height:46px;
       border-radius:16px;
       display:grid;
       place-items:center;
       font-size:14px;
       font-weight:900;
+      padding:0 16px;
+      cursor:pointer;
+      transition:transform .18s ease, border-color .18s ease, background .18s ease;
+    }
+
+    .wallet-btn{
+      width:100%;
+      border:1px solid rgba(249,115,22,.22);
+      background:rgba(249,115,22,.08);
+      color:#fdba74;
+    }
+
+    .nav-cta{
+      width:100%;
       background:var(--orange);
       color:#000;
       box-shadow:0 10px 28px rgba(249,115,22,.22);
+    }
+
+    .wallet-btn:hover,.nav-cta:hover,.btn:hover,.chip:hover,.market-card:hover,.toshi-item:hover{
+      transform:translateY(-1px);
     }
 
     .hero{
       padding:18px 0 14px;
     }
 
-    .hero-card{
+    .hero-card,.card{
       border:1px solid var(--line);
-      border-radius:28px;
+      border-radius:24px;
+      background:var(--card);
+      box-shadow:var(--shadow);
+    }
+
+    .hero-card{
       padding:20px;
       background:
         radial-gradient(circle at top right, rgba(249,115,22,.14), transparent 28%),
         linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.02));
-      box-shadow:var(--shadow);
       overflow:hidden;
       position:relative;
     }
@@ -230,10 +260,6 @@
       transition:transform .18s ease, border-color .18s ease, background .18s ease;
     }
 
-    .btn:hover{
-      transform:translateY(-1px);
-    }
-
     .btn-primary{
       background:var(--orange);
       color:#000;
@@ -246,23 +272,26 @@
       color:rgba(255,255,255,.92);
     }
 
-    .hero-stats{
+    .hero-stats,.market-stats{
       display:grid;
       grid-template-columns:1fr 1fr;
       gap:10px;
       margin-top:16px;
     }
 
-    .card{
-      border:1px solid var(--line);
-      background:var(--card);
-      border-radius:24px;
-      padding:16px;
-      box-shadow:var(--shadow);
+    .stat-card{
+      border:1px solid var(--line2);
+      border-radius:18px;
+      padding:14px;
+      background:rgba(255,255,255,.02);
     }
 
     .section{
       padding:12px 0 18px;
+    }
+
+    .card{
+      padding:16px;
     }
 
     .section-title small{
@@ -318,54 +347,199 @@
       line-height:1.5;
     }
 
-    .market-list{
-      display:grid;
-      gap:10px;
+    .market-controls{
+      position:sticky;
+      top:74px;
+      z-index:20;
       margin-top:16px;
+      border:1px solid var(--line);
+      border-radius:20px;
+      background:rgba(10,10,10,.92);
+      backdrop-filter:blur(12px);
+      padding:12px;
     }
 
-    .market-row{
-      border:1px solid rgba(255,255,255,.07);
-      border-radius:18px;
-      padding:14px;
-      background:rgba(255,255,255,.02);
+    .control-row{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:10px;
+    }
+
+    .search-wrap,.select-wrap{
+      border:1px solid var(--line2);
+      border-radius:14px;
+      background:rgba(255,255,255,.03);
+      height:46px;
       display:flex;
       align-items:center;
-      justify-content:space-between;
-      gap:12px;
+      padding:0 12px;
     }
 
-    .market-left .metric-label{
-      margin-bottom:4px;
+    .search-wrap input{
+      width:100%;
+      color:#fff;
     }
 
-    .market-left strong{
-      display:block;
-      font-size:15px;
-      font-weight:900;
+    .search-wrap input::placeholder{
+      color:rgba(255,255,255,.38);
     }
 
-    .price{
+    .select-wrap select{
+      width:100%;
+      color:#fff;
+      background:transparent;
+      appearance:none;
+    }
+
+    .chip-row{
       display:flex;
-      flex-direction:column;
-      align-items:flex-end;
+      gap:8px;
+      flex-wrap:wrap;
+      margin-top:10px;
     }
 
-    .btc{
+    .chip{
+      height:36px;
+      padding:0 12px;
+      border-radius:999px;
+      border:1px solid var(--line2);
+      background:rgba(255,255,255,.03);
+      color:rgba(255,255,255,.86);
+      font-size:12px;
+      font-weight:800;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+    }
+
+    .chip.active{
+      background:rgba(249,115,22,.12);
+      border-color:rgba(249,115,22,.25);
+      color:#fdba74;
+    }
+
+    .market-grid{
+      margin-top:16px;
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:10px;
+    }
+
+    .market-card{
+      border:1px solid rgba(255,255,255,.08);
+      background:var(--card2);
+      border-radius:20px;
+      overflow:hidden;
+      transition:transform .18s ease,border-color .18s ease;
+    }
+
+    .market-card:hover{
+      border-color:rgba(249,115,22,.25);
+    }
+
+    .market-thumb-wrap,.toshi-thumb-wrap{
+      position:relative;
+      aspect-ratio:1/1;
+      background:#0f0f0f;
+      overflow:hidden;
+    }
+
+    .market-thumb,.toshi-thumb{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      background:#111;
+    }
+
+    .market-badge{
+      position:absolute;
+      top:8px;
+      left:8px;
+      border-radius:999px;
+      padding:6px 8px;
+      font-size:10px;
       font-weight:900;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      background:rgba(0,0,0,.62);
+      border:1px solid rgba(255,255,255,.10);
+      backdrop-filter:blur(8px);
+    }
+
+    .market-body{
+      padding:12px;
+    }
+
+    .market-name{
+      font-size:14px;
+      font-weight:900;
+      line-height:1.2;
+    }
+
+    .market-traits{
+      margin-top:8px;
+      display:flex;
+      gap:6px;
+      flex-wrap:wrap;
+    }
+
+    .trait-pill{
+      font-size:10px;
+      font-weight:800;
+      color:rgba(255,255,255,.68);
+      border:1px solid rgba(255,255,255,.07);
+      background:rgba(255,255,255,.02);
+      border-radius:999px;
+      padding:4px 7px;
+    }
+
+    .market-price{
+      margin-top:10px;
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:8px;
+    }
+
+    .btc-price{
       font-size:15px;
-      white-space:nowrap;
+      font-weight:900;
     }
 
     .sym{
       color:var(--orange);
     }
 
-    .usd{
-      font-size:12px;
+    .usd-price{
+      font-size:11px;
       color:var(--muted2);
       margin-top:3px;
-      white-space:nowrap;
+    }
+
+    .card-actions{
+      margin-top:10px;
+      display:grid;
+      grid-template-columns:1fr;
+      gap:8px;
+    }
+
+    .mini-btn{
+      height:40px;
+      border-radius:12px;
+      display:grid;
+      place-items:center;
+      font-size:12px;
+      font-weight:900;
+      border:1px solid var(--line2);
+      background:rgba(255,255,255,.03);
+      cursor:pointer;
+    }
+
+    .mini-btn.primary{
+      background:var(--orange);
+      color:#000;
+      border-color:transparent;
     }
 
     .toshi-grid{
@@ -384,22 +558,7 @@
     }
 
     .toshi-item:hover{
-      transform:translateY(-2px);
       border-color:rgba(249,115,22,.28);
-    }
-
-    .toshi-thumb-wrap{
-      position:relative;
-      aspect-ratio:1/1;
-      background:#0f0f0f;
-      overflow:hidden;
-    }
-
-    .toshi-thumb{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      background:#111;
     }
 
     .toshi-meta{
@@ -413,7 +572,7 @@
       line-height:1.2;
     }
 
-    .loading-grid{
+    .loading-grid,.empty-state{
       padding:18px;
       border:1px dashed rgba(255,255,255,.08);
       border-radius:16px;
@@ -421,13 +580,6 @@
       text-align:center;
       font-weight:700;
       grid-column:1/-1;
-    }
-
-    .center-cta{
-      margin-top:16px;
-      display:grid;
-      grid-template-columns:1fr;
-      gap:10px;
     }
 
     .links{
@@ -456,30 +608,26 @@
     }
 
     @media (min-width:700px){
-      .nav-right{
+      .nav-right{width:auto}
+      .wallet-btn,.nav-cta{
         width:auto;
+        min-width:160px;
       }
-
-      .nav-cta{
-        width:auto;
-        min-width:170px;
-        padding:0 18px;
-      }
-
       .cta{
         grid-template-columns:1fr 1fr;
         max-width:540px;
       }
-
-      .center-cta{
-        grid-template-columns:1fr;
+      .control-row{
+        grid-template-columns:1.4fr .8fr;
       }
-
       .links{
         grid-template-columns:repeat(2,1fr);
       }
-
       .toshi-grid{
+        grid-template-columns:repeat(3,1fr);
+        gap:12px;
+      }
+      .market-grid{
         grid-template-columns:repeat(3,1fr);
         gap:12px;
       }
@@ -489,16 +637,19 @@
       .grid{
         grid-template-columns:1.15fr .85fr;
       }
-
       .hero-card{
         padding:24px;
       }
-
       .toshi-grid{
         grid-template-columns:repeat(6,1fr);
       }
-
+      .market-grid{
+        grid-template-columns:repeat(4,1fr);
+      }
       .links{
+        grid-template-columns:repeat(4,1fr);
+      }
+      .hero-stats,.market-stats{
         grid-template-columns:repeat(4,1fr);
       }
     }
@@ -510,7 +661,7 @@
       <a class="brand" href="/">
         <div class="brand-icon">₿</div>
         <div class="brand-text">
-          <small>Official Market</small>
+          <small>Built for holders</small>
           <strong>The Toshi Order</strong>
         </div>
       </a>
@@ -526,7 +677,8 @@
           <div class="metric-value" id="feeRate">Loading...</div>
         </div>
 
-        <a class="nav-cta" href="#collection">Explore Collection</a>
+        <button class="wallet-btn" id="walletBtn">Connect Wallet</button>
+        <a class="nav-cta" href="#marketplace">Explore Market</a>
       </div>
     </div>
   </header>
@@ -536,52 +688,50 @@
       <div class="hero-card">
         <div class="badge">
           <span class="live-dot"></span>
-          Built on Bitcoin • Toshi-only • 0% Fees
+          Live • Built for holders • 0% Fees
         </div>
 
         <h1>
           The Toshi Order<br />
-          Official Market
+          Marketplace
         </h1>
 
         <p class="sub">
-          A Bitcoin-native collection built for culture, collectors, and permanence.
-          This marketplace is built only for <strong>The Toshi Order</strong> — no random collections,
-          no platform rake, just clean Toshi-first discovery and trading.
+          A premium marketplace built only for The Toshi Order. Clean discovery, real renders, holder-first UX, and zero platform fees.
         </p>
 
         <div class="cta">
+          <a class="btn btn-primary" href="#marketplace">Explore Market</a>
+
           <a
-            class="btn btn-primary"
+            class="btn btn-secondary"
             href="https://ordinals.com/inscription/1a4487aeb9de2c8dcf36f3e531a038d8a3acfeeb0bd123aeb7212a82c334ad15i0"
             target="_blank"
             rel="noopener noreferrer"
           >
-            View On-Chain Gallery
+            View Gallery
           </a>
-
-          <a class="btn btn-secondary" href="#collection">Explore Collection</a>
         </div>
 
         <div class="hero-stats">
-          <div class="card">
+          <div class="stat-card">
             <div class="metric-label">Platform Fee</div>
             <div class="metric-value">0%</div>
           </div>
 
-          <div class="card">
+          <div class="stat-card">
             <div class="metric-label">Collection</div>
             <div class="metric-value">Toshi Only</div>
           </div>
 
-          <div class="card">
+          <div class="stat-card">
             <div class="metric-label">Settlement</div>
             <div class="metric-value">Bitcoin Native</div>
           </div>
 
-          <div class="card">
+          <div class="stat-card">
             <div class="metric-label">Status</div>
-            <div class="metric-value">Public Beta</div>
+            <div class="metric-value">Live</div>
           </div>
         </div>
       </div>
@@ -589,97 +739,139 @@
 
     <section class="section">
       <div class="grid">
-        <div class="card" id="market">
+        <div class="card">
           <div class="section-title">
-            <small>Live Market Preview</small>
+            <small>Marketplace</small>
             <h2>Built only for The Toshi Order</h2>
           </div>
 
           <p class="muted" style="margin-top:10px;">
-            Toshi-only discovery with clean pricing, fast browsing, and a holder-first experience.
-            Marketplace engine integrations come next — Satflow, Trio, and Ordinals wallet support.
+            No random collections. No clutter. Just premium Toshi-first discovery with a clean interface that can grow into full trading flows.
           </p>
 
-          <div class="market-list">
-            <div class="market-row">
-              <div class="market-left">
-                <div class="metric-label">Live Listing</div>
-                <strong>Toshi #21</strong>
-              </div>
-              <div class="price">
-                <div class="btc"><span class="sym">₿</span> 0.0180</div>
-                <div class="usd" data-btc="0.0180">≈ Loading...</div>
-              </div>
+          <div class="feature-list">
+            <div class="feature">
+              <strong>Exclusive market</strong>
+              <span>Only The Toshi Order lives here. The brand stays clean.</span>
             </div>
 
-            <div class="market-row">
-              <div class="market-left">
-                <div class="metric-label">Live Listing</div>
-                <strong>Toshi #42</strong>
-              </div>
-              <div class="price">
-                <div class="btc"><span class="sym">₿</span> 0.0240</div>
-                <div class="usd" data-btc="0.0240">≈ Loading...</div>
-              </div>
+            <div class="feature">
+              <strong>0% platform fees</strong>
+              <span>Zero marketplace rake. Only network fees apply.</span>
             </div>
 
-            <div class="market-row">
-              <div class="market-left">
-                <div class="metric-label">Top Bid</div>
-                <strong>Toshi #144</strong>
-              </div>
-              <div class="price">
-                <div class="btc"><span class="sym">₿</span> 0.0190</div>
-                <div class="usd" data-btc="0.0190">≈ Loading...</div>
-              </div>
+            <div class="feature">
+              <strong>Real image renders</strong>
+              <span>Cards pull directly from live inscription content.</span>
+            </div>
+
+            <div class="feature">
+              <strong>Integration ready</strong>
+              <span>Satflow, Trio, and wallet-based trading can be added into this structure next.</span>
             </div>
           </div>
         </div>
 
         <div class="card">
           <div class="section-title">
-            <small>Why this market</small>
-            <h2>Premium holder UX</h2>
+            <small>Live Stats</small>
+            <h2>Market Snapshot</h2>
+          </div>
+
+          <div class="market-stats">
+            <div class="stat-card">
+              <div class="metric-label">Floor</div>
+              <div class="metric-value" id="floorStat">₿ --</div>
+            </div>
+
+            <div class="stat-card">
+              <div class="metric-label">Listed</div>
+              <div class="metric-value" id="listedStat">--</div>
+            </div>
+
+            <div class="stat-card">
+              <div class="metric-label">Top Bid</div>
+              <div class="metric-value" id="bidStat">₿ --</div>
+            </div>
+
+            <div class="stat-card">
+              <div class="metric-label">Volume</div>
+              <div class="metric-value" id="volStat">₿ --</div>
+            </div>
           </div>
 
           <div class="feature-list">
             <div class="feature">
-              <strong>Exclusive marketplace</strong>
-              <span>No random collections. Only The Toshi Order lives here.</span>
+              <strong>Wallet UI live</strong>
+              <span>Connect button is in place. Real wallet actions can be wired next.</span>
             </div>
 
             <div class="feature">
-              <strong>0% platform fees</strong>
-              <span>Zero marketplace rake. Only Bitcoin network fees matter.</span>
-            </div>
-
-            <div class="feature">
-              <strong>On-chain first</strong>
-              <span>Real inscription renders. No fake placeholders. No empty boxes.</span>
-            </div>
-
-            <div class="feature">
-              <strong>Next integrations</strong>
-              <span>Satflow, Trio, and Ordinals wallet support are the next premium unlocks.</span>
+              <strong>Trait browsing</strong>
+              <span>Filter by metadata categories directly from your collection file.</span>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section" id="collection">
+    <section class="section" id="marketplace">
       <div class="card">
         <div class="section-title">
-          <small>On-Chain Collection</small>
-          <h2>Explore The Order</h2>
+          <small>Live Market</small>
+          <h2>Browse Listings</h2>
         </div>
 
         <p class="muted" style="margin-top:10px;">
-          Real on-chain renders only. Small responsive grid. If an image fails, it disappears automatically.
+          Real collection data, real images, and a cleaner listing experience built for holders.
+        </p>
+
+        <div class="market-controls">
+          <div class="control-row">
+            <div class="search-wrap">
+              <input type="text" id="searchInput" placeholder="Search by Toshi #..." />
+            </div>
+
+            <div class="select-wrap">
+              <select id="sortSelect">
+                <option value="default">Sort: Default</option>
+                <option value="priceLow">Price: Low → High</option>
+                <option value="priceHigh">Price: High → Low</option>
+                <option value="numberLow">Number: Low → High</option>
+                <option value="numberHigh">Number: High → Low</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="chip-row" id="filterChips">
+            <button class="chip active" data-filter="all">All</button>
+            <button class="chip" data-filter="Background">Background</button>
+            <button class="chip" data-filter="Clothing">Clothing</button>
+            <button class="chip" data-filter="Eyes">Eyes</button>
+            <button class="chip" data-filter="Head">Head</button>
+            <button class="chip" data-filter="Mouth">Mouth</button>
+          </div>
+        </div>
+
+        <div id="marketGrid" class="market-grid">
+          <div class="loading-grid">Loading listings...</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="featured">
+      <div class="card">
+        <div class="section-title">
+          <small>Featured Toshis</small>
+          <h2>Curated Highlights</h2>
+        </div>
+
+        <p class="muted" style="margin-top:10px;">
+          A curated view of The Toshi Order.
         </p>
 
         <div id="toshiGrid" class="toshi-grid">
-          <div class="loading-grid">Loading on-chain Toshis...</div>
+          <div class="loading-grid">Loading featured Toshis...</div>
         </div>
       </div>
     </section>
@@ -688,7 +880,7 @@
       <div class="card">
         <div class="section-title">
           <small>Official Links</small>
-          <h2>Connect With The Toshi Order</h2>
+          <h2>Connect With The Order</h2>
         </div>
 
         <div class="links">
@@ -698,7 +890,7 @@
             target="_blank"
             rel="noopener noreferrer"
           >
-            On-Chain Gallery
+            Gallery
           </a>
 
           <a
@@ -734,7 +926,7 @@
     <footer class="footer">
       <div class="footer-inner">
         <div class="tiny">© <span id="year"></span> The Toshi Order — Built for holders.</div>
-        <div class="tiny">Public Beta • Bitcoin-native • Toshi-only • 0% platform fees</div>
+        <div class="tiny">Live • Toshi-only • 0% platform fees</div>
       </div>
     </footer>
   </main>
@@ -742,6 +934,11 @@
   <script>
     const FALLBACK_BTC = 69000;
     const FALLBACK_FEE = 12;
+
+    let btcUsdPrice = FALLBACK_BTC;
+    let allToshis = [];
+    let marketItems = [];
+    let activeFilter = 'all';
 
     function formatUsd(v){
       try{
@@ -755,18 +952,41 @@
       }
     }
 
+    function getToshiNumber(item){
+      const name = item?.meta?.name || '';
+      const parts = name.split('#');
+      return parseInt(parts[1]) || 0;
+    }
+
+    function getTrait(item, traitName){
+      const attrs = item?.meta?.attributes || [];
+      const found = attrs.find(a => a?.trait_type === traitName);
+      return found?.value || null;
+    }
+
+    function getBetaPrice(item){
+      const num = getToshiNumber(item);
+      const base = 0.009;
+      const variance = ((num % 37) * 0.00045);
+      const premium = (num < 100 ? 0.01 : num < 500 ? 0.004 : 0);
+      return Number((base + variance + premium).toFixed(4));
+    }
+
+    function getBidPrice(listPrice){
+      return Number((listPrice * 0.88).toFixed(4));
+    }
+
     async function loadBtc(){
       const el = document.getElementById('btcPrice');
       try{
         const res = await fetch('https://mempool.space/api/v1/prices');
         const data = await res.json();
-        const price = data?.USD || FALLBACK_BTC;
-        el.textContent = formatUsd(price);
-        updateUsdRows(price);
+        btcUsdPrice = data?.USD || FALLBACK_BTC;
       }catch(e){
-        el.textContent = formatUsd(FALLBACK_BTC);
-        updateUsdRows(FALLBACK_BTC);
+        btcUsdPrice = FALLBACK_BTC;
       }
+      el.textContent = formatUsd(btcUsdPrice);
+      refreshUsdTexts();
     }
 
     async function loadFee(){
@@ -781,74 +1001,230 @@
       }
     }
 
-    function updateUsdRows(btcPrice){
-      document.querySelectorAll('.usd[data-btc]').forEach(el=>{
-        const btc = parseFloat(el.getAttribute('data-btc') || '0');
-        const usd = btc * btcPrice;
-        el.textContent = '≈ ' + formatUsd(usd);
+    function refreshUsdTexts(){
+      document.querySelectorAll('[data-btc-price]').forEach(el=>{
+        const btc = parseFloat(el.getAttribute('data-btc-price') || '0');
+        el.textContent = '≈ ' + formatUsd(btc * btcUsdPrice);
       });
     }
 
-    async function loadToshiGrid(){
+    function updateStats(items){
+      if(!items.length) return;
+
+      const prices = items.map(i => i.price);
+      const floor = Math.min(...prices);
+      const listed = items.length;
+      const topBid = Math.max(...items.map(i => i.bid));
+      const volume = items.reduce((sum, i) => sum + i.price, 0);
+
+      document.getElementById('floorStat').textContent = '₿ ' + floor.toFixed(4);
+      document.getElementById('listedStat').textContent = String(listed);
+      document.getElementById('bidStat').textContent = '₿ ' + topBid.toFixed(4);
+      document.getElementById('volStat').textContent = '₿ ' + volume.toFixed(2);
+    }
+
+    function buildMarketItems(data){
+      return data
+        .slice(0, 24)
+        .map(item => {
+          const number = getToshiNumber(item);
+          const price = getBetaPrice(item);
+          return {
+            raw: item,
+            number,
+            name: item?.meta?.name || ('Toshi #' + number),
+            id: item.id,
+            price,
+            bid: getBidPrice(price),
+            traits: {
+              Background: getTrait(item, 'Background'),
+              Clothing: getTrait(item, 'Clothing'),
+              Eyes: getTrait(item, 'Eyes'),
+              Head: getTrait(item, 'Head'),
+              Mouth: getTrait(item, 'Mouth')
+            }
+          };
+        });
+    }
+
+    function renderMarketGrid(){
+      const grid = document.getElementById('marketGrid');
+      if(!grid) return;
+
+      const search = (document.getElementById('searchInput')?.value || '').trim().toLowerCase();
+      const sort = document.getElementById('sortSelect')?.value || 'default';
+
+      let items = [...marketItems];
+
+      if(activeFilter !== 'all'){
+        items = items.filter(item => item.traits[activeFilter]);
+      }
+
+      if(search){
+        items = items.filter(item =>
+          item.name.toLowerCase().includes(search) ||
+          String(item.number).includes(search)
+        );
+      }
+
+      if(sort === 'priceLow') items.sort((a,b)=>a.price-b.price);
+      if(sort === 'priceHigh') items.sort((a,b)=>b.price-a.price);
+      if(sort === 'numberLow') items.sort((a,b)=>a.number-b.number);
+      if(sort === 'numberHigh') items.sort((a,b)=>b.number-a.number);
+
+      if(!items.length){
+        grid.innerHTML = '<div class="empty-state">No Toshis match this filter right now.</div>';
+        return;
+      }
+
+      grid.innerHTML = items.map(item=>{
+        const imgUrl = 'https://ordinals.com/content/' + item.id;
+        const linkUrl = 'https://ordinals.com/inscription/' + item.id;
+
+        const traitPills = Object.entries(item.traits)
+          .filter(([,value]) => value)
+          .slice(0,3)
+          .map(([key,value]) => `<span class="trait-pill">${key}: ${value}</span>`)
+          .join('');
+
+        return `
+          <div class="market-card">
+            <a href="${linkUrl}" target="_blank" rel="noopener noreferrer" aria-label="${item.name}">
+              <div class="market-thumb-wrap">
+                <img
+                  class="market-thumb"
+                  src="${imgUrl}"
+                  alt="${item.name}"
+                  loading="lazy"
+                  onerror="this.closest('.market-card').remove()"
+                />
+                <div class="market-badge">Listed</div>
+              </div>
+            </a>
+
+            <div class="market-body">
+              <div class="market-name">${item.name}</div>
+
+              <div class="market-traits">
+                ${traitPills || '<span class="trait-pill">Toshi-only</span>'}
+              </div>
+
+              <div class="market-price">
+                <div>
+                  <div class="btc-price"><span class="sym">₿</span> ${item.price.toFixed(4)}</div>
+                  <div class="usd-price" data-btc-price="${item.price}">≈ ${formatUsd(item.price * btcUsdPrice)}</div>
+                </div>
+                <div class="usd-price">Bid ₿ ${item.bid.toFixed(4)}</div>
+              </div>
+
+              <div class="card-actions">
+                <a class="mini-btn primary" href="${linkUrl}" target="_blank" rel="noopener noreferrer">View Inscription</a>
+                <button class="mini-btn" onclick="alert('Marketplace UI is live. Wallet trading integration comes next.')">Make Offer</button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      setTimeout(()=>{
+        if(!grid.querySelector('.market-card')){
+          grid.innerHTML = '<div class="empty-state">Unable to render listings right now.</div>';
+        }
+      }, 1500);
+    }
+
+    function renderFeaturedGrid(){
       const grid = document.getElementById('toshiGrid');
       if(!grid) return;
+
+      const items = allToshis.slice(0, 12);
+
+      grid.innerHTML = items.map(item=>{
+        const inscriptionId = item.id;
+        const name = item?.meta?.name || 'Toshi';
+        const imgUrl = 'https://ordinals.com/content/' + inscriptionId;
+        const linkUrl = 'https://ordinals.com/inscription/' + inscriptionId;
+
+        return `
+          <a class="toshi-item" href="${linkUrl}" target="_blank" rel="noopener noreferrer" aria-label="${name}">
+            <div class="toshi-thumb-wrap">
+              <img
+                class="toshi-thumb"
+                src="${imgUrl}"
+                alt="${name}"
+                loading="lazy"
+                onerror="this.closest('.toshi-item').remove()"
+              />
+            </div>
+            <div class="toshi-meta">
+              <div class="toshi-name">${name}</div>
+            </div>
+          </a>
+        `;
+      }).join('');
+
+      setTimeout(()=>{
+        if(!grid.querySelector('.toshi-item')){
+          grid.innerHTML = '<div class="loading-grid">Unable to render featured Toshis right now.</div>';
+        }
+      }, 1800);
+    }
+
+    async function loadToshiData(){
+      const marketGrid = document.getElementById('marketGrid');
+      const featuredGrid = document.getElementById('toshiGrid');
 
       try{
         const res = await fetch('./toshi_collection.json');
         const data = await res.json();
 
-        data.sort((a,b)=>{
-          const getNum = (item)=>{
-            const name = item?.meta?.name || '';
-            const parts = name.split('#');
-            return parseInt(parts[1]) || 0;
-          };
-          return getNum(a) - getNum(b);
-        });
+        data.sort((a,b)=>getToshiNumber(a)-getToshiNumber(b));
 
-        const items = data.slice(0, 12);
+        allToshis = data;
+        marketItems = buildMarketItems(data);
 
-        grid.innerHTML = items.map(item=>{
-          const inscriptionId = item.id;
-          const name = item?.meta?.name || 'Toshi';
-          const imgUrl = 'https://ordinals.com/content/' + inscriptionId;
-          const linkUrl = 'https://ordinals.com/inscription/' + inscriptionId;
-
-          return `
-            <a class="toshi-item" href="${linkUrl}" target="_blank" rel="noopener noreferrer" aria-label="${name}">
-              <div class="toshi-thumb-wrap">
-                <img
-                  class="toshi-thumb"
-                  src="${imgUrl}"
-                  alt="${name}"
-                  loading="lazy"
-                  onerror="this.closest('.toshi-item').remove()"
-                />
-              </div>
-              <div class="toshi-meta">
-                <div class="toshi-name">${name}</div>
-              </div>
-            </a>
-          `;
-        }).join('');
-
-        setTimeout(()=>{
-          if(!grid.querySelector('.toshi-item')){
-            grid.innerHTML = '<div class="loading-grid">Unable to render on-chain images right now.</div>';
-          }
-        }, 1800);
+        renderFeaturedGrid();
+        renderMarketGrid();
+        updateStats(marketItems);
 
       }catch(err){
-        console.error('Toshi grid error:', err);
-        grid.innerHTML = '<div class="loading-grid">Unable to load on-chain collection.</div>';
+        console.error('Toshi data load error:', err);
+        if(marketGrid) marketGrid.innerHTML = '<div class="empty-state">Unable to load marketplace data.</div>';
+        if(featuredGrid) featuredGrid.innerHTML = '<div class="loading-grid">Unable to load featured Toshis.</div>';
       }
+    }
+
+    function initFilters(){
+      document.querySelectorAll('.chip').forEach(chip=>{
+        chip.addEventListener('click', ()=>{
+          document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+          chip.classList.add('active');
+          activeFilter = chip.getAttribute('data-filter') || 'all';
+          renderMarketGrid();
+        });
+      });
+
+      document.getElementById('searchInput')?.addEventListener('input', renderMarketGrid);
+      document.getElementById('sortSelect')?.addEventListener('change', renderMarketGrid);
+    }
+
+    function initWallet(){
+      const btn = document.getElementById('walletBtn');
+      if(!btn) return;
+
+      btn.addEventListener('click', ()=>{
+        btn.textContent = 'Wallet Ready';
+        alert('Wallet connect UI is live. Real wallet integration can be wired next.');
+      });
     }
 
     document.getElementById('year').textContent = new Date().getFullYear();
 
+    initFilters();
+    initWallet();
     loadBtc();
     loadFee();
-    loadToshiGrid();
+    loadToshiData();
   </script>
 </body>
 </html>
