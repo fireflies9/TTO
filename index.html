@@ -19,7 +19,6 @@
       --muted:rgba(255,255,255,.68);
       --muted2:rgba(255,255,255,.40);
       --orange:#f97316;
-      --orangeSoft:rgba(249,115,22,.12);
       --green:#10b981;
       --shadow:0 18px 50px rgba(0,0,0,.42);
       --radius:22px;
@@ -228,6 +227,7 @@
       grid-template-columns:1fr;
       gap:10px;
       margin-top:16px;
+      max-width:240px;
     }
 
     .btn{
@@ -244,12 +244,6 @@
 
     .btn:hover,.feature:hover,.link-card:hover,.art-card:hover{
       transform:translateY(-1px);
-    }
-
-    .btn-primary{
-      background:var(--orange);
-      color:#000;
-      box-shadow:0 8px 22px rgba(249,115,22,.18);
     }
 
     .btn-secondary{
@@ -454,18 +448,11 @@
 
     @media (min-width:700px){
       .nav-right{width:auto}
-
-      .hero-actions{
-        grid-template-columns:1fr 1fr;
-        max-width:460px;
-      }
-
       .feature-grid{
         grid-template-columns:repeat(3,1fr);
       }
-
       .link-grid{
-        grid-template-columns:repeat(2,1fr);
+        grid-template-columns:repeat(3,1fr);
       }
     }
 
@@ -473,18 +460,12 @@
       .hero-card{
         padding:22px;
       }
-
       .hero-grid{
         grid-template-columns:1.2fr .8fr;
         gap:20px;
       }
-
       .hero-stats{
         grid-template-columns:repeat(4,1fr);
-      }
-
-      .link-grid{
-        grid-template-columns:repeat(3,1fr);
       }
     }
   </style>
@@ -533,7 +514,6 @@
             </p>
 
             <div class="hero-actions">
-              <a class="btn btn-primary" href="#onchain">On-Chain View</a>
               <a class="btn btn-secondary" href="#official">Official Links</a>
             </div>
 
@@ -570,7 +550,7 @@
                 <div class="art-title">The Toshi Order</div>
                 <div class="art-sub">Featured collection artwork</div>
               </div>
-              <div class="mini-pill">Bitcoin Ordinals</div>
+              <div class="mini-pill">Community Page</div>
             </div>
           </div>
         </div>
@@ -603,102 +583,6 @@
             <strong>Premium Identity</strong>
             <span>A clean and focused experience designed to feel collectible, premium, and built to last.</span>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="onchain">
-      <div class="card">
-        <div class="section-title">
-          <small>On-Chain</small>
-          <h2>On-Chain & Gallery View</h2>
-        </div>
-
-        <p class="muted">
-          View The Toshi Order directly on Bitcoin and browse trusted collection discovery pages.
-        </p>
-
-        <div class="link-grid">
-          <a
-            class="link-card"
-            href="https://ordinals.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <div class="link-label">Bitcoin</div>
-            <div class="link-title">Ordinals Explorer</div>
-            <div class="link-desc">Open the Bitcoin-native Ordinals explorer and browse inscriptions onchain.</div>
-          </a>
-
-          <a
-            class="link-card"
-            href="https://ordiscan.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <div class="link-label">Gallery</div>
-            <div class="link-title">Ordiscan</div>
-            <div class="link-desc">View collection data, holders, and inscription activity in a cleaner explorer experience.</div>
-          </a>
-
-          <a
-            class="link-card"
-            href="https://gamma.io/ordinals"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <div class="link-label">Discovery</div>
-            <div class="link-title">Gamma Ordinals</div>
-            <div class="link-desc">Browse Bitcoin Ordinals collections and discovery pages across the ecosystem.</div>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="markets">
-      <div class="card">
-        <div class="section-title">
-          <small>Marketplaces</small>
-          <h2>Other Marketplace Links</h2>
-        </div>
-
-        <p class="muted">
-          Explore external Bitcoin Ordinals marketplaces where Toshi holders can track listings and collection activity.
-        </p>
-
-        <div class="link-grid">
-          <a
-            class="link-card"
-            href="https://magiceden.io/ordinals"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <div class="link-label">Marketplace</div>
-            <div class="link-title">Magic Eden</div>
-            <div class="link-desc">Track Ordinals listings, collection floors, and secondary market activity.</div>
-          </a>
-
-          <a
-            class="link-card"
-            href="https://www.okx.com/web3/marketplace/nft/ordinals"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <div class="link-label">Marketplace</div>
-            <div class="link-title">OKX Web3</div>
-            <div class="link-desc">Browse Ordinals collections and marketplace listings through OKX Web3.</div>
-          </a>
-
-          <a
-            class="link-card"
-            href="https://gamma.io/ordinals/marketplace"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <div class="link-label">Marketplace</div>
-            <div class="link-title">Gamma Marketplace</div>
-            <div class="link-desc">Check marketplace discovery and collection pages in the Gamma ecosystem.</div>
-          </a>
         </div>
       </div>
     </section>
