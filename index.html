@@ -48,7 +48,7 @@
     }
 
     .wrap{
-      max-width:1180px;
+      max-width:1100px;
       margin:0 auto;
       padding:0 14px;
     }
@@ -177,13 +177,6 @@
       pointer-events:none;
     }
 
-    .hero-grid{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:14px;
-      align-items:center;
-    }
-
     .badge{
       display:inline-flex;
       align-items:center;
@@ -209,7 +202,7 @@
 
     h1{
       margin:12px 0 0;
-      font-size:clamp(38px,10vw,76px);
+      font-size:clamp(38px,10vw,74px);
       line-height:.95;
       letter-spacing:-.05em;
     }
@@ -231,18 +224,18 @@
     }
 
     .btn{
-      height:46px;
+      height:48px;
       border-radius:14px;
       display:grid;
       place-items:center;
-      font-size:13px;
+      font-size:14px;
       font-weight:900;
       transition:transform .18s ease, border-color .18s ease, background .18s ease;
       text-align:center;
       padding:0 14px;
     }
 
-    .btn:hover,.feature:hover,.link-card:hover,.art-card:hover{
+    .btn:hover,.feature:hover,.link-card:hover{
       transform:translateY(-1px);
     }
 
@@ -256,7 +249,7 @@
       display:grid;
       grid-template-columns:1fr 1fr;
       gap:8px;
-      margin-top:14px;
+      margin-top:16px;
     }
 
     .stat-card{
@@ -264,64 +257,6 @@
       border-radius:16px;
       padding:12px;
       background:rgba(255,255,255,.02);
-    }
-
-    .art-card{
-      border:1px solid rgba(249,115,22,.18);
-      border-radius:20px;
-      background:
-        radial-gradient(circle at 20% 20%, rgba(249,115,22,.10), transparent 30%),
-        rgba(255,255,255,.02);
-      padding:12px;
-      transition:transform .18s ease, border-color .18s ease;
-    }
-
-    .art-frame{
-      border-radius:18px;
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,.06);
-      background:#0c0c0c;
-      aspect-ratio:1/1;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-    }
-
-    .art-frame img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-    }
-
-    .art-meta{
-      margin-top:10px;
-      display:flex;
-      justify-content:space-between;
-      gap:10px;
-      align-items:center;
-      flex-wrap:wrap;
-    }
-
-    .art-title{
-      font-size:14px;
-      font-weight:900;
-    }
-
-    .art-sub{
-      font-size:11px;
-      color:var(--muted2);
-      margin-top:3px;
-    }
-
-    .mini-pill{
-      border-radius:999px;
-      border:1px solid rgba(249,115,22,.2);
-      background:rgba(249,115,22,.08);
-      color:#fdba74;
-      font-size:10px;
-      font-weight:800;
-      padding:6px 10px;
-      white-space:nowrap;
     }
 
     .section{
@@ -448,6 +383,9 @@
 
     @media (min-width:700px){
       .nav-right{width:auto}
+      .feature-grid{
+        grid-template-columns:repeat(3,1fr);
+      }
       .link-grid{
         grid-template-columns:repeat(3,1fr);
       }
@@ -457,18 +395,8 @@
       .hero-card{
         padding:22px;
       }
-
-      .hero-grid{
-        grid-template-columns:1.15fr .85fr;
-        gap:20px;
-      }
-
       .hero-stats{
         grid-template-columns:repeat(4,1fr);
-      }
-
-      .feature-grid{
-        grid-template-columns:repeat(3,1fr);
       }
     }
   </style>
@@ -478,7 +406,7 @@
     <div class="wrap nav">
       <a class="brand" href="/">
         <div class="brand-icon">
-          <img src="./toshi-hero.jpg" alt="The Toshi Order" />
+          <img src="./toshi-logo.jpg" alt="The Toshi Order" />
         </div>
         <div class="brand-text">
           <small>Built for holders</small>
@@ -503,62 +431,40 @@
   <main class="wrap">
     <section class="hero">
       <div class="hero-card">
-        <div class="hero-grid">
-          <div>
-            <div class="badge">
-              <span class="live-dot"></span>
-              Live • Bitcoin Native • Built for holders
-            </div>
+        <div class="badge">
+          <span class="live-dot"></span>
+          Live • Bitcoin Native • Built for holders
+        </div>
 
-            <h1>The Toshi Order</h1>
+        <h1>The Toshi Order</h1>
 
-            <p class="sub">
-              A premium Bitcoin-native community page built for holders, collectors, and the people pushing The Toshi Order forward.
-            </p>
+        <p class="sub">
+          A premium Bitcoin-native community page built for holders, collectors, and the people pushing The Toshi Order forward.
+        </p>
 
-            <div class="hero-actions">
-              <a class="btn btn-secondary" href="#official">Official Links</a>
-            </div>
+        <div class="hero-actions">
+          <a class="btn btn-secondary" href="#official">Official Links</a>
+        </div>
 
-            <div class="hero-stats">
-              <div class="stat-card">
-                <div class="metric-label">Collection</div>
-                <div class="metric-value">Toshi Only</div>
-              </div>
-
-              <div class="stat-card">
-                <div class="metric-label">Network</div>
-                <div class="metric-value">Bitcoin</div>
-              </div>
-
-              <div class="stat-card">
-                <div class="metric-label">Status</div>
-                <div class="metric-value">Live</div>
-              </div>
-
-              <div class="stat-card">
-                <div class="metric-label">Community</div>
-                <div class="metric-value">Growing</div>
-              </div>
-            </div>
+        <div class="hero-stats">
+          <div class="stat-card">
+            <div class="metric-label">Collection</div>
+            <div class="metric-value">Toshi Only</div>
           </div>
 
-          <div class="art-card">
-            <div class="art-frame">
-              <img
-                src="./toshi-hero.jpg"
-                alt="The Toshi Order artwork"
-                onerror="this.src='https://via.placeholder.com/800x800/0c0c0c/f97316?text=TTO';"
-              />
-            </div>
+          <div class="stat-card">
+            <div class="metric-label">Network</div>
+            <div class="metric-value">Bitcoin</div>
+          </div>
 
-            <div class="art-meta">
-              <div>
-                <div class="art-title">The Toshi Order</div>
-                <div class="art-sub">Featured collection artwork</div>
-              </div>
-              <div class="mini-pill">Community Page</div>
-            </div>
+          <div class="stat-card">
+            <div class="metric-label">Status</div>
+            <div class="metric-value">Live</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="metric-label">Community</div>
+            <div class="metric-value">Growing</div>
           </div>
         </div>
       </div>
