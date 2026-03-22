@@ -143,7 +143,7 @@
       white-space:nowrap;
     }
 
-    .wallet-btn,.nav-cta{
+    .wallet-btn,.btn{
       height:44px;
       border-radius:14px;
       display:grid;
@@ -160,16 +160,10 @@
       border:1px solid rgba(249,115,22,.22);
       background:rgba(249,115,22,.08);
       color:#fdba74;
+      margin-top:12px;
     }
 
-    .nav-cta{
-      width:100%;
-      background:var(--orange);
-      color:#000;
-      box-shadow:0 8px 22px rgba(249,115,22,.18);
-    }
-
-    .wallet-btn:hover,.nav-cta:hover,.btn:hover,.chip:hover,.market-card:hover{
+    .wallet-btn:hover,.btn:hover,.chip:hover,.market-card:hover{
       transform:translateY(-1px);
     }
 
@@ -242,40 +236,11 @@
       max-width:700px;
     }
 
-    .cta{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:9px;
-      margin-top:16px;
-    }
-
-    .btn{
-      height:46px;
-      border-radius:14px;
-      display:grid;
-      place-items:center;
-      font-size:13px;
-      font-weight:900;
-      transition:transform .18s ease, border-color .18s ease, background .18s ease;
-    }
-
-    .btn-primary{
-      background:var(--orange);
-      color:#000;
-      box-shadow:0 8px 22px rgba(249,115,22,.18);
-    }
-
-    .btn-secondary{
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.03);
-      color:rgba(255,255,255,.92);
-    }
-
     .hero-stats,.market-stats{
       display:grid;
       grid-template-columns:1fr 1fr;
       gap:8px;
-      margin-top:14px;
+      margin-top:12px;
     }
 
     .stat-card{
@@ -351,7 +316,7 @@
       position:sticky;
       top:68px;
       z-index:20;
-      margin-top:14px;
+      margin-top:12px;
       border:1px solid var(--line);
       border-radius:18px;
       background:rgba(10,10,10,.92);
@@ -562,6 +527,12 @@
       margin-top:14px;
     }
 
+    .btn-secondary{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
+      color:rgba(255,255,255,.92);
+    }
+
     .footer{
       border-top:1px solid var(--line);
       margin-top:16px;
@@ -582,13 +553,9 @@
 
     @media (min-width:700px){
       .nav-right{width:auto}
-      .wallet-btn,.nav-cta{
+      .wallet-btn{
         width:auto;
-        min-width:150px;
-      }
-      .cta{
-        grid-template-columns:1fr 1fr;
-        max-width:500px;
+        min-width:160px;
       }
       .control-row{
         grid-template-columns:1.4fr .8fr;
@@ -640,9 +607,6 @@
           <div class="metric-label">Fee Rate</div>
           <div class="metric-value" id="feeRate">Loading...</div>
         </div>
-
-        <button class="wallet-btn" id="walletBtn">Connect Wallet</button>
-        <a class="nav-cta" href="#marketplace">Explore Market</a>
       </div>
     </div>
   </header>
@@ -663,11 +627,6 @@
         <p class="sub">
           A premium marketplace built only for The Toshi Order. Clean discovery, real renders, and zero platform fees.
         </p>
-
-        <div class="cta">
-          <a class="btn btn-primary" href="#marketplace">Explore Market</a>
-          <a class="btn btn-secondary" href="#links">Official Links</a>
-        </div>
 
         <div class="hero-stats">
           <div class="stat-card">
@@ -781,6 +740,8 @@
         <p class="muted" style="margin-top:8px;">
           Real collection data, real images, and a cleaner listing experience built for holders.
         </p>
+
+        <button class="wallet-btn" id="walletBtn">Connect Wallet</button>
 
         <div class="market-controls">
           <div class="control-row">
@@ -1100,7 +1061,7 @@
 
       btn.addEventListener('click', ()=>{
         btn.textContent = 'Wallet Ready';
-        alert('Wallet connect UI is live. Real wallet integration can be wired next.');
+        alert('Wallet connect UI is live. Real wallet integration comes next.');
       });
     }
 
