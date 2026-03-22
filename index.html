@@ -6,7 +6,7 @@
   <title>The Toshi Order — Marketplace</title>
   <meta
     name="description"
-    content="The Toshi Order marketplace. Built for holders. 0% platform fees. Premium Toshi-first discovery."
+    content="The Toshi Order marketplace. Clean, simple, Toshi-only, and built for holders."
   />
   <meta name="theme-color" content="#050505" />
   <style>
@@ -21,8 +21,8 @@
       --muted2:rgba(255,255,255,.40);
       --orange:#f97316;
       --green:#10b981;
-      --shadow:0 18px 50px rgba(0,0,0,.42);
-      --radius:22px;
+      --shadow:0 16px 44px rgba(0,0,0,.38);
+      --radius:20px;
     }
 
     *{box-sizing:border-box}
@@ -121,7 +121,7 @@
 
     .pill{
       flex:1;
-      min-width:106px;
+      min-width:110px;
       border:1px solid var(--line);
       background:rgba(255,255,255,.03);
       border-radius:14px;
@@ -141,30 +141,6 @@
       font-size:13px;
       font-weight:900;
       white-space:nowrap;
-    }
-
-    .wallet-btn,.btn{
-      height:44px;
-      border-radius:14px;
-      display:grid;
-      place-items:center;
-      font-size:13px;
-      font-weight:900;
-      padding:0 14px;
-      cursor:pointer;
-      transition:transform .18s ease, border-color .18s ease, background .18s ease;
-    }
-
-    .wallet-btn{
-      width:100%;
-      border:1px solid rgba(249,115,22,.22);
-      background:rgba(249,115,22,.08);
-      color:#fdba74;
-      margin-top:12px;
-    }
-
-    .wallet-btn:hover,.btn:hover,.chip:hover,.market-card:hover{
-      transform:translateY(-1px);
     }
 
     .hero{
@@ -191,8 +167,8 @@
       content:"";
       position:absolute;
       inset:auto -10% -20% auto;
-      width:190px;
-      height:190px;
+      width:180px;
+      height:180px;
       border-radius:50%;
       background:radial-gradient(circle, rgba(249,115,22,.08), transparent 70%);
       pointer-events:none;
@@ -236,7 +212,7 @@
       max-width:700px;
     }
 
-    .hero-stats,.market-stats{
+    .hero-stats{
       display:grid;
       grid-template-columns:1fr 1fr;
       gap:8px;
@@ -269,53 +245,35 @@
 
     .section-title h2{
       margin:7px 0 0;
-      font-size:24px;
+      font-size:22px;
       line-height:1.05;
     }
 
-    .muted{
-      color:var(--muted);
-      line-height:1.55;
-      font-size:14px;
-    }
-
-    .grid{
+    .wallet-btn,.btn{
+      height:44px;
+      border-radius:14px;
       display:grid;
-      grid-template-columns:1fr;
-      gap:14px;
-    }
-
-    .feature-list{
-      display:grid;
-      gap:8px;
-      margin-top:14px;
-    }
-
-    .feature{
-      border:1px solid rgba(255,255,255,.07);
-      border-radius:16px;
-      padding:12px;
-      background:rgba(255,255,255,.02);
-    }
-
-    .feature strong{
-      display:block;
-      font-size:14px;
+      place-items:center;
+      font-size:13px;
       font-weight:900;
+      padding:0 14px;
+      cursor:pointer;
+      transition:transform .18s ease, border-color .18s ease, background .18s ease;
     }
 
-    .feature span{
-      display:block;
-      margin-top:5px;
-      font-size:12px;
-      color:var(--muted);
-      line-height:1.45;
+    .wallet-btn{
+      width:100%;
+      border:1px solid rgba(249,115,22,.22);
+      background:rgba(249,115,22,.08);
+      color:#fdba74;
+      margin-top:12px;
+    }
+
+    .wallet-btn:hover,.btn:hover,.chip:hover,.market-card:hover{
+      transform:translateY(-1px);
     }
 
     .market-controls{
-      position:sticky;
-      top:68px;
-      z-index:20;
       margin-top:12px;
       border:1px solid var(--line);
       border-radius:18px;
@@ -390,13 +348,13 @@
       margin-top:14px;
       display:grid;
       grid-template-columns:repeat(2,1fr);
-      gap:9px;
+      gap:8px;
     }
 
     .market-card{
       border:1px solid rgba(255,255,255,.08);
       background:var(--card2);
-      border-radius:18px;
+      border-radius:14px;
       overflow:hidden;
       transition:transform .18s ease,border-color .18s ease;
     }
@@ -421,11 +379,11 @@
 
     .market-badge{
       position:absolute;
-      top:7px;
-      left:7px;
+      top:6px;
+      left:6px;
       border-radius:999px;
-      padding:5px 7px;
-      font-size:9px;
+      padding:4px 6px;
+      font-size:8px;
       font-weight:900;
       letter-spacing:.08em;
       text-transform:uppercase;
@@ -435,42 +393,24 @@
     }
 
     .market-body{
-      padding:10px;
+      padding:8px;
     }
 
     .market-name{
-      font-size:13px;
+      font-size:12px;
       font-weight:900;
-      line-height:1.2;
-    }
-
-    .market-traits{
-      margin-top:7px;
-      display:flex;
-      gap:5px;
-      flex-wrap:wrap;
-    }
-
-    .trait-pill{
-      font-size:9px;
-      font-weight:800;
-      color:rgba(255,255,255,.68);
-      border:1px solid rgba(255,255,255,.07);
-      background:rgba(255,255,255,.02);
-      border-radius:999px;
-      padding:4px 6px;
+      line-height:1.15;
     }
 
     .market-price{
-      margin-top:8px;
+      margin-top:6px;
       display:flex;
-      align-items:flex-end;
-      justify-content:space-between;
-      gap:6px;
+      flex-direction:column;
+      gap:3px;
     }
 
     .btc-price{
-      font-size:14px;
+      font-size:12px;
       font-weight:900;
     }
 
@@ -481,22 +421,27 @@
     .usd-price{
       font-size:10px;
       color:var(--muted2);
-      margin-top:2px;
+    }
+
+    .bid-line{
+      font-size:10px;
+      color:rgba(255,255,255,.62);
+      font-weight:700;
     }
 
     .card-actions{
       margin-top:8px;
       display:grid;
       grid-template-columns:1fr;
-      gap:7px;
+      gap:6px;
     }
 
     .mini-btn{
-      height:36px;
-      border-radius:11px;
+      height:32px;
+      border-radius:10px;
       display:grid;
       place-items:center;
-      font-size:11px;
+      font-size:10px;
       font-weight:900;
       border:1px solid var(--line2);
       background:rgba(255,255,255,.03);
@@ -558,30 +503,27 @@
         min-width:160px;
       }
       .control-row{
-        grid-template-columns:1.4fr .8fr;
-      }
-      .links{
-        grid-template-columns:repeat(3,1fr);
+        grid-template-columns:1.25fr .75fr;
       }
       .market-grid{
         grid-template-columns:repeat(3,1fr);
         gap:10px;
       }
+      .links{
+        grid-template-columns:repeat(3,1fr);
+      }
     }
 
     @media (min-width:980px){
-      .grid{
-        grid-template-columns:1.15fr .85fr;
-      }
       .hero-card{
         padding:22px;
+      }
+      .hero-stats{
+        grid-template-columns:repeat(4,1fr);
       }
       .market-grid{
         grid-template-columns:repeat(4,1fr);
         gap:12px;
-      }
-      .hero-stats,.market-stats{
-        grid-template-columns:repeat(4,1fr);
       }
     }
   </style>
@@ -625,7 +567,7 @@
         </h1>
 
         <p class="sub">
-          A premium marketplace built only for The Toshi Order. Clean discovery, real renders, and zero platform fees.
+          A clean, simple marketplace built only for The Toshi Order. Real renders, minimal UI, and zero platform fees.
         </p>
 
         <div class="hero-stats">
@@ -652,110 +594,28 @@
       </div>
     </section>
 
-    <section class="section">
-      <div class="grid">
-        <div class="card">
-          <div class="section-title">
-            <small>Marketplace</small>
-            <h2>Built only for The Toshi Order</h2>
-          </div>
-
-          <p class="muted" style="margin-top:8px;">
-            No random collections. No clutter. Just premium Toshi-first discovery with a clean interface ready for deeper trading flows.
-          </p>
-
-          <div class="feature-list">
-            <div class="feature">
-              <strong>Exclusive market</strong>
-              <span>Only The Toshi Order lives here. The brand stays clean.</span>
-            </div>
-
-            <div class="feature">
-              <strong>0% platform fees</strong>
-              <span>Zero marketplace rake. Only network fees apply.</span>
-            </div>
-
-            <div class="feature">
-              <strong>Real image renders</strong>
-              <span>Cards pull directly from live inscription content.</span>
-            </div>
-
-            <div class="feature">
-              <strong>Integration ready</strong>
-              <span>Satflow, Trio, and wallet-based trading can slot in next.</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="section-title">
-            <small>Live Stats</small>
-            <h2>Market Snapshot</h2>
-          </div>
-
-          <div class="market-stats">
-            <div class="stat-card">
-              <div class="metric-label">Floor</div>
-              <div class="metric-value" id="floorStat">₿ --</div>
-            </div>
-
-            <div class="stat-card">
-              <div class="metric-label">Listed</div>
-              <div class="metric-value" id="listedStat">--</div>
-            </div>
-
-            <div class="stat-card">
-              <div class="metric-label">Top Bid</div>
-              <div class="metric-value" id="bidStat">₿ --</div>
-            </div>
-
-            <div class="stat-card">
-              <div class="metric-label">Volume</div>
-              <div class="metric-value" id="volStat">₿ --</div>
-            </div>
-          </div>
-
-          <div class="feature-list">
-            <div class="feature">
-              <strong>Wallet UI live</strong>
-              <span>Connect button is in place. Real wallet actions can be wired next.</span>
-            </div>
-
-            <div class="feature">
-              <strong>Trait browsing</strong>
-              <span>Filter by metadata categories directly from your collection file.</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <section class="section" id="marketplace">
       <div class="card">
         <div class="section-title">
-          <small>Live Market</small>
-          <h2>Browse Listings</h2>
+          <small>Marketplace</small>
+          <h2>Browse The Order</h2>
         </div>
-
-        <p class="muted" style="margin-top:8px;">
-          Real collection data, real images, and a cleaner listing experience built for holders.
-        </p>
 
         <button class="wallet-btn" id="walletBtn">Connect Wallet</button>
 
         <div class="market-controls">
           <div class="control-row">
             <div class="search-wrap">
-              <input type="text" id="searchInput" placeholder="Search by Toshi #..." />
+              <input type="text" id="searchInput" placeholder="Search Toshi #..." />
             </div>
 
             <div class="select-wrap">
               <select id="sortSelect">
-                <option value="default">Sort: Default</option>
-                <option value="priceLow">Price: Low → High</option>
-                <option value="priceHigh">Price: High → Low</option>
-                <option value="numberLow">Number: Low → High</option>
-                <option value="numberHigh">Number: High → Low</option>
+                <option value="default">Default</option>
+                <option value="priceLow">Price ↑</option>
+                <option value="priceHigh">Price ↓</option>
+                <option value="numberLow">Toshi # ↑</option>
+                <option value="numberHigh">Toshi # ↓</option>
               </select>
             </div>
           </div>
@@ -898,21 +758,6 @@
       });
     }
 
-    function updateStats(items){
-      if(!items.length) return;
-
-      const prices = items.map(i => i.price);
-      const floor = Math.min(...prices);
-      const listed = items.length;
-      const topBid = Math.max(...items.map(i => i.bid));
-      const volume = items.reduce((sum, i) => sum + i.price, 0);
-
-      document.getElementById('floorStat').textContent = '₿ ' + floor.toFixed(4);
-      document.getElementById('listedStat').textContent = String(listed);
-      document.getElementById('bidStat').textContent = '₿ ' + topBid.toFixed(4);
-      document.getElementById('volStat').textContent = '₿ ' + volume.toFixed(2);
-    }
-
     function buildMarketItems(data){
       return data
         .slice(0, 24)
@@ -970,12 +815,6 @@
         const imgUrl = 'https://ordinals.com/content/' + item.id;
         const linkUrl = 'https://ordinals.com/inscription/' + item.id;
 
-        const traitPills = Object.entries(item.traits)
-          .filter(([,value]) => value)
-          .slice(0,3)
-          .map(([key,value]) => `<span class="trait-pill">${key}: ${value}</span>`)
-          .join('');
-
         return `
           <div class="market-card">
             <a href="${linkUrl}" target="_blank" rel="noopener noreferrer" aria-label="${item.name}">
@@ -987,28 +826,21 @@
                   loading="lazy"
                   onerror="this.closest('.market-card').remove()"
                 />
-                <div class="market-badge">Listed</div>
+                <div class="market-badge">Live</div>
               </div>
             </a>
 
             <div class="market-body">
               <div class="market-name">${item.name}</div>
 
-              <div class="market-traits">
-                ${traitPills || '<span class="trait-pill">Toshi-only</span>'}
-              </div>
-
               <div class="market-price">
-                <div>
-                  <div class="btc-price"><span class="sym">₿</span> ${item.price.toFixed(4)}</div>
-                  <div class="usd-price" data-btc-price="${item.price}">≈ ${formatUsd(item.price * btcUsdPrice)}</div>
-                </div>
-                <div class="usd-price">Bid ₿ ${item.bid.toFixed(4)}</div>
+                <div class="btc-price"><span class="sym">₿</span> ${item.price.toFixed(4)}</div>
+                <div class="usd-price" data-btc-price="${item.price}">≈ ${formatUsd(item.price * btcUsdPrice)}</div>
+                <div class="bid-line">Bid ₿ ${item.bid.toFixed(4)}</div>
               </div>
 
               <div class="card-actions">
                 <a class="mini-btn primary" href="${linkUrl}" target="_blank" rel="noopener noreferrer">View</a>
-                <button class="mini-btn" onclick="alert('Marketplace UI is live. Wallet trading integration comes next.')">Make Offer</button>
               </div>
             </div>
           </div>
@@ -1019,7 +851,7 @@
         if(!grid.querySelector('.market-card')){
           grid.innerHTML = '<div class="empty-state">Unable to render listings right now.</div>';
         }
-      }, 1500);
+      }, 1200);
     }
 
     async function loadToshiData(){
@@ -1033,7 +865,6 @@
         marketItems = buildMarketItems(data);
 
         renderMarketGrid();
-        updateStats(marketItems);
 
       }catch(err){
         console.error('Toshi data load error:', err);
@@ -1061,7 +892,7 @@
 
       btn.addEventListener('click', ()=>{
         btn.textContent = 'Wallet Ready';
-        alert('Wallet connect UI is live. Real wallet integration comes next.');
+        alert('Wallet UI is live. Real wallet integration comes next.');
       });
     }
 
