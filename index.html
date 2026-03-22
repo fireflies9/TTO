@@ -3,239 +3,196 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>The Toshi Order • ☀️</title>
+  <title>The Toshi Order • Bitcoin Ordinals ☀️</title>
   <link rel="icon" type="image/svg+xml" href="https://fav.fan/assets/sun-emoji.svg"/>
+  <meta name="description" content="3,333 Toshis — Bitcoin-native Ordinals. Formed by the community. Forged on Bitcoin. Created by @sat_toshis. Power to The Order. Power to Bitcoin."/>
   <style>
     :root {
-      --bg: #0a0e17;
-      --accent: #ffaa00;
-      --accent-dark: #e69500;
-      --text: #f0f4ff;
-      --text-muted: #a0b0d0;
-      --card: #111827;
+      --bg: #000000;
+      --accent: #f7931a;       /* Bitcoin orange */
+      --accent-dark: #c76e00;
+      --text: #eeeeee;
+      --text-muted: #aaaaaa;
+      --card: #111111;
+      --border: #222222;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    * { margin:0; padding:0; box-sizing:border-box; }
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: 'Segoe UI', system-ui, sans-serif;
+      font-family: system-ui, -apple-system, sans-serif;
       line-height: 1.6;
       min-height: 100vh;
     }
-
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
 
     header {
       position: fixed;
-      top: 0;
-      width: 100%;
+      top: 0; left: 0; right: 0;
+      background: rgba(0,0,0,0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
       z-index: 100;
-      background: rgba(10, 14, 23, 0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid #222a3a;
     }
-
     nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1.1rem 0;
+      padding: 1.25rem 0;
     }
-
     .logo {
-      font-size: 1.6rem;
-      font-weight: 800;
+      font-size: 1.8rem;
+      font-weight: 900;
       color: var(--accent);
-      letter-spacing: -1px;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 0.5rem;
     }
-
-    .logo span {
-      font-size: 1.8rem;
-    }
+    .logo span { font-size: 2.1rem; }
 
     .nav-links {
       display: flex;
-      gap: 2.2rem;
-      font-weight: 500;
+      gap: 2.5rem;
+      font-weight: 600;
+      font-size: 1rem;
+      text-transform: uppercase;
     }
-
     .nav-links a {
       color: var(--text-muted);
       text-decoration: none;
-      transition: color 0.25s;
+      transition: color 0.3s;
     }
-
-    .nav-links a:hover,
-    .nav-links a.active {
-      color: var(--accent);
-    }
+    .nav-links a:hover { color: var(--accent); }
 
     .hero {
       min-height: 100vh;
       display: flex;
       align-items: center;
-      background: linear-gradient(135deg, #0f172a 0%, #0a0e17 100%);
+      background: linear-gradient(135deg, #0a0a0a, #000000);
       position: relative;
-      overflow: hidden;
     }
-
     .hero::before {
       content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle at 30% 20%, rgba(255,170,0,0.12) 0%, transparent 40%);
+      position: absolute; inset: 0;
+      background: radial-gradient(circle at 30% 20%, rgba(247,147,26,0.15) 0%, transparent 65%);
       pointer-events: none;
     }
-
     .hero-content {
-      position: relative;
-      z-index: 2;
+      position: relative; z-index: 2;
       max-width: 900px;
     }
-
+    .hero .subtitle {
+      color: var(--accent);
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      margin-bottom: 0.8rem;
+    }
     .hero h1 {
-      font-size: clamp(3.8rem, 9vw, 7.2rem);
+      font-size: clamp(4.5rem, 12vw, 9rem);
       font-weight: 900;
-      line-height: 0.92;
-      letter-spacing: -3px;
+      line-height: 0.9;
+      letter-spacing: -4px;
       margin-bottom: 1.5rem;
     }
-
-    .hero h1 span {
-      color: var(--accent);
-    }
-
+    .hero h1 span { color: var(--accent); }
     .tagline {
       font-size: 1.5rem;
       color: var(--text-muted);
-      margin: 1.8rem 0 2.5rem;
-      max-width: 620px;
+      max-width: 720px;
+      margin: 1.5rem 0 2.5rem;
     }
-
-    .cta-buttons {
-      display: flex;
-      gap: 1.2rem;
-      flex-wrap: wrap;
-    }
-
     .btn {
-      padding: 0.95rem 2.2rem;
-      font-size: 1.1rem;
-      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 1rem 2.5rem;
+      font-size: 1.15rem;
+      font-weight: 700;
       border-radius: 999px;
       text-decoration: none;
       transition: all 0.3s;
-      cursor: pointer;
-      border: none;
     }
-
     .btn-primary {
       background: var(--accent);
-      color: #0f172a;
+      color: #000;
     }
-
-    .btn-primary:hover {
-      background: var(--accent-dark);
-      transform: translateY(-2px);
-    }
-
+    .btn-primary:hover { background: #fff; transform: scale(1.03); }
     .btn-outline {
-      background: transparent;
-      border: 2px solid var(--accent);
+      border: 2.5px solid var(--accent);
       color: var(--accent);
     }
-
     .btn-outline:hover {
-      background: rgba(255,170,0,0.08);
+      background: var(--accent);
+      color: #000;
     }
 
-    section {
-      padding: 140px 0 100px;
-    }
-
+    section { padding: 10rem 0 6rem; }
     h2 {
-      font-size: 3.5rem;
+      font-size: 3.8rem;
       text-align: center;
+      color: var(--accent);
+      font-weight: 900;
       margin-bottom: 3rem;
-      background: linear-gradient(90deg, #ffaa00, #ffd166, #ffaa00);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
     }
 
     .cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 2rem;
     }
-
     .card {
       background: var(--card);
-      border-radius: 16px;
-      padding: 2.2rem;
-      border: 1px solid #222a3a;
-      transition: all 0.35s;
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 2rem;
+      transition: all 0.4s;
     }
-
     .card:hover {
-      transform: translateY(-12px);
       border-color: var(--accent);
-      box-shadow: 0 20px 40px rgba(255,170,0,0.08);
+      transform: translateY(-1rem);
+      box-shadow: 0 2rem 4rem rgba(247,147,26,0.1);
     }
+    .card h3 { color: var(--accent); margin-bottom: 1rem; font-size: 1.6rem; }
 
-    .card h3 {
-      color: var(--accent);
-      margin-bottom: 1rem;
-      font-size: 1.5rem;
+    .species-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1.5rem;
+      text-align: center;
     }
+    .species {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 1.8rem 1rem;
+    }
+    .species .percent {
+      font-size: 3.2rem;
+      font-weight: 900;
+      color: #fff;
+    }
+    .species h3 { color: var(--accent); font-size: 1.4rem; }
 
     footer {
-      background: #05070f;
+      background: #000;
       padding: 5rem 0 3rem;
       text-align: center;
-      border-top: 1px solid #1a2235;
+      border-top: 1px solid #222;
     }
-
-    .social-links {
-      margin: 2rem 0;
-      font-size: 1.8rem;
-    }
-
-    .social-links a {
+    .footer-links a {
       color: var(--text-muted);
-      margin: 0 1.2rem;
+      margin: 0 1.5rem;
+      font-size: 1.1rem;
       transition: color 0.3s;
     }
-
-    .social-links a:hover {
-      color: var(--accent);
-    }
+    .footer-links a:hover { color: var(--accent); }
 
     @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-      }
-      .hero h1 {
-        font-size: 4.2rem;
-      }
-      h2 {
-        font-size: 2.6rem;
-      }
+      .nav-links { display: none; }
+      h2 { font-size: 2.8rem; }
+      .hero h1 { font-size: 5rem; }
     }
   </style>
 </head>
@@ -244,83 +201,112 @@
   <header>
     <div class="container">
       <nav>
-        <div class="logo">
-          <span>☀️</span> The Toshi Order
-        </div>
+        <div class="logo"><span>☀️</span> THE TOSHI ORDER</div>
         <div class="nav-links">
-          <a href="#home" class="active">Home</a>
-          <a href="#about">About</a>
-          <a href="#values">Values</a>
+          <a href="#collection">Collection</a>
+          <a href="#species">Species</a>
           <a href="#join">Join</a>
         </div>
       </nav>
     </div>
   </header>
 
-  <section class="hero" id="home">
+  <section class="hero">
     <div class="container">
       <div class="hero-content">
+        <div class="subtitle">BITCOIN • NATIVE • ORDINALS</div>
         <h1>The <span>Toshi</span> Order</h1>
         <p class="tagline">
-          A disciplined community forged under the rising sun • Knowledge • Capital • Brotherhood • Ascension
+          3,333 Toshis inscribed on Bitcoin.<br>
+          Not launched — <strong>formed</strong> through self-inscription.<br>
+          Created by <a href="https://x.com/sat_toshis" target="_blank" style="color:var(--accent);">@sat_toshis</a>.<br>
+          Community owned. No retreat.
         </p>
-
-        <div class="cta-buttons">
-          <a href="https://x.com/TheToshiOrder" target="_blank" class="btn btn-primary">Enter the Order →</a>
-          <a href="#join" class="btn btn-outline">Learn the Way</a>
+        <div style="display:flex; gap:1.2rem; flex-wrap:wrap;">
+          <a href="https://magiceden.io/ordinals/marketplace/thetoshiorder" target="_blank" class="btn btn-primary">View Collection →</a>
+          <a href="https://x.com/TheToshiOrder" target="_blank" class="btn btn-outline">Follow @TheToshiOrder</a>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="about">
+  <section id="collection" style="background:#0a0a0a;">
     <div class="container">
-      <h2>Who We Are</h2>
+      <h2>THE COLLECTION</h2>
       <div class="cards">
         <div class="card">
-          <h3>Vision</h3>
-          <p>To build an unbreakable circle of high-agency individuals who master money, mind, and meaning in the new era.</p>
+          <h3>3,333 Toshis</h3>
+          <p>Fixed supply. Fully inscribed on Bitcoin. No additional mints possible. Pure on-chain legacy.</p>
+          <a href="https://magiceden.io/ordinals/marketplace/thetoshiorder" target="_blank" style="color:var(--accent); display:block; margin-top:1rem; font-weight:600;">Trade on Magic Eden →</a>
         </div>
         <div class="card">
-          <h3>Discipline</h3>
-          <p>Daily rituals. Capital allocation. Truth-seeking. No excuses. No shortcuts. Results or silence.</p>
+          <h3>Self-Inscribed</h3>
+          <p>First-come, first-served inscription. No team allocation. No whitelist. Conviction + mempool decided who entered the Order.</p>
         </div>
         <div class="card">
-          <h3>Brotherhood</h3>
-          <p>Real bonds forged through shared struggle, not likes. Mutual elevation. Iron sharpens iron.</p>
+          <h3>Bitcoin-Native</h3>
+          <p>Anchored forever on the Bitcoin blockchain. Parent inscription & first Toshi verifiable on explorers. Power to Bitcoin.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="join" style="background: linear-gradient(to bottom, #0a0e17, #111827);">
+  <section id="species">
     <div class="container">
-      <h2>Join The Order</h2>
-      <div style="text-align:center; max-width:680px; margin:0 auto;">
-        <p style="font-size:1.3rem; margin-bottom:2.5rem; color:#ccd4ff;">
-          Entry is not given. It is earned.<br>
-          First step: Follow + engage meaningfully on X.
-        </p>
-        <a href="https://x.com/TheToshiOrder" target="_blank" class="btn btn-primary" style="font-size:1.4rem; padding:1.2rem 3rem;">
-          Begin Your Path @TheToshiOrder
-        </a>
-        <p style="margin-top:3rem; color:#8899cc; font-size:0.95rem;">
-          ☀️ The sun rises for those who rise first.
-        </p>
+      <h2>THE 5 SPECIES</h2>
+      <div class="species-grid">
+        <div class="species">
+          <div class="percent">80%</div>
+          <h3>Human</h3>
+        </div>
+        <div class="species">
+          <div class="percent">9%</div>
+          <h3>Zombie</h3>
+        </div>
+        <div class="species">
+          <div class="percent">7%</div>
+          <h3>Demon</h3>
+        </div>
+        <div class="species">
+          <div class="percent">3%</div>
+          <h3>Ape</h3>
+        </div>
+        <div class="species">
+          <div class="percent">1%</div>
+          <h3>Alien</h3>
+        </div>
       </div>
+    </div>
+  </section>
+
+  <section id="join" style="background:#0a0a0a; text-align:center;">
+    <div class="container">
+      <h2>JOIN THE MOVEMENT</h2>
+      <p style="font-size:1.4rem; color:#ccc; max-width:700px; margin:0 auto 2.5rem;">
+        The Toshi Order is for those who showed up early, inscribed with conviction, and understand Bitcoin culture lasts forever.<br><br>
+        TM ☀️ — The sun rises for those who rise first.
+      </p>
+      <a href="https://x.com/TheToshiOrder" target="_blank" class="btn btn-primary" style="font-size:1.4rem; padding:1.2rem 3.5rem;">
+        Follow @TheToshiOrder
+      </a>
+      <p style="margin-top:3rem; color:var(--text-muted);">
+        Founded by <a href="https://x.com/sat_toshis" target="_blank" style="color:var(--accent);">@sat_toshis</a> • Community governed
+      </p>
     </div>
   </section>
 
   <footer>
     <div class="container">
-      <div class="logo" style="justify-content:center; margin-bottom:1.5rem;">
-        <span>☀️</span> The Toshi Order
+      <div class="logo" style="justify-content:center; font-size:2.2rem; margin-bottom:2rem;">
+        <span>☀️</span> THE TOSHI ORDER
       </div>
-      <div class="social-links">
+      <div class="footer-links">
         <a href="https://x.com/TheToshiOrder" target="_blank">𝕏</a>
+        <a href="https://magiceden.io/ordinals/marketplace/thetoshiorder" target="_blank">Magic Eden</a>
+        <a href="https://x.com/sat_toshis" target="_blank">Founder</a>
       </div>
-      <p style="color:#667799; font-size:0.92rem;">
-        © 2025–2026 The Toshi Order • All rights reserved • No retreat, no surrender
+      <p style="color:#555; margin-top:3rem; font-size:0.95rem;">
+        Bitcoin-native Ordinals • Formed 2023 • Community Owned • Power to The Order ⚡
       </p>
     </div>
   </footer>
