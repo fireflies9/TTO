@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>The Toshi Order • Bitcoin Ordinals ☀️</title>
   <link rel="icon" type="image/svg+xml" href="https://fav.fan/assets/sun-emoji.svg"/>
-  <meta name="description" content="3,333 Toshis — Bitcoin-native Ordinals. Formed by the community. Forged on Bitcoin. Created by @sat_toshis. Power to The Order. Power to Bitcoin."/>
+  <meta name="description" content="3,333 Toshis — Bitcoin-native Ordinals. Formed by the community through self-inscription. Created by @sat_toshis. Immutable. Eternal. Power to The Order. Power to Bitcoin."/>
   <style>
     :root {
       --bg: #000000;
@@ -30,7 +30,7 @@
     header {
       position: fixed;
       top: 0; left: 0; right: 0;
-      background: rgba(0,0,0,0.9);
+      background: rgba(0,0,0,0.92);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--border);
       z-index: 100;
@@ -53,7 +53,7 @@
 
     .nav-links {
       display: flex;
-      gap: 2.5rem;
+      gap: 2rem;
       font-weight: 600;
       font-size: 1rem;
       text-transform: uppercase;
@@ -80,7 +80,7 @@
     }
     .hero-content {
       position: relative; z-index: 2;
-      max-width: 900px;
+      max-width: 920px;
     }
     .hero .subtitle {
       color: var(--accent);
@@ -127,6 +127,11 @@
       background: var(--accent);
       color: #000;
     }
+    .btn-discord {
+      background: #5865F2;
+      color: #fff;
+    }
+    .btn-discord:hover { background: #4752C4; transform: scale(1.03); }
 
     section { padding: 10rem 0 6rem; }
     h2 {
@@ -136,6 +141,26 @@
       font-weight: 900;
       margin-bottom: 3rem;
     }
+
+    .marketplaces {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.8rem;
+      margin: 2rem 0;
+    }
+    .market-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 1.8rem;
+      text-align: center;
+      transition: all 0.3s;
+    }
+    .market-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-8px);
+    }
+    .market-card h3 { color: var(--accent); margin-bottom: 0.8rem; }
 
     .cards {
       display: grid;
@@ -183,7 +208,7 @@
     }
     .footer-links a {
       color: var(--text-muted);
-      margin: 0 1.5rem;
+      margin: 0 1.2rem;
       font-size: 1.1rem;
       transition: color 0.3s;
     }
@@ -203,6 +228,7 @@
       <nav>
         <div class="logo"><span>☀️</span> THE TOSHI ORDER</div>
         <div class="nav-links">
+          <a href="#market">Market</a>
           <a href="#collection">Collection</a>
           <a href="#species">Species</a>
           <a href="#join">Join</a>
@@ -217,41 +243,68 @@
         <div class="subtitle">BITCOIN • NATIVE • ORDINALS</div>
         <h1>The <span>Toshi</span> Order</h1>
         <p class="tagline">
-          3,333 Toshis inscribed on Bitcoin.<br>
+          3,333 Toshis permanently inscribed on Bitcoin.<br>
           Not launched — <strong>formed</strong> through self-inscription.<br>
           Created by <a href="https://x.com/sat_toshis" target="_blank" style="color:var(--accent);">@sat_toshis</a>.<br>
-          Community owned. No retreat.
+          Immutable. Eternal. Community owned. GM Anon, the order awaits.
         </p>
         <div style="display:flex; gap:1.2rem; flex-wrap:wrap;">
-          <a href="https://magiceden.io/ordinals/marketplace/thetoshiorder" target="_blank" class="btn btn-primary">View Collection →</a>
-          <a href="https://x.com/TheToshiOrder" target="_blank" class="btn btn-outline">Follow @TheToshiOrder</a>
+          <a href="https://ordinalswallet.com/collection/toshis" target="_blank" class="btn btn-primary">View on Ordinals Wallet →</a>
+          <a href="https://discord.gg/cRw9GWWDXc" target="_blank" class="btn btn-discord">Join Discord ☀️</a>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="collection" style="background:#0a0a0a;">
+  <section id="market" style="background:#0a0a0a;">
+    <div class="container">
+      <h2>TRADE THE ORDER</h2>
+      <div class="marketplaces">
+        <div class="market-card">
+          <h3>Ordinals Wallet</h3>
+          <p>Current hub — floor, listings & volume live.<br>Supply: 3,333 | Listed: ~111</p>
+          <a href="https://ordinalswallet.com/collection/toshis" target="_blank" style="color:var(--accent); font-weight:700; display:block; margin-top:1rem;">Go to Ordinals Wallet →</a>
+        </div>
+        <div class="market-card">
+          <h3>Trio Marketplace</h3>
+          <p>Seamless import from other platforms. Bitcoin Ordinals trading.</p>
+          <a href="https://www.trio.xyz/collections/thetoshiorder/" target="_blank" style="color:var(--accent); font-weight:700; display:block; margin-top:1rem;">View on Trio →</a>
+        </div>
+        <div class="market-card">
+          <h3>Satflow</h3>
+          <p>Another Bitcoin-native Ordinals marketplace.</p>
+          <a href="https://www.satflow.com/ordinals/thetoshiorder" target="_blank" style="color:var(--accent); font-weight:700; display:block; margin-top:1rem;">View on Satflow →</a>
+        </div>
+      </div>
+      <p style="text-align:center; margin-top:2rem; color:var(--text-muted);">
+        On-chain gallery: <a href="https://ordinals.com/inscription/1a4487aeb9de2c8dcf36f3e531a038d8a3acfeeb0bd123aeb7212a82c334ad15i0" target="_blank" style="color:var(--accent);">View full collection on ordinals.com</a>
+      </p>
+    </div>
+  </section>
+
+  <section id="collection">
     <div class="container">
       <h2>THE COLLECTION</h2>
       <div class="cards">
         <div class="card">
           <h3>3,333 Toshis</h3>
-          <p>Fixed supply. Fully inscribed on Bitcoin. No additional mints possible. Pure on-chain legacy.</p>
-          <a href="https://magiceden.io/ordinals/marketplace/thetoshiorder" target="_blank" style="color:var(--accent); display:block; margin-top:1rem; font-weight:600;">Trade on Magic Eden →</a>
+          <p>Fixed supply. Fully inscribed on Bitcoin. No more can ever be created. Pure on-chain legacy.</p>
+          <a href="https://ordinalswallet.com/collection/toshis" target="_blank" style="color:var(--accent); display:block; margin-top:1rem; font-weight:600;">Check Stats & Trade →</a>
         </div>
         <div class="card">
           <h3>Self-Inscribed</h3>
-          <p>First-come, first-served inscription. No team allocation. No whitelist. Conviction + mempool decided who entered the Order.</p>
+          <p>First-come, first-served. No team allocation. No whitelist. Conviction + mempool decided entry.</p>
         </div>
         <div class="card">
           <h3>Bitcoin-Native</h3>
-          <p>Anchored forever on the Bitcoin blockchain. Parent inscription & first Toshi verifiable on explorers. Power to Bitcoin.</p>
+          <p>Anchored forever on Bitcoin. Parent inscription verifiable. Power to Bitcoin.</p>
+          <a href="https://ordinals.com/inscription/1a4487aeb9de2c8dcf36f3e531a038d8a3acfeeb0bd123aeb7212a82c334ad15i0" target="_blank" style="color:var(--accent); display:block; margin-top:1rem;">View Parent Inscription →</a>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="species">
+  <section id="species" style="background:#0a0a0a;">
     <div class="container">
       <h2>THE 5 SPECIES</h2>
       <div class="species-grid">
@@ -279,18 +332,21 @@
     </div>
   </section>
 
-  <section id="join" style="background:#0a0a0a; text-align:center;">
+  <section id="join" style="text-align:center;">
     <div class="container">
-      <h2>JOIN THE MOVEMENT</h2>
+      <h2>JOIN THE ORDER</h2>
       <p style="font-size:1.4rem; color:#ccc; max-width:700px; margin:0 auto 2.5rem;">
-        The Toshi Order is for those who showed up early, inscribed with conviction, and understand Bitcoin culture lasts forever.<br><br>
+        For those who inscribed early with conviction.<br>
+        Bitcoin culture lasts forever.<br><br>
         TM ☀️ — The sun rises for those who rise first.
       </p>
-      <a href="https://x.com/TheToshiOrder" target="_blank" class="btn btn-primary" style="font-size:1.4rem; padding:1.2rem 3.5rem;">
-        Follow @TheToshiOrder
-      </a>
+      <div style="display:flex; gap:1.2rem; justify-content:center; flex-wrap:wrap; margin:2rem 0;">
+        <a href="https://x.com/TheToshiOrder" target="_blank" class="btn btn-primary">Follow @TheToshiOrder</a>
+        <a href="https://discord.gg/cRw9GWWDXc" target="_blank" class="btn btn-discord">Join Discord Community</a>
+      </div>
       <p style="margin-top:3rem; color:var(--text-muted);">
-        Founded by <a href="https://x.com/sat_toshis" target="_blank" style="color:var(--accent);">@sat_toshis</a> • Community governed
+        Founded by <a href="https://x.com/sat_toshis" target="_blank" style="color:var(--accent);">@sat_toshis</a> • Community governed<br>
+        Official site: <a href="https://thetoshiorder.org" target="_blank" style="color:var(--accent);">thetoshiorder.org</a>
       </p>
     </div>
   </section>
@@ -302,11 +358,13 @@
       </div>
       <div class="footer-links">
         <a href="https://x.com/TheToshiOrder" target="_blank">𝕏</a>
-        <a href="https://magiceden.io/ordinals/marketplace/thetoshiorder" target="_blank">Magic Eden</a>
+        <a href="https://discord.gg/cRw9GWWDXc" target="_blank">Discord</a>
+        <a href="https://ordinalswallet.com/collection/toshis" target="_blank">Ordinals Wallet</a>
+        <a href="https://thetoshiorder.org" target="_blank">Official Site</a>
         <a href="https://x.com/sat_toshis" target="_blank">Founder</a>
       </div>
       <p style="color:#555; margin-top:3rem; font-size:0.95rem;">
-        Bitcoin-native Ordinals • Formed 2023 • Community Owned • Power to The Order ⚡
+        Bitcoin-native Ordinals • Formed 2023 • Immutable on Bitcoin • Power to The Order ⚡
       </p>
     </div>
   </footer>
