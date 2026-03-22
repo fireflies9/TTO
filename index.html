@@ -472,7 +472,7 @@
       }
 
       .center-cta{
-        grid-template-columns:1fr 1fr;
+        grid-template-columns:1fr;
       }
 
       .links{
@@ -560,7 +560,7 @@
             View On-Chain Gallery
           </a>
 
-          <a class="btn btn-secondary" href="#market">Enter Market Preview</a>
+          <a class="btn btn-secondary" href="#collection">Explore Collection</a>
         </div>
 
         <div class="hero-stats">
@@ -597,7 +597,7 @@
 
           <p class="muted" style="margin-top:10px;">
             Toshi-only discovery with clean pricing, fast browsing, and a holder-first experience.
-            Marketplace engine integrations come next — but the front-end already speaks premium.
+            Marketplace engine integrations come next — Satflow, Trio, and Ordinals wallet support.
           </p>
 
           <div class="market-list">
@@ -633,11 +633,6 @@
                 <div class="usd" data-btc="0.0190">≈ Loading...</div>
               </div>
             </div>
-          </div>
-
-          <div class="center-cta">
-            <a class="btn btn-primary" href="#collection">Explore Real On-Chain Grid</a>
-            <a class="btn btn-secondary" href="#links">Official Links</a>
           </div>
         </div>
 
@@ -685,19 +680,6 @@
 
         <div id="toshiGrid" class="toshi-grid">
           <div class="loading-grid">Loading on-chain Toshis...</div>
-        </div>
-
-        <div class="center-cta">
-          <a
-            class="btn btn-primary"
-            href="https://ordinals.com/inscription/1a4487aeb9de2c8dcf36f3e531a038d8a3acfeeb0bd123aeb7212a82c334ad15i0"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Open Full On-Chain Gallery
-          </a>
-
-          <a class="btn btn-secondary" href="#links">Follow The Order</a>
         </div>
       </div>
     </section>
@@ -850,7 +832,6 @@
           `;
         }).join('');
 
-        // if all failed somehow
         setTimeout(()=>{
           if(!grid.querySelector('.toshi-item')){
             grid.innerHTML = '<div class="loading-grid">Unable to render on-chain images right now.</div>';
