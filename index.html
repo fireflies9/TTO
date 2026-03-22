@@ -12,7 +12,6 @@
   <style>
     :root{
       --bg:#050505;
-      --bg2:#0b0b0b;
       --card:rgba(255,255,255,.035);
       --card2:rgba(255,255,255,.025);
       --line:rgba(255,255,255,.08);
@@ -21,9 +20,9 @@
       --muted:rgba(255,255,255,.68);
       --muted2:rgba(255,255,255,.40);
       --orange:#f97316;
-      --orange2:#fb923c;
       --green:#10b981;
-      --shadow:0 20px 60px rgba(0,0,0,.45);
+      --shadow:0 18px 50px rgba(0,0,0,.42);
+      --radius:22px;
     }
 
     *{box-sizing:border-box}
@@ -50,16 +49,16 @@
     }
 
     .wrap{
-      max-width:1280px;
+      max-width:1240px;
       margin:0 auto;
-      padding:0 16px;
+      padding:0 14px;
     }
 
     .topbar{
       position:sticky;
       top:0;
       z-index:100;
-      backdrop-filter:blur(16px);
+      backdrop-filter:blur(14px);
       background:rgba(5,5,5,.84);
       border-bottom:1px solid var(--line);
     }
@@ -68,37 +67,37 @@
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:12px;
-      padding:12px 0;
+      gap:10px;
+      padding:10px 0;
       flex-wrap:wrap;
     }
 
     .brand{
       display:flex;
       align-items:center;
-      gap:12px;
+      gap:10px;
       min-width:0;
     }
 
     .brand-icon{
-      width:46px;
-      height:46px;
-      border-radius:14px;
+      width:42px;
+      height:42px;
+      border-radius:13px;
       display:grid;
       place-items:center;
       background:rgba(249,115,22,.12);
       border:1px solid rgba(249,115,22,.24);
       color:var(--orange);
-      font-size:22px;
+      font-size:20px;
       font-weight:900;
       flex-shrink:0;
-      box-shadow:0 0 24px rgba(249,115,22,.08);
+      box-shadow:0 0 20px rgba(249,115,22,.08);
     }
 
     .brand-text small{
       display:block;
-      font-size:10px;
-      letter-spacing:.18em;
+      font-size:9px;
+      letter-spacing:.16em;
       text-transform:uppercase;
       color:var(--muted2);
       font-weight:800;
@@ -106,7 +105,7 @@
 
     .brand-text strong{
       display:block;
-      font-size:20px;
+      font-size:18px;
       font-weight:900;
       line-height:1.05;
       white-space:nowrap;
@@ -122,36 +121,36 @@
 
     .pill{
       flex:1;
-      min-width:110px;
+      min-width:106px;
       border:1px solid var(--line);
       background:rgba(255,255,255,.03);
-      border-radius:16px;
-      padding:10px 12px;
+      border-radius:14px;
+      padding:9px 11px;
     }
 
     .metric-label{
       font-size:9px;
       text-transform:uppercase;
-      letter-spacing:.18em;
+      letter-spacing:.16em;
       color:var(--muted2);
       font-weight:800;
     }
 
     .metric-value{
-      margin-top:4px;
-      font-size:14px;
+      margin-top:3px;
+      font-size:13px;
       font-weight:900;
       white-space:nowrap;
     }
 
     .wallet-btn,.nav-cta{
-      height:46px;
-      border-radius:16px;
+      height:44px;
+      border-radius:14px;
       display:grid;
       place-items:center;
-      font-size:14px;
+      font-size:13px;
       font-weight:900;
-      padding:0 16px;
+      padding:0 14px;
       cursor:pointer;
       transition:transform .18s ease, border-color .18s ease, background .18s ease;
     }
@@ -167,28 +166,28 @@
       width:100%;
       background:var(--orange);
       color:#000;
-      box-shadow:0 10px 28px rgba(249,115,22,.22);
+      box-shadow:0 8px 22px rgba(249,115,22,.18);
     }
 
-    .wallet-btn:hover,.nav-cta:hover,.btn:hover,.chip:hover,.market-card:hover,.toshi-item:hover{
+    .wallet-btn:hover,.nav-cta:hover,.btn:hover,.chip:hover,.market-card:hover{
       transform:translateY(-1px);
     }
 
     .hero{
-      padding:18px 0 14px;
+      padding:14px 0 10px;
     }
 
     .hero-card,.card{
       border:1px solid var(--line);
-      border-radius:24px;
+      border-radius:var(--radius);
       background:var(--card);
       box-shadow:var(--shadow);
     }
 
     .hero-card{
-      padding:20px;
+      padding:18px;
       background:
-        radial-gradient(circle at top right, rgba(249,115,22,.14), transparent 28%),
+        radial-gradient(circle at top right, rgba(249,115,22,.13), transparent 28%),
         linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.02));
       overflow:hidden;
       position:relative;
@@ -198,8 +197,8 @@
       content:"";
       position:absolute;
       inset:auto -10% -20% auto;
-      width:220px;
-      height:220px;
+      width:190px;
+      height:190px;
       border-radius:50%;
       background:radial-gradient(circle, rgba(249,115,22,.08), transparent 70%);
       pointer-events:none;
@@ -213,49 +212,49 @@
       background:rgba(249,115,22,.10);
       color:#fdba74;
       border-radius:999px;
-      padding:7px 11px;
-      font-size:10px;
+      padding:6px 10px;
+      font-size:9px;
       font-weight:900;
-      letter-spacing:.16em;
+      letter-spacing:.15em;
       text-transform:uppercase;
     }
 
     .live-dot{
-      width:8px;
-      height:8px;
+      width:7px;
+      height:7px;
       border-radius:999px;
       background:var(--green);
-      box-shadow:0 0 14px rgba(16,185,129,.55);
+      box-shadow:0 0 12px rgba(16,185,129,.55);
     }
 
     h1{
-      margin:14px 0 0;
-      font-size:clamp(36px,11vw,82px);
-      line-height:.95;
+      margin:12px 0 0;
+      font-size:clamp(34px,10vw,72px);
+      line-height:.96;
       letter-spacing:-.05em;
     }
 
     .sub{
-      margin-top:12px;
-      font-size:15px;
-      line-height:1.65;
+      margin-top:10px;
+      font-size:14px;
+      line-height:1.55;
       color:var(--muted);
-      max-width:760px;
+      max-width:700px;
     }
 
     .cta{
       display:grid;
       grid-template-columns:1fr;
-      gap:10px;
-      margin-top:18px;
+      gap:9px;
+      margin-top:16px;
     }
 
     .btn{
-      height:50px;
-      border-radius:16px;
+      height:46px;
+      border-radius:14px;
       display:grid;
       place-items:center;
-      font-size:14px;
+      font-size:13px;
       font-weight:900;
       transition:transform .18s ease, border-color .18s ease, background .18s ease;
     }
@@ -263,7 +262,7 @@
     .btn-primary{
       background:var(--orange);
       color:#000;
-      box-shadow:0 10px 28px rgba(249,115,22,.20);
+      box-shadow:0 8px 22px rgba(249,115,22,.18);
     }
 
     .btn-secondary{
@@ -275,109 +274,111 @@
     .hero-stats,.market-stats{
       display:grid;
       grid-template-columns:1fr 1fr;
-      gap:10px;
-      margin-top:16px;
+      gap:8px;
+      margin-top:14px;
     }
 
     .stat-card{
       border:1px solid var(--line2);
-      border-radius:18px;
-      padding:14px;
+      border-radius:16px;
+      padding:12px;
       background:rgba(255,255,255,.02);
     }
 
     .section{
-      padding:12px 0 18px;
+      padding:10px 0 14px;
     }
 
     .card{
-      padding:16px;
+      padding:14px;
     }
 
     .section-title small{
       display:block;
-      font-size:10px;
+      font-size:9px;
       text-transform:uppercase;
-      letter-spacing:.18em;
+      letter-spacing:.16em;
       color:var(--muted2);
       font-weight:800;
     }
 
     .section-title h2{
-      margin:8px 0 0;
-      font-size:28px;
+      margin:7px 0 0;
+      font-size:24px;
       line-height:1.05;
     }
 
     .muted{
       color:var(--muted);
-      line-height:1.65;
+      line-height:1.55;
+      font-size:14px;
     }
 
     .grid{
       display:grid;
       grid-template-columns:1fr;
-      gap:16px;
+      gap:14px;
     }
 
     .feature-list{
       display:grid;
-      gap:10px;
-      margin-top:16px;
+      gap:8px;
+      margin-top:14px;
     }
 
     .feature{
       border:1px solid rgba(255,255,255,.07);
-      border-radius:18px;
-      padding:14px;
+      border-radius:16px;
+      padding:12px;
       background:rgba(255,255,255,.02);
     }
 
     .feature strong{
       display:block;
-      font-size:15px;
+      font-size:14px;
       font-weight:900;
     }
 
     .feature span{
       display:block;
-      margin-top:6px;
-      font-size:13px;
+      margin-top:5px;
+      font-size:12px;
       color:var(--muted);
-      line-height:1.5;
+      line-height:1.45;
     }
 
     .market-controls{
       position:sticky;
-      top:74px;
+      top:68px;
       z-index:20;
-      margin-top:16px;
+      margin-top:14px;
       border:1px solid var(--line);
-      border-radius:20px;
+      border-radius:18px;
       background:rgba(10,10,10,.92);
       backdrop-filter:blur(12px);
-      padding:12px;
+      padding:10px;
     }
 
     .control-row{
       display:grid;
       grid-template-columns:1fr;
-      gap:10px;
+      gap:8px;
     }
 
     .search-wrap,.select-wrap{
       border:1px solid var(--line2);
-      border-radius:14px;
+      border-radius:12px;
       background:rgba(255,255,255,.03);
-      height:46px;
+      height:42px;
       display:flex;
       align-items:center;
-      padding:0 12px;
+      padding:0 11px;
     }
 
     .search-wrap input{
       width:100%;
       color:#fff;
+      font-size:13px;
     }
 
     .search-wrap input::placeholder{
@@ -389,23 +390,24 @@
       color:#fff;
       background:transparent;
       appearance:none;
+      font-size:13px;
     }
 
     .chip-row{
       display:flex;
-      gap:8px;
+      gap:7px;
       flex-wrap:wrap;
-      margin-top:10px;
+      margin-top:8px;
     }
 
     .chip{
-      height:36px;
-      padding:0 12px;
+      height:32px;
+      padding:0 11px;
       border-radius:999px;
       border:1px solid var(--line2);
       background:rgba(255,255,255,.03);
       color:rgba(255,255,255,.86);
-      font-size:12px;
+      font-size:11px;
       font-weight:800;
       display:inline-flex;
       align-items:center;
@@ -420,16 +422,16 @@
     }
 
     .market-grid{
-      margin-top:16px;
+      margin-top:14px;
       display:grid;
       grid-template-columns:repeat(2,1fr);
-      gap:10px;
+      gap:9px;
     }
 
     .market-card{
       border:1px solid rgba(255,255,255,.08);
       background:var(--card2);
-      border-radius:20px;
+      border-radius:18px;
       overflow:hidden;
       transition:transform .18s ease,border-color .18s ease;
     }
@@ -438,14 +440,14 @@
       border-color:rgba(249,115,22,.25);
     }
 
-    .market-thumb-wrap,.toshi-thumb-wrap{
+    .market-thumb-wrap{
       position:relative;
       aspect-ratio:1/1;
       background:#0f0f0f;
       overflow:hidden;
     }
 
-    .market-thumb,.toshi-thumb{
+    .market-thumb{
       width:100%;
       height:100%;
       object-fit:cover;
@@ -454,11 +456,11 @@
 
     .market-badge{
       position:absolute;
-      top:8px;
-      left:8px;
+      top:7px;
+      left:7px;
       border-radius:999px;
-      padding:6px 8px;
-      font-size:10px;
+      padding:5px 7px;
+      font-size:9px;
       font-weight:900;
       letter-spacing:.08em;
       text-transform:uppercase;
@@ -468,42 +470,42 @@
     }
 
     .market-body{
-      padding:12px;
+      padding:10px;
     }
 
     .market-name{
-      font-size:14px;
+      font-size:13px;
       font-weight:900;
       line-height:1.2;
     }
 
     .market-traits{
-      margin-top:8px;
+      margin-top:7px;
       display:flex;
-      gap:6px;
+      gap:5px;
       flex-wrap:wrap;
     }
 
     .trait-pill{
-      font-size:10px;
+      font-size:9px;
       font-weight:800;
       color:rgba(255,255,255,.68);
       border:1px solid rgba(255,255,255,.07);
       background:rgba(255,255,255,.02);
       border-radius:999px;
-      padding:4px 7px;
+      padding:4px 6px;
     }
 
     .market-price{
-      margin-top:10px;
+      margin-top:8px;
       display:flex;
       align-items:flex-end;
       justify-content:space-between;
-      gap:8px;
+      gap:6px;
     }
 
     .btc-price{
-      font-size:15px;
+      font-size:14px;
       font-weight:900;
     }
 
@@ -512,24 +514,24 @@
     }
 
     .usd-price{
-      font-size:11px;
+      font-size:10px;
       color:var(--muted2);
-      margin-top:3px;
+      margin-top:2px;
     }
 
     .card-actions{
-      margin-top:10px;
+      margin-top:8px;
       display:grid;
       grid-template-columns:1fr;
-      gap:8px;
+      gap:7px;
     }
 
     .mini-btn{
-      height:40px;
-      border-radius:12px;
+      height:36px;
+      border-radius:11px;
       display:grid;
       place-items:center;
-      font-size:12px;
+      font-size:11px;
       font-weight:900;
       border:1px solid var(--line2);
       background:rgba(255,255,255,.03);
@@ -542,68 +544,39 @@
       border-color:transparent;
     }
 
-    .toshi-grid{
-      margin-top:16px;
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:10px;
-    }
-
-    .toshi-item{
-      border:1px solid rgba(255,255,255,.08);
-      background:rgba(255,255,255,.03);
-      border-radius:18px;
-      overflow:hidden;
-      transition:transform .18s ease,border-color .18s ease;
-    }
-
-    .toshi-item:hover{
-      border-color:rgba(249,115,22,.28);
-    }
-
-    .toshi-meta{
-      padding:10px;
-    }
-
-    .toshi-name{
-      font-size:13px;
-      font-weight:900;
-      color:#fff;
-      line-height:1.2;
-    }
-
     .loading-grid,.empty-state{
-      padding:18px;
+      padding:16px;
       border:1px dashed rgba(255,255,255,.08);
-      border-radius:16px;
+      border-radius:14px;
       color:rgba(255,255,255,.5);
       text-align:center;
       font-weight:700;
       grid-column:1/-1;
+      font-size:13px;
     }
 
     .links{
       display:grid;
       grid-template-columns:1fr;
-      gap:10px;
-      margin-top:16px;
+      gap:9px;
+      margin-top:14px;
     }
 
     .footer{
       border-top:1px solid var(--line);
-      margin-top:22px;
+      margin-top:16px;
     }
 
     .footer-inner{
-      padding:18px 0 30px;
+      padding:14px 0 22px;
       display:flex;
       justify-content:space-between;
-      gap:12px;
+      gap:10px;
       flex-wrap:wrap;
     }
 
     .tiny{
-      font-size:12px;
+      font-size:11px;
       color:var(--muted2);
     }
 
@@ -611,25 +584,21 @@
       .nav-right{width:auto}
       .wallet-btn,.nav-cta{
         width:auto;
-        min-width:160px;
+        min-width:150px;
       }
       .cta{
         grid-template-columns:1fr 1fr;
-        max-width:540px;
+        max-width:500px;
       }
       .control-row{
         grid-template-columns:1.4fr .8fr;
       }
       .links{
-        grid-template-columns:repeat(2,1fr);
-      }
-      .toshi-grid{
         grid-template-columns:repeat(3,1fr);
-        gap:12px;
       }
       .market-grid{
         grid-template-columns:repeat(3,1fr);
-        gap:12px;
+        gap:10px;
       }
     }
 
@@ -638,16 +607,11 @@
         grid-template-columns:1.15fr .85fr;
       }
       .hero-card{
-        padding:24px;
-      }
-      .toshi-grid{
-        grid-template-columns:repeat(6,1fr);
+        padding:22px;
       }
       .market-grid{
         grid-template-columns:repeat(4,1fr);
-      }
-      .links{
-        grid-template-columns:repeat(4,1fr);
+        gap:12px;
       }
       .hero-stats,.market-stats{
         grid-template-columns:repeat(4,1fr);
@@ -697,20 +661,12 @@
         </h1>
 
         <p class="sub">
-          A premium marketplace built only for The Toshi Order. Clean discovery, real renders, holder-first UX, and zero platform fees.
+          A premium marketplace built only for The Toshi Order. Clean discovery, real renders, and zero platform fees.
         </p>
 
         <div class="cta">
           <a class="btn btn-primary" href="#marketplace">Explore Market</a>
-
-          <a
-            class="btn btn-secondary"
-            href="https://ordinals.com/inscription/1a4487aeb9de2c8dcf36f3e531a038d8a3acfeeb0bd123aeb7212a82c334ad15i0"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View Gallery
-          </a>
+          <a class="btn btn-secondary" href="#links">Official Links</a>
         </div>
 
         <div class="hero-stats">
@@ -745,8 +701,8 @@
             <h2>Built only for The Toshi Order</h2>
           </div>
 
-          <p class="muted" style="margin-top:10px;">
-            No random collections. No clutter. Just premium Toshi-first discovery with a clean interface that can grow into full trading flows.
+          <p class="muted" style="margin-top:8px;">
+            No random collections. No clutter. Just premium Toshi-first discovery with a clean interface ready for deeper trading flows.
           </p>
 
           <div class="feature-list">
@@ -767,7 +723,7 @@
 
             <div class="feature">
               <strong>Integration ready</strong>
-              <span>Satflow, Trio, and wallet-based trading can be added into this structure next.</span>
+              <span>Satflow, Trio, and wallet-based trading can slot in next.</span>
             </div>
           </div>
         </div>
@@ -822,7 +778,7 @@
           <h2>Browse Listings</h2>
         </div>
 
-        <p class="muted" style="margin-top:10px;">
+        <p class="muted" style="margin-top:8px;">
           Real collection data, real images, and a cleaner listing experience built for holders.
         </p>
 
@@ -859,47 +815,21 @@
       </div>
     </section>
 
-    <section class="section" id="featured">
-      <div class="card">
-        <div class="section-title">
-          <small>Featured Toshis</small>
-          <h2>Curated Highlights</h2>
-        </div>
-
-        <p class="muted" style="margin-top:10px;">
-          A curated view of The Toshi Order.
-        </p>
-
-        <div id="toshiGrid" class="toshi-grid">
-          <div class="loading-grid">Loading featured Toshis...</div>
-        </div>
-      </div>
-    </section>
-
     <section class="section" id="links">
       <div class="card">
         <div class="section-title">
           <small>Official Links</small>
-          <h2>Connect With The Order</h2>
+          <h2>Official Links</h2>
         </div>
 
         <div class="links">
-          <a
-            class="btn btn-secondary"
-            href="https://ordinals.com/inscription/1a4487aeb9de2c8dcf36f3e531a038d8a3acfeeb0bd123aeb7212a82c334ad15i0"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Gallery
-          </a>
-
           <a
             class="btn btn-secondary"
             href="https://x.com/thetoshiorder?s=21"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Official X
+            Community Page
           </a>
 
           <a
@@ -908,7 +838,7 @@
             target="_blank"
             rel="noopener noreferrer"
           >
-            Founder X
+            Official X
           </a>
 
           <a
@@ -936,7 +866,6 @@
     const FALLBACK_FEE = 12;
 
     let btcUsdPrice = FALLBACK_BTC;
-    let allToshis = [];
     let marketItems = [];
     let activeFilter = 'all';
 
@@ -1030,7 +959,6 @@
           const number = getToshiNumber(item);
           const price = getBetaPrice(item);
           return {
-            raw: item,
             number,
             name: item?.meta?.name || ('Toshi #' + number),
             id: item.id,
@@ -1118,7 +1046,7 @@
               </div>
 
               <div class="card-actions">
-                <a class="mini-btn primary" href="${linkUrl}" target="_blank" rel="noopener noreferrer">View Inscription</a>
+                <a class="mini-btn primary" href="${linkUrl}" target="_blank" rel="noopener noreferrer">View</a>
                 <button class="mini-btn" onclick="alert('Marketplace UI is live. Wallet trading integration comes next.')">Make Offer</button>
               </div>
             </div>
@@ -1133,64 +1061,22 @@
       }, 1500);
     }
 
-    function renderFeaturedGrid(){
-      const grid = document.getElementById('toshiGrid');
-      if(!grid) return;
-
-      const items = allToshis.slice(0, 12);
-
-      grid.innerHTML = items.map(item=>{
-        const inscriptionId = item.id;
-        const name = item?.meta?.name || 'Toshi';
-        const imgUrl = 'https://ordinals.com/content/' + inscriptionId;
-        const linkUrl = 'https://ordinals.com/inscription/' + inscriptionId;
-
-        return `
-          <a class="toshi-item" href="${linkUrl}" target="_blank" rel="noopener noreferrer" aria-label="${name}">
-            <div class="toshi-thumb-wrap">
-              <img
-                class="toshi-thumb"
-                src="${imgUrl}"
-                alt="${name}"
-                loading="lazy"
-                onerror="this.closest('.toshi-item').remove()"
-              />
-            </div>
-            <div class="toshi-meta">
-              <div class="toshi-name">${name}</div>
-            </div>
-          </a>
-        `;
-      }).join('');
-
-      setTimeout(()=>{
-        if(!grid.querySelector('.toshi-item')){
-          grid.innerHTML = '<div class="loading-grid">Unable to render featured Toshis right now.</div>';
-        }
-      }, 1800);
-    }
-
     async function loadToshiData(){
       const marketGrid = document.getElementById('marketGrid');
-      const featuredGrid = document.getElementById('toshiGrid');
 
       try{
         const res = await fetch('./toshi_collection.json');
         const data = await res.json();
 
         data.sort((a,b)=>getToshiNumber(a)-getToshiNumber(b));
-
-        allToshis = data;
         marketItems = buildMarketItems(data);
 
-        renderFeaturedGrid();
         renderMarketGrid();
         updateStats(marketItems);
 
       }catch(err){
         console.error('Toshi data load error:', err);
         if(marketGrid) marketGrid.innerHTML = '<div class="empty-state">Unable to load marketplace data.</div>';
-        if(featuredGrid) featuredGrid.innerHTML = '<div class="loading-grid">Unable to load featured Toshis.</div>';
       }
     }
 
