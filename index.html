@@ -14,7 +14,6 @@
       --bg:#050505;
       --card:rgba(255,255,255,.035);
       --line:rgba(255,255,255,.08);
-      --line2:rgba(255,255,255,.06);
       --text:#ffffff;
       --muted:rgba(255,255,255,.68);
       --muted2:rgba(255,255,255,.40);
@@ -48,7 +47,7 @@
     }
 
     .wrap{
-      max-width:1100px;
+      max-width:980px;
       margin:0 auto;
       padding:0 14px;
     }
@@ -153,12 +152,12 @@
     .hero-card,.card{
       border:1px solid var(--line);
       border-radius:var(--radius);
-      background:var(--card);
+      background:rgba(255,255,255,.035);
       box-shadow:var(--shadow);
     }
 
     .hero-card{
-      padding:18px;
+      padding:22px 18px;
       background:
         radial-gradient(circle at top right, rgba(249,115,22,.13), transparent 28%),
         linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.02));
@@ -201,16 +200,16 @@
     }
 
     h1{
-      margin:12px 0 0;
-      font-size:clamp(38px,10vw,74px);
+      margin:14px 0 0;
+      font-size:clamp(40px,11vw,78px);
       line-height:.95;
       letter-spacing:-.05em;
     }
 
     .sub{
-      margin-top:10px;
-      font-size:15px;
-      line-height:1.6;
+      margin-top:12px;
+      font-size:16px;
+      line-height:1.7;
       color:var(--muted);
       max-width:680px;
     }
@@ -219,12 +218,12 @@
       display:grid;
       grid-template-columns:1fr;
       gap:10px;
-      margin-top:16px;
+      margin-top:18px;
       max-width:240px;
     }
 
     .btn{
-      height:48px;
+      height:50px;
       border-radius:14px;
       display:grid;
       place-items:center;
@@ -243,20 +242,6 @@
       border:1px solid var(--line);
       background:rgba(255,255,255,.03);
       color:rgba(255,255,255,.92);
-    }
-
-    .hero-stats{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:8px;
-      margin-top:16px;
-    }
-
-    .stat-card{
-      border:1px solid var(--line2);
-      border-radius:16px;
-      padding:12px;
-      background:rgba(255,255,255,.02);
     }
 
     .section{
@@ -393,10 +378,7 @@
 
     @media (min-width:980px){
       .hero-card{
-        padding:22px;
-      }
-      .hero-stats{
-        grid-template-columns:repeat(4,1fr);
+        padding:28px 24px;
       }
     }
   </style>
@@ -444,28 +426,6 @@
 
         <div class="hero-actions">
           <a class="btn btn-secondary" href="#official">Official Links</a>
-        </div>
-
-        <div class="hero-stats">
-          <div class="stat-card">
-            <div class="metric-label">Collection</div>
-            <div class="metric-value">Toshi Only</div>
-          </div>
-
-          <div class="stat-card">
-            <div class="metric-label">Network</div>
-            <div class="metric-value">Bitcoin</div>
-          </div>
-
-          <div class="stat-card">
-            <div class="metric-label">Status</div>
-            <div class="metric-value">Live</div>
-          </div>
-
-          <div class="stat-card">
-            <div class="metric-label">Community</div>
-            <div class="metric-value">Growing</div>
-          </div>
         </div>
       </div>
     </section>
