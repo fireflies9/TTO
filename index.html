@@ -6,7 +6,7 @@
   <title>The Toshi Order</title>
   <meta
     name="description"
-    content="The Toshi Order — a premium Bitcoin-native community page built for holders."
+    content="The Toshi Order — Bitcoin-native community page with on-chain gallery, marketplace links, official links, and origin history."
   />
   <meta name="theme-color" content="#050505" />
   <style>
@@ -47,7 +47,7 @@
     }
 
     .wrap{
-      max-width:980px;
+      max-width:1040px;
       margin:0 auto;
       padding:0 14px;
     }
@@ -211,7 +211,7 @@
       font-size:16px;
       line-height:1.7;
       color:var(--muted);
-      max-width:680px;
+      max-width:760px;
     }
 
     .hero-actions{
@@ -219,11 +219,11 @@
       grid-template-columns:1fr;
       gap:10px;
       margin-top:18px;
-      max-width:240px;
+      max-width:320px;
     }
 
     .btn{
-      height:50px;
+      height:52px;
       border-radius:14px;
       display:grid;
       place-items:center;
@@ -234,7 +234,7 @@
       padding:0 14px;
     }
 
-    .btn:hover,.feature:hover,.link-card:hover{
+    .btn:hover,.feature:hover,.link-card:hover,.gallery-card:hover,.market-card:hover,.timeline-item:hover{
       transform:translateY(-1px);
     }
 
@@ -242,6 +242,12 @@
       border:1px solid var(--line);
       background:rgba(255,255,255,.03);
       color:rgba(255,255,255,.92);
+    }
+
+    .btn-primary{
+      border:1px solid rgba(249,115,22,.32);
+      background:linear-gradient(180deg, rgba(249,115,22,.18), rgba(249,115,22,.10));
+      color:#fdba74;
     }
 
     .section{
@@ -307,6 +313,115 @@
       line-height:1.5;
     }
 
+    .gallery-card{
+      margin-top:14px;
+      border:1px solid rgba(249,115,22,.14);
+      background:
+        radial-gradient(circle at top right, rgba(249,115,22,.08), transparent 28%),
+        rgba(255,255,255,.02);
+      border-radius:20px;
+      padding:14px;
+      transition:transform .18s ease,border-color .18s ease;
+    }
+
+    .gallery-card:hover{
+      border-color:rgba(249,115,22,.26);
+    }
+
+    .gallery-preview{
+      width:100%;
+      aspect-ratio:1 / 1;
+      border-radius:18px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.08);
+      background:#0a0a0a;
+      display:grid;
+      place-items:center;
+    }
+
+    .gallery-preview img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .gallery-meta{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      margin-top:14px;
+    }
+
+    .gallery-title{
+      font-size:22px;
+      font-weight:900;
+      line-height:1.1;
+    }
+
+    .gallery-desc{
+      font-size:14px;
+      color:var(--muted);
+      line-height:1.6;
+    }
+
+    .gallery-actions{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:10px;
+      margin-top:4px;
+    }
+
+    .market-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:12px;
+      margin-top:14px;
+    }
+
+    .market-card{
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:20px;
+      padding:16px;
+      background:
+        radial-gradient(circle at top right, rgba(249,115,22,.05), transparent 30%),
+        rgba(255,255,255,.02);
+      transition:transform .18s ease,border-color .18s ease;
+    }
+
+    .market-card:hover{
+      border-color:rgba(249,115,22,.2);
+    }
+
+    .market-label{
+      font-size:9px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:#fdba74;
+      font-weight:900;
+    }
+
+    .market-title{
+      margin-top:8px;
+      font-size:22px;
+      font-weight:900;
+      line-height:1.1;
+    }
+
+    .market-desc{
+      margin-top:8px;
+      font-size:14px;
+      color:var(--muted);
+      line-height:1.6;
+      min-height:64px;
+    }
+
+    .market-actions{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:10px;
+      margin-top:14px;
+    }
+
     .link-grid{
       display:grid;
       grid-template-columns:1fr;
@@ -348,6 +463,45 @@
       line-height:1.5;
     }
 
+    .timeline{
+      display:grid;
+      gap:12px;
+      margin-top:14px;
+    }
+
+    .timeline-item{
+      border:1px solid rgba(255,255,255,.07);
+      border-radius:18px;
+      padding:14px;
+      background:rgba(255,255,255,.02);
+      transition:transform .18s ease,border-color .18s ease;
+    }
+
+    .timeline-item:hover{
+      border-color:rgba(249,115,22,.16);
+    }
+
+    .timeline-date{
+      font-size:10px;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      color:#fdba74;
+      font-weight:900;
+    }
+
+    .timeline-title{
+      margin-top:8px;
+      font-size:16px;
+      font-weight:900;
+    }
+
+    .timeline-text{
+      margin-top:6px;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.6;
+    }
+
     .footer{
       border-top:1px solid var(--line);
       margin-top:18px;
@@ -371,8 +525,17 @@
       .feature-grid{
         grid-template-columns:repeat(3,1fr);
       }
+      .gallery-actions{
+        grid-template-columns:repeat(2,1fr);
+      }
+      .market-grid{
+        grid-template-columns:repeat(3,1fr);
+      }
       .link-grid{
         grid-template-columns:repeat(3,1fr);
+      }
+      .timeline{
+        grid-template-columns:repeat(2,1fr);
       }
     }
 
@@ -421,10 +584,12 @@
         <h1>The Toshi Order</h1>
 
         <p class="sub">
-          A premium Bitcoin-native community page built for holders, collectors, and the people pushing The Toshi Order forward.
+          A premium Bitcoin-native community page built from the original order history, official community energy, and the culture that formed around 3,333 self-inscribed Toshis.
         </p>
 
         <div class="hero-actions">
+          <a class="btn btn-primary" href="#marketplace">Buy Toshi Art</a>
+          <a class="btn btn-secondary" href="#onchain">On-Chain Gallery View</a>
           <a class="btn btn-secondary" href="#official">Official Links</a>
         </div>
       </div>
@@ -434,27 +599,205 @@
       <div class="card">
         <div class="section-title">
           <small>About</small>
-          <h2>Built for The Order</h2>
+          <h2>The Order That Formed</h2>
         </div>
 
         <p class="muted">
-          The Toshi Order is a community-driven Bitcoin collection with a strong identity, strong holders, and a growing vision around culture, provenance, and long-term ecosystem value.
+          The Toshi Order launched as a 3,333 self-inscribed Bitcoin Ordinals collection. The community formed through a first-come, first-serve mint, old-school announcements, and a culture built directly on Bitcoin.
         </p>
 
         <div class="feature-grid">
           <div class="feature">
+            <strong>3,333 Self-Inscribed</strong>
+            <span>The order began with 3,333 Toshis and a fully community-driven mint process on Bitcoin.</span>
+          </div>
+
+          <div class="feature">
             <strong>Bitcoin Native</strong>
-            <span>Rooted in Bitcoin with permanence, provenance, and onchain culture at the core.</span>
+            <span>Built on Bitcoin Ordinals with onchain permanence, provenance, and collector culture.</span>
           </div>
 
           <div class="feature">
-            <strong>Community Driven</strong>
-            <span>Built by collectors, contributors, and the wider Toshi community moving the order forward.</span>
+            <strong>Community Built</strong>
+            <span>Collectors, contributors, and holders helped form the order from the earliest days forward.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="marketplace">
+      <div class="card">
+        <div class="section-title">
+          <small>Marketplace</small>
+          <h2>Buy Toshi Art</h2>
+        </div>
+
+        <p class="muted">
+          Explore The Toshi Order across trusted Bitcoin Ordinals marketplaces and collection pages where collectors can view listings and buy Toshi art.
+        </p>
+
+        <div class="market-grid">
+          <div class="market-card">
+            <div class="market-label">Marketplace</div>
+            <div class="market-title">Ordinals Wallet</div>
+            <div class="market-desc">
+              View the Toshi collection, explore listings, and buy directly through the Ordinals Wallet collection page.
+            </div>
+            <div class="market-actions">
+              <a
+                class="btn btn-primary"
+                href="https://ordinalswallet.com/collection/toshis"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Open Ordinals Wallet
+              </a>
+            </div>
           </div>
 
-          <div class="feature">
-            <strong>Premium Identity</strong>
-            <span>A clean and focused experience designed to feel collectible, premium, and built to last.</span>
+          <div class="market-card">
+            <div class="market-label">Marketplace</div>
+            <div class="market-title">Trio</div>
+            <div class="market-desc">
+              Browse collections and access the Toshi ecosystem through Trio’s Ordinals collections experience.
+            </div>
+            <div class="market-actions">
+              <a
+                class="btn btn-primary"
+                href="https://www.trio.xyz/collections/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Open Trio
+              </a>
+            </div>
+          </div>
+
+          <div class="market-card">
+            <div class="market-label">Marketplace</div>
+            <div class="market-title">Satflow</div>
+            <div class="market-desc">
+              Explore The Toshi Order on Satflow and view the live Ordinals collection experience.
+            </div>
+            <div class="market-actions">
+              <a
+                class="btn btn-primary"
+                href="https://www.satflow.com/ordinals/thetoshiorder"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Open Satflow
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="onchain">
+      <div class="card">
+        <div class="section-title">
+          <small>Onchain</small>
+          <h2>On-Chain Gallery View</h2>
+        </div>
+
+        <p class="muted">
+          View a live inscription directly on Bitcoin through ordinals.com and explore The Toshi Order from the source.
+        </p>
+
+        <div class="gallery-card">
+          <div class="gallery-preview">
+            <img src="./toshi-logo.jpg" alt="The Toshi Order On-Chain Preview" />
+          </div>
+
+          <div class="gallery-meta">
+            <div class="gallery-title">The Toshi Order • Official On-Chain View</div>
+            <div class="gallery-desc">
+              Open the official inscription view and explore the artwork directly on Bitcoin via ordinals.com.
+            </div>
+
+            <div class="gallery-actions">
+              <a
+                class="btn btn-primary"
+                href="https://ordinals.com/inscription/1a4487aeb9de2c8dcf36f3e531a038d8a3acfeeb0bd123aeb7212a82c334ad15i0"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Open On-Chain View
+              </a>
+
+              <a
+                class="btn btn-secondary"
+                href="https://ordinals.com/inscription/1a4487aeb9de2c8dcf36f3e531a038d8a3acfeeb0bd123aeb7212a82c334ad15i0"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View on ordinals.com
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="story">
+      <div class="card">
+        <div class="section-title">
+          <small>History</small>
+          <h2>How The Order Formed</h2>
+        </div>
+
+        <p class="muted">
+          Built from the early announcement history: the order begins, 3,333 Toshis become available, mint info drops, members form the order, and the collection becomes culture.
+        </p>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-date">20 Sep 2023</div>
+            <div class="timeline-title">The Order Begins</div>
+            <div class="timeline-text">
+              “The Order begins soon” marked the earliest public signal that The Toshi Order was coming.
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-date">26 Sep 2023</div>
+            <div class="timeline-title">3,333 Toshis For Free</div>
+            <div class="timeline-text">
+              The order goes old-school. 3,333 Toshis became available through a first-come, first-serve self-inscription process.
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-date">27–28 Sep 2023</div>
+            <div class="timeline-title">Characters & Culture</div>
+            <div class="timeline-text">
+              Early drops introduced characters like Chad Toshi and built the strong meme identity that shaped the collection.
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-date">2–4 Oct 2023</div>
+            <div class="timeline-title">Mint Info & Order Formation</div>
+            <div class="timeline-text">
+              Mint guides, species breakdowns, and official instructions helped members inscribe and complete the order.
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-date">5 Oct 2023</div>
+            <div class="timeline-title">The Order Turned Up</div>
+            <div class="timeline-text">
+              Momentum accelerated as the community claimed Toshis and spread the order across Bitcoin Ordinals.
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-date">6 Oct 2023</div>
+            <div class="timeline-title">Listed & Culture Locked In</div>
+            <div class="timeline-text">
+              The collection reached marketplace visibility and the message became clear: The Toshi Order is Bitcoin. The Toshi Order is culture.
+            </div>
           </div>
         </div>
       </div>
@@ -511,7 +854,7 @@
     <footer class="footer">
       <div class="footer-inner">
         <div class="tiny">© <span id="year"></span> The Toshi Order — Built for holders.</div>
-        <div class="tiny">Bitcoin Native • Community Driven • Live</div>
+        <div class="tiny">Bitcoin Native • Community Driven • 3,333 Self-Inscribed</div>
       </div>
     </footer>
   </main>
