@@ -9,100 +9,239 @@
     :root {
       --bg: #000000;
       --orange: #f7931a;
-      --orange-dark: #c76e00;
+      --orange-glow: #ffaa33;
       --text: #f0f0f0;
-      --muted: #888888;
+      --muted: #aaaaaa;
       --card: #111111;
       --border: #222222;
     }
 
     * { margin:0; padding:0; box-sizing:border-box; }
-    body { background:var(--bg); color:var(--text); font-family:system-ui,sans-serif; line-height:1.5; }
-    .container { max-width:1200px; margin:0 auto; padding:0 1.5rem; }
+    body { 
+      background: var(--bg); 
+      color: var(--text); 
+      font-family: system-ui, sans-serif; 
+      line-height: 1.5;
+      background-image: 
+        linear-gradient(rgba(247,147,26,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(247,147,26,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
 
     header {
-      position:fixed; top:0; width:100%; background:rgba(0,0,0,0.95); backdrop-filter:blur(8px);
-      border-bottom:1px solid var(--border); z-index:100;
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: rgba(0,0,0,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
     }
-    nav { display:flex; justify-content:space-between; align-items:center; padding:1.25rem 0; }
-    .logo { font-size:2.1rem; font-weight:900; color:var(--orange); letter-spacing:-1px; }
-    .nav-links a { color:var(--muted); text-decoration:none; margin-left:2.2rem; font-weight:600; transition:color .2s; }
-    .nav-links a:hover { color:var(--orange); }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 1.3rem 0; }
+    .logo { font-size: 2.3rem; font-weight: 900; color: var(--orange); letter-spacing: -2px; }
+    .nav-links a { 
+      color: var(--muted); text-decoration: none; margin-left: 2.5rem; 
+      font-weight: 700; font-size: 1rem; text-transform: uppercase;
+      transition: color .3s;
+    }
+    .nav-links a:hover { color: var(--orange); }
 
     .hero {
-      min-height:100vh; display:flex; align-items:center; background:linear-gradient(135deg,#0a0a0a,#000);
-      text-align:center; padding:7rem 0 4rem;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, #0a0a0a 0%, #000000 100%);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
     }
-    .hero-content { max-width:940px; margin:0 auto; }
-    .hero h1 { font-size:clamp(5.5rem,13vw,11rem); font-weight:900; line-height:.88; letter-spacing:-6px; margin-bottom:1.6rem; }
-    .hero h1 span { color:var(--orange); }
-    .subtitle { color:var(--orange); font-size:1.7rem; font-weight:700; letter-spacing:5px; margin-bottom:1.6rem; }
-    .tagline { font-size:1.45rem; color:var(--muted); max-width:720px; margin:0 auto 3rem; }
-    .hero-image {
-      max-width:440px; width:100%; height:auto; border:6px solid var(--orange); border-radius:10px;
-      box-shadow:0 0 50px rgba(247,147,26,0.3); margin:3rem auto; image-rendering:pixelated;
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 30%, rgba(247,147,26,0.12) 0%, transparent 70%);
+      pointer-events: none;
     }
-    .cta { display:flex; justify-content:center; gap:1.8rem; flex-wrap:wrap; margin-top:2.5rem; }
-    .btn {
-      padding:1.2rem 3rem; font-size:1.25rem; font-weight:700; border-radius:999px; text-decoration:none;
-      transition:all .25s;
-    }
-    .btn-primary { background:var(--orange); color:#000; }
-    .btn-primary:hover { background:#fff; transform:translateY(-4px); }
-    .btn-discord { background:#5865F2; color:white; }
-    .btn-discord:hover { background:#4752C4; transform:translateY(-4px); }
 
-    section { padding:9rem 0 7rem; }
-    h2 { font-size:3.8rem; text-align:center; color:var(--orange); font-weight:900; margin-bottom:3.5rem; }
+    .hero-content { position: relative; z-index: 2; max-width: 1000px; margin: 0 auto; }
+    .hero h1 { 
+      font-size: clamp(5.8rem, 14vw, 12rem); 
+      font-weight: 900; 
+      line-height: 0.85; 
+      letter-spacing: -7px; 
+      margin-bottom: 1rem;
+      text-shadow: 0 0 60px rgba(247,147,26,0.6);
+    }
+    .hero h1 span { color: var(--orange); }
+    .subtitle { 
+      color: var(--orange); 
+      font-size: 1.75rem; 
+      font-weight: 700; 
+      letter-spacing: 6px; 
+      margin-bottom: 1.8rem; 
+    }
+    .tagline { 
+      font-size: 1.5rem; 
+      color: var(--muted); 
+      max-width: 780px; 
+      margin: 0 auto 3rem; 
+      font-weight: 500;
+    }
+
+    .hero-image {
+      max-width: 460px;
+      width: 100%;
+      height: auto;
+      border: 8px solid var(--orange);
+      border-radius: 12px;
+      box-shadow: 
+        0 0 30px rgba(247,147,26,0.4),
+        0 0 60px rgba(247,147,26,0.3),
+        0 0 100px rgba(247,147,26,0.2);
+      margin: 3rem auto 2.5rem;
+      image-rendering: pixelated;
+      transition: transform 0.4s;
+    }
+    .hero-image:hover { transform: scale(1.03); }
+
+    .cta { 
+      display: flex; 
+      justify-content: center; 
+      gap: 1.8rem; 
+      flex-wrap: wrap; 
+    }
+    .btn {
+      padding: 1.3rem 3.2rem;
+      font-size: 1.3rem;
+      font-weight: 700;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: all .3s cubic-bezier(0.23,1,0.32,1);
+    }
+    .btn-primary { background: var(--orange); color: #000; }
+    .btn-primary:hover { background: #fff; transform: translateY(-6px) scale(1.05); }
+    .btn-discord { background: #5865F2; color: white; }
+    .btn-discord:hover { background: #4752C4; transform: translateY(-6px) scale(1.05); }
+    .btn-wallet {
+      background: transparent;
+      border: 3px solid var(--orange);
+      color: var(--orange);
+      font-weight: 700;
+    }
+    .btn-wallet:hover {
+      background: var(--orange);
+      color: #000;
+      transform: translateY(-6px) scale(1.05);
+    }
+
+    section { padding: 9rem 0 7rem; }
+    h2 { 
+      font-size: 4rem; 
+      text-align: center; 
+      color: var(--orange); 
+      font-weight: 900; 
+      margin-bottom: 4rem;
+      text-shadow: 0 0 40px rgba(247,147,26,0.5);
+    }
 
     .gallery-preview {
-      background:var(--card); border:1px solid var(--border); border-radius:14px; padding:2.5rem; text-align:center;
-      max-width:860px; margin:0 auto 4rem;
+      background: var(--card);
+      border: 2px solid var(--orange);
+      border-radius: 16px;
+      padding: 2.5rem;
+      max-width: 900px;
+      margin: 0 auto 4rem;
+      box-shadow: 0 0 60px rgba(247,147,26,0.25);
     }
     .gallery-preview iframe {
-      width:100%; height:460px; border:none; border-radius:10px; box-shadow:0 0 25px rgba(247,147,26,.25);
+      width: 100%; height: 480px; border: none; border-radius: 10px;
     }
-    .gallery-link {
-      display:inline-block; margin-top:2rem; color:var(--orange); font-weight:700; font-size:1.4rem;
-      text-decoration:none;
-    }
-    .gallery-link:hover { text-decoration:underline; }
 
     .cards, .marketplaces, .species-grid {
-      display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:2.2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2.5rem;
     }
     .card, .market-card, .species {
-      background:var(--card); border:1px solid var(--border); border-radius:14px; padding:2.2rem;
-      text-align:center; transition:all .3s;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2.5rem;
+      text-align: center;
+      transition: all .4s;
     }
     .card:hover, .market-card:hover, .species:hover {
-      border-color:var(--orange); transform:translateY(-10px);
+      border-color: var(--orange);
+      transform: translateY(-12px);
+      box-shadow: 0 0 50px rgba(247,147,26,0.3);
     }
-    .card h3, .market-card h3, .species h3 { color:var(--orange); margin-bottom:1.2rem; font-size:1.6rem; }
-    .species .percent { font-size:3.8rem; font-weight:900; color:white; }
+    .card h3, .market-card h3, .species h3 { 
+      color: var(--orange); 
+      margin-bottom: 1.2rem; 
+      font-size: 1.7rem; 
+    }
+    .species .percent { font-size: 4rem; font-weight: 900; color: white; }
 
-    .socials { display:flex; justify-content:center; gap:3rem; margin:3.5rem 0; font-size:2.4rem; }
-    .social-link { color:var(--orange); text-decoration:none; }
+    .socials { 
+      display: flex; 
+      justify-content: center; 
+      gap: 3rem; 
+      margin: 3.5rem 0; 
+      font-size: 2.6rem; 
+    }
+    .social-link { color: var(--orange); text-decoration: none; transition: transform .3s; }
+    .social-link:hover { transform: scale(1.3); }
 
     footer {
-      background:#000; padding:7rem 0 5rem; text-align:center; border-top:1px solid #222;
+      background: #000;
+      padding: 7rem 0 5rem;
+      text-align: center;
+      border-top: 1px solid #222;
     }
-    .footer-links { display:flex; justify-content:center; gap:2.5rem; margin-bottom:3rem; flex-wrap:wrap; }
-    .footer-links a { color:var(--muted); font-size:1.15rem; text-decoration:none; }
-    .footer-links a:hover { color:var(--orange); }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2.8rem;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+    }
+    .footer-links a { color: var(--muted); font-size: 1.15rem; text-decoration: none; }
+    .footer-links a:hover { color: var(--orange); }
+
     .power {
-      font-size:2rem; font-weight:900; color:var(--orange); letter-spacing:2px;
-      margin:2.5rem 0 2rem; line-height:1.3;
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--orange);
+      letter-spacing: 3px;
+      margin: 2.5rem 0;
+      line-height: 1.3;
+      text-shadow: 0 0 40px rgba(247,147,26,0.6);
     }
 
-    .wallet-hint { font-size:1.05rem; color:var(--muted); margin-top:2rem; text-align:center; }
+    .wallet-btn {
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      padding: 0.8rem 1.8rem;
+      background: transparent;
+      border: 3px solid var(--orange);
+      color: var(--orange);
+      font-weight: 700;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all .3s;
+    }
+    .wallet-btn:hover {
+      background: var(--orange);
+      color: #000;
+    }
 
-    @media (max-width:768px) {
-      .nav-links { display:none; }
-      h1 { font-size:6rem; }
-      h2 { font-size:3rem; }
-      .hero-image { max-width:320px; }
-      .power { font-size:1.6rem; }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      h1 { font-size: 6.2rem; }
+      .hero-image { max-width: 340px; }
+      .power { font-size: 1.7rem; }
     }
   </style>
 </head>
@@ -113,12 +252,13 @@
       <nav>
         <div class="logo">THE TOSHI ORDER</div>
         <div class="nav-links">
-          <a href="#market">Market</a>
-          <a href="#gallery">Gallery</a>
-          <a href="#collection">Collection</a>
-          <a href="#species">Species</a>
-          <a href="#join">Join</a>
+          <a href="#market">MARKET</a>
+          <a href="#gallery">GALLERY</a>
+          <a href="#collection">COLLECTION</a>
+          <a href="#species">SPECIES</a>
+          <a href="#join">JOIN</a>
         </div>
+        <button onclick="connectWallet()" class="wallet-btn">CONNECT WALLET</button>
       </nav>
     </div>
   </header>
@@ -129,21 +269,21 @@
         <div class="subtitle">BITCOIN • NATIVE • ORDINALS</div>
         <h1>The <span>Toshi</span> Order</h1>
         <p class="tagline">
-          3,333 self-inscribed Toshis on Bitcoin.<br>
-          No launch. No team mint. Pure conviction.<br>
-          Community owned. Immutable forever.
+          3,333 self-inscribed warriors on Bitcoin.<br>
+          NO TEAM MINT. NO COMPROMISE.<br>
+          CONVICTION ONLY. FOREVER ON-CHAIN.
         </p>
 
-        <img src="YOUR_PIXEL_ART_IMAGE_URL_HERE" alt="Toshi Order Pixel Mascot" class="hero-image">
+        <img 
+          src="YOUR_PIXEL_ART_IMAGE_URL_HERE" 
+          alt="Toshi Order Pixel Mascot" 
+          class="hero-image"
+        >
 
         <div class="cta">
-          <a href="https://ordinals.com/inscription/1a4487aeb9de2c8dcf36f3e531a038d8a3acfeeb0bd123aeb7212a82c334ad15i0" class="btn btn-primary">View On-Chain Gallery</a>
-          <a href="https://discord.gg/cRw9GWWDXc" class="btn btn-discord">Join Discord</a>
+          <a href="https://ordinals.com/inscription/1a4487aeb9de2c8dcf36f3e531a038d8a3acfeeb0bd123aeb7212a82c334ad15i0" class="btn btn-primary">VIEW ON-CHAIN GALLERY</a>
+          <a href="https://discord.gg/cRw9GWWDXc" class="btn btn-discord">ENTER DISCORD</a>
         </div>
-
-        <p class="wallet-hint">
-          Connect Unisat / Xverse wallet to view & trade your Toshis.
-        </p>
       </div>
     </div>
   </section>
@@ -152,40 +292,90 @@
     <div class="container">
       <h2>ON-CHAIN GALLERY</h2>
       <div class="gallery-preview">
-        <p style="margin-bottom:1.8rem; color:var(--muted); font-size:1.15rem;">
-          Parent inscription & full 3,333 collection — permanently etched on Bitcoin
+        <p style="margin-bottom:1.8rem; color:var(--muted); font-size:1.2rem;">
+          Parent inscription + full 3,333 collection — etched into Bitcoin forever
         </p>
-        <iframe src="https://ordinals.com/content/1a4487aeb9de2c8dcf36f3e531a038d8a3acfeeb0bd123aeb7212a82c334ad15i0" title="Toshi Order Parent Inscription"></iframe>
-        <a href="https://ordinals.com/gallery/1a4487aeb9de2c8dcf36f3e531a038d8a3acfeeb0bd123aeb7212a82c334ad15i0" class="gallery-link" target="_blank">
-          → Open Full Collection Gallery on ordinals.com
+        <iframe src="https://ordinals.com/content/1a4487aeb9de2c8dcf36f3e531a038d8a3acfeeb0bd123aeb7212a82c334ad15i0" title="Toshi Order Parent"></iframe>
+        <a href="https://ordinals.com/gallery/1a4487aeb9de2c8dcf36f3e531a038d8a3acfeeb0bd123aeb7212a82c334ad15i0" target="_blank" style="margin-top:2rem; display:inline-block; color:var(--orange); font-weight:700; font-size:1.4rem;">
+          → OPEN FULL RECURSIVE GALLERY ON ORDINALS.COM
         </a>
       </div>
     </div>
   </section>
 
-  <!-- Market, Collection, Species, Join sections remain the same as previous -->
+  <!-- Market, Collection, Species, Join sections (same as previous but with glows) -->
+  <section id="market">
+    <div class="container">
+      <h2>TRADE THE ORDER</h2>
+      <div class="marketplaces">
+        <div class="market-card"><h3>ORDINALSWALLET</h3><p>Live floor &amp; listings</p><a href="https://ordinalswallet.com/collection/toshis" style="color:var(--orange);font-weight:700;">OPEN →</a></div>
+        <div class="market-card"><h3>TRIO</h3><p>Seamless Ordinals trading</p><a href="https://www.trio.xyz/collections/thetoshiorder/" style="color:var(--orange);font-weight:700;">OPEN →</a></div>
+        <div class="market-card"><h3>SATFLOW</h3><p>Advanced tools</p><a href="https://www.satflow.com/ordinals/thetoshiorder" style="color:var(--orange);font-weight:700;">OPEN →</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="collection">
+    <div class="container">
+      <h2>THE COLLECTION</h2>
+      <div class="cards">
+        <div class="card"><h3>3,333 FIXED</h3><p>No more. No less.</p></div>
+        <div class="card"><h3>SELF-INSCRIBED</h3><p>Mempool decided the worthy</p></div>
+        <div class="card"><h3>BITCOIN ANCHORED</h3><p>Forever on the chain</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="species" style="background:#0a0a0a;">
+    <div class="container">
+      <h2>THE 5 SPECIES</h2>
+      <div class="species-grid">
+        <div class="species"><div class="percent">80%</div><h3>HUMAN</h3></div>
+        <div class="species"><div class="percent">9%</div><h3>ZOMBIE</h3></div>
+        <div class="species"><div class="percent">7%</div><h3>DEMON</h3></div>
+        <div class="species"><div class="percent">3%</div><h3>APE</h3></div>
+        <div class="species"><div class="percent">1%</div><h3>ALIEN</h3></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="join">
+    <div class="container">
+      <h2>JOIN THE ORDER</h2>
+      <p style="text-align:center; font-size:1.5rem; color:#ccc; max-width:720px; margin:0 auto 4rem;">
+        Only those who inscribed with conviction.<br>
+        NO WEAK HANDS. NO RETREAT.
+      </p>
+      <div class="socials">
+        <a href="https://x.com/TheToshiOrder" class="social-link">@</a>
+        <a href="https://discord.gg/cRw9GWWDXc" class="social-link">💬</a>
+        <a href="https://x.com/sat_toshis" class="social-link">@sat_toshis</a>
+      </div>
+      <div style="text-align:center;">
+        <a href="https://discord.gg/cRw9GWWDXc" class="btn btn-discord" style="font-size:1.4rem;padding:1.4rem 4rem;">ENTER THE DISCORD</a>
+      </div>
+    </div>
+  </section>
 
   <footer>
     <div class="container">
-      <div class="logo" style="font-size:3rem; margin-bottom:2rem;">THE TOSHI ORDER</div>
-
+      <div class="logo" style="font-size:3.2rem;margin-bottom:2rem;">THE TOSHI ORDER</div>
       <div class="footer-links">
         <a href="https://x.com/TheToshiOrder">𝕏</a>
-        <a href="https://discord.gg/cRw9GWWDXc">Discord</a>
-        <a href="https://ordinalswallet.com/collection/toshis">Ordinals Wallet</a>
-        <a href="https://thetoshiorder.org">Site</a>
-        <a href="https://x.com/sat_toshis">Founder</a>
+        <a href="https://discord.gg/cRw9GWWDXc">DISCORD</a>
+        <a href="https://ordinalswallet.com/collection/toshis">ORDINALSWALLET</a>
+        <a href="https://thetoshiorder.org">SITE</a>
+        <a href="https://x.com/sat_toshis">FOUNDER</a>
       </div>
-
-      <p class="power">
-        Power to the Order,<br>Power to Bitcoin
-      </p>
-
-      <p style="color:#444; margin-top:2.5rem; font-size:1rem;">
-        Bitcoin-native • 2023 • Immutable ⚡
-      </p>
+      <p class="power">POWER TO THE ORDER,<br>POWER TO BITCOIN</p>
+      <p style="color:#444;margin-top:3rem;font-size:1rem;">BITCOIN-NATIVE • 2023 • IMMUTABLE ⚡</p>
     </div>
   </footer>
 
+  <script>
+    function connectWallet() {
+      alert("🟠 Connecting Unisat / Xverse...\n\n(For demo — in real site this would open your Ordinals wallet)");
+    }
+  </script>
 </body>
 </html>
