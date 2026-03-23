@@ -1,58 +1,43 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>The Toshi Order • Bitcoin Ordinals</title>
   <meta name="description" content="3,333 self-inscribed Toshis on Bitcoin. No team mint. No compromise. Conviction only. Forever on-chain."/>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=VT323&display=swap" rel="stylesheet">
-
   <style>
     :root {
       --bg: #000000;
       --orange: #f7931a;
       --orange-glow: #ffaa44;
-      --red-glow: #ff4444;
       --text: #eeeeee;
       --muted: #999999;
-      --card: #0f0f0f;
+      --card: #111111;
       --border: #222222;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin:0; padding:0; box-sizing:border-box; }
 
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: 'Orbitron', system-ui, sans-serif;
-      line-height: 1.5;
+      font-family: system-ui, sans-serif;
       min-height: 100vh;
       background-image: 
-        radial-gradient(circle at 10% 20%, rgba(247,147,26,0.06) 0%, transparent 25%),
-        radial-gradient(circle at 90% 80%, rgba(255,68,68,0.04) 0%, transparent 30%);
+        radial-gradient(circle at 10% 20%, rgba(247,147,26,0.05) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(255,68,68,0.04) 0%, transparent 40%);
     }
 
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
 
     header {
       position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 100;
-      background: rgba(0,0,0,0.92);
-      backdrop-filter: blur(12px);
+      top: 0; width: 100%;
+      background: rgba(0,0,0,0.94);
+      backdrop-filter: blur(10px);
       border-bottom: 1px solid #222;
+      z-index: 100;
     }
 
     nav {
@@ -67,7 +52,7 @@
       font-weight: 900;
       color: var(--orange);
       letter-spacing: -2px;
-      text-shadow: 0 0 20px rgba(247,147,26,0.7);
+      text-shadow: 0 0 20px rgba(247,147,26,0.6);
     }
 
     .nav-links a {
@@ -75,15 +60,10 @@
       text-decoration: none;
       margin-left: 2.5rem;
       font-weight: 700;
-      font-size: 1.05rem;
-      letter-spacing: 1px;
-      transition: all 0.3s;
+      transition: color 0.3s;
     }
 
-    .nav-links a:hover {
-      color: var(--orange);
-      text-shadow: 0 0 15px rgba(247,147,26,0.8);
-    }
+    .nav-links a:hover { color: var(--orange); }
 
     .hero {
       min-height: 100vh;
@@ -92,11 +72,6 @@
       justify-content: center;
       text-align: center;
       padding: 8rem 0 6rem;
-      position: relative;
-    }
-
-    .hero-content {
-      max-width: 1100px;
     }
 
     .hero h1 {
@@ -104,7 +79,7 @@
       font-weight: 900;
       line-height: 0.82;
       letter-spacing: -8px;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1rem;
       background: linear-gradient(90deg, #f7931a, #ff4444, #f7931a);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -116,7 +91,7 @@
       font-weight: 700;
       color: #ffaa44;
       letter-spacing: 6px;
-      margin-bottom: 2.5rem;
+      margin-bottom: 2rem;
       text-shadow: 0 0 25px rgba(255,170,68,0.6);
     }
 
@@ -124,9 +99,7 @@
       font-size: 1.6rem;
       color: #bbb;
       max-width: 820px;
-      margin: 0 auto 4rem;
-      font-family: 'VT323', monospace;
-      letter-spacing: 1px;
+      margin: 0 auto 3.5rem;
     }
 
     .toshi-mascot {
@@ -135,18 +108,16 @@
       height: auto;
       image-rendering: pixelated;
       border: 8px solid #f7931a;
-      border-image: linear-gradient(45deg, #f7931a, #ff4444, #f7931a) 1;
+      border-radius: 12px;
       box-shadow: 
-        0 0 40px rgba(247,147,26,0.6),
-        0 0 80px rgba(255,68,68,0.4),
-        inset 0 0 30px rgba(247,147,26,0.3);
+        0 0 40px rgba(247,147,26,0.7),
+        0 0 80px rgba(255,68,68,0.5),
+        inset 0 0 30px rgba(247,147,26,0.4);
       margin: 3rem auto 4rem;
-      transition: transform 0.4s ease;
+      transition: transform 0.4s;
     }
 
-    .toshi-mascot:hover {
-      transform: scale(1.04);
-    }
+    .toshi-mascot:hover { transform: scale(1.03); }
 
     .cta-buttons {
       display: flex;
@@ -162,65 +133,62 @@
       border-radius: 999px;
       text-decoration: none;
       transition: all 0.35s;
-      letter-spacing: 1px;
     }
 
     .btn-primary {
-      background: linear-gradient(90deg, #f7931a, #ff6b6b);
+      background: var(--orange);
       color: #000;
       box-shadow: 0 0 30px rgba(247,147,26,0.6);
     }
 
     .btn-primary:hover {
-      transform: translateY(-6px) scale(1.06);
+      transform: translateY(-6px);
       box-shadow: 0 0 60px rgba(247,147,26,0.9);
     }
 
     .btn-outline {
-      border: 3px solid #f7931a;
-      color: #f7931a;
+      border: 3px solid var(--orange);
+      color: var(--orange);
       background: transparent;
     }
 
     .btn-outline:hover {
-      background: #f7931a;
+      background: var(--orange);
       color: #000;
-      transform: translateY(-6px) scale(1.06);
+      transform: translateY(-6px);
     }
 
     .power-statement {
-      font-family: 'VT323', monospace;
-      font-size: 2.6rem;
+      font-size: 2.8rem;
+      font-weight: 900;
       color: #ff4444;
       text-align: center;
-      margin: 5rem 0 3rem;
-      letter-spacing: 3px;
-      text-shadow: 0 0 30px rgba(255,68,68,0.7);
+      margin: 5rem 0 4rem;
+      letter-spacing: 4px;
+      text-shadow: 0 0 40px rgba(255,68,68,0.7);
     }
 
     footer {
       background: #000;
-      padding: 5rem 0 4rem;
+      padding: 6rem 0 4rem;
       text-align: center;
       border-top: 1px solid #222;
     }
 
     .footer-links a {
       color: #999;
-      margin: 0 1.5rem;
+      margin: 0 1.8rem;
       font-size: 1.2rem;
       text-decoration: none;
     }
 
-    .footer-links a:hover {
-      color: #f7931a;
-    }
+    .footer-links a:hover { color: var(--orange); }
 
     @media (max-width: 768px) {
-      .hero h1 { font-size: 7rem; }
+      .hero h1 { font-size: 7.5rem; }
       .subtitle { font-size: 1.8rem; }
       .toshi-mascot { max-width: 380px; }
-      .power-statement { font-size: 2rem; }
+      .power-statement { font-size: 2.2rem; }
     }
   </style>
 </head>
@@ -231,7 +199,7 @@
       <nav>
         <div class="logo">THE TOSHI ORDER</div>
         <div class="nav-links">
-          <a href="#gallery">GALLERY</a>
+          <a href="https://ordinals.com/inscription/1a4487aeb9de2c8dcf36f3e531a038d8a3acfeeb0bd123aeb7212a82c334ad15i0">GALLERY</a>
           <a href="https://ordinalswallet.com/collection/toshis">MARKET</a>
           <a href="https://discord.gg/cRw9GWWDXc">DISCORD</a>
         </div>
@@ -247,7 +215,7 @@
           <h1>THE <span>TOSHI</span> ORDER</h1>
           <p class="tagline">
             3,333 self-inscribed warriors forged on Bitcoin<br>
-            NO TEAM ALLOCATION • NO COMPROMISE • CONVICTION ONLY
+            NO TEAM MINT • NO COMPROMISE • CONVICTION ONLY
           </p>
 
           <img 
