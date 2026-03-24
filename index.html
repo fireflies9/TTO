@@ -5,631 +5,149 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Toshi Order</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --gold: #F7931A;
-    --gold-light: #FFB84D;
-    --gold-dark: #C77514;
-    --dark: #0A0A0A;
-    --dark-card: #111111;
-    --dark-border: #1A1A1A;
-    --text: #E8E2D6;
-    --text-dim: #8A8275;
-    --accent: #F7931A;
-  }
+:root {
+  --gold: #F7931A;
+  --gold-light: #FFB84D;
+  --gold-dark: #C77514;
+  --bg: #0A0A0A;
+  --card: #111111;
+  --border: #1A1A1A;
+  --text: #E8E2D6;
+  --dim: #8A8275;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background-color:#0A0A0A;color:#E8E2D6;font-family:'Rajdhani',sans-serif;overflow-x:hidden}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:#0A0A0A}
+::-webkit-scrollbar-thumb{background:#C77514;border-radius:3px}
 
-- { margin: 0; padding: 0; box-sizing: border-box; }
+/* NAV */
+nav{position:fixed;top:0;width:100%;z-index:100;padding:1.2rem 3rem;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(12px);background-color:rgba(10,10,10,0.85);border-bottom:1px solid rgba(247,147,26,0.08)}
+.nav-logo{font-family:‘Cinzel’,serif;font-weight:900;font-size:1.1rem;letter-spacing:0.3em;text-transform:uppercase;color:#F7931A;text-decoration:none;display:flex;align-items:center;gap:0.5rem}
+.nav-logo img{width:28px;height:28px;object-fit:contain;border-radius:3px}
+.nav-links{display:flex;gap:2.5rem;align-items:center}
+.nav-links a{font-family:‘Rajdhani’,sans-serif;font-weight:500;font-size:0.85rem;letter-spacing:0.15em;text-transform:uppercase;color:#8A8275;text-decoration:none;transition:color 0.3s}
+.nav-links a:hover{color:#F7931A}
+.nav-ticker{display:flex;align-items:center;gap:1rem;font-family:‘Rajdhani’,sans-serif;font-weight:600;font-size:0.75rem;color:#8A8275}
+.ticker-item{display:flex;align-items:center;gap:0.4rem;padding:0.3rem 0.6rem;border:1px solid #1A1A1A;background-color:rgba(17,17,17,0.6)}
+.ticker-btc{color:#F7931A;font-weight:900;font-size:0.85rem}
+.ticker-val{color:#E8E2D6;font-size:0.8rem}
 
-html { scroll-behavior: smooth; }
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;padding:6rem 2rem 4rem}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 40% at 50% 30%,rgba(247,147,26,0.06) 0%,transparent 70%),radial-gradient(ellipse 80% 60% at 50% 80%,rgba(247,147,26,0.03) 0%,transparent 60%);z-index:0}
+.hero-glyph{position:relative;z-index:1;width:120px;height:120px;margin-bottom:2.5rem;animation:float 6s ease-in-out infinite}
+.hero-glyph img{width:100%;height:100%;object-fit:contain;border-radius:8px}
+.hero-title{font-family:‘Cinzel’,serif;font-weight:900;font-size:clamp(3rem,8vw,7rem);line-height:0.95;letter-spacing:0.06em;text-transform:uppercase;color:#E8E2D6;position:relative;z-index:1}
+.hero-title span{display:block;color:#F7931A}
+.hero-tagline{font-family:‘EB Garamond’,serif;font-style:italic;font-size:clamp(1rem,2.5vw,1.5rem);color:#8A8275;margin-top:1.5rem;position:relative;z-index:1}
+.hero-motto{font-family:‘Rajdhani’,sans-serif;font-weight:700;font-size:0.8rem;letter-spacing:0.4em;text-transform:uppercase;color:#F7931A;margin-top:2.5rem;position:relative;z-index:1}
+.hero-cta{display:inline-flex;align-items:center;gap:0.8rem;margin-top:3rem;padding:1rem 2.5rem;border:1px solid #F7931A;color:#F7931A;text-decoration:none;font-family:‘Rajdhani’,sans-serif;font-weight:600;font-size:0.85rem;letter-spacing:0.2em;text-transform:uppercase;position:relative;z-index:1;transition:all 0.4s}
+.hero-cta:hover{background-color:#F7931A;color:#0A0A0A}
+.hero-cta svg{width:14px;height:14px}
+.hero-scroll{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:1;animation:bounce 2s ease-in-out infinite}
+.hero-scroll svg{width:20px;color:#8A8275;opacity:0.4}
 
-body {
-background: var(–dark);
-color: var(–text);
-font-family: ‘Rajdhani’, sans-serif;
-overflow-x: hidden;
-}
+/* DIVIDER */
+.divider{width:100%;height:1px;background:linear-gradient(90deg,transparent 0%,#C77514 50%,transparent 100%);opacity:0.3}
 
-/* Scrollbar */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(–dark); }
-::-webkit-scrollbar-thumb { background: var(–gold-dark); border-radius: 3px; }
+/* SECTIONS */
+section{padding:6rem 3rem;max-width:1200px;margin:0 auto}
+.s-label{font-family:‘Rajdhani’,sans-serif;font-weight:600;font-size:0.7rem;letter-spacing:0.4em;text-transform:uppercase;color:#F7931A;margin-bottom:1rem}
+.s-title{font-family:‘Cinzel’,serif;font-weight:700;font-size:clamp(1.8rem,4vw,3rem);letter-spacing:0.04em;margin-bottom:1.5rem;color:#E8E2D6}
 
-/* ===== NOISE OVERLAY ===== */
-body::before {
-content: ‘’;
-position: fixed;
-inset: 0;
-background: repeating-linear-gradient(
-0deg,
-rgba(247,147,26,0.01) 0px,
-transparent 1px,
-transparent 3px
-);
-pointer-events: none;
-z-index: 9999;
-}
+/* LORE */
+.lore-p{font-family:‘EB Garamond’,serif;font-size:1.15rem;line-height:1.8;color:#8A8275;margin-bottom:1.5rem}
+.lore-p strong{color:#E8E2D6;font-weight:600}
+.stats{display:grid;grid-template-columns:repeat(6,1fr);gap:1rem;margin-top:3rem}
+.stat{border:1px solid #1A1A1A;padding:1.8rem;background-color:#111111;position:relative;overflow:hidden}
+.stat::before{content:’’;position:absolute;top:0;left:0;width:100%;height:2px;background:linear-gradient(90deg,#F7931A,transparent)}
+.stat-v{font-family:‘Cinzel’,serif;font-weight:900;font-size:2rem;color:#F7931A;line-height:1}
+.stat-l{font-family:‘Rajdhani’,sans-serif;font-weight:400;font-size:0.8rem;letter-spacing:0.15em;text-transform:uppercase;color:#8A8275;margin-top:0.5rem}
 
-.nav-ticker {
-display: flex;
-align-items: center;
-gap: 1rem;
-font-family: ‘Rajdhani’, sans-serif;
-font-weight: 600;
-font-size: 0.75rem;
-letter-spacing: 0.05em;
-color: var(–text-dim);
-}
-.ticker-item {
-display: flex;
-align-items: center;
-gap: 0.4rem;
-padding: 0.3rem 0.6rem;
-border: 1px solid var(–dark-border);
-background: rgba(17,17,17,0.6);
-}
-.ticker-btc-icon {
-color: var(–gold);
-font-weight: 900;
-font-size: 0.85rem;
-}
-.ticker-value {
-color: var(–text);
-font-size: 0.8rem;
-}
+/* ETHOS */
+.ethos{text-align:center;padding:8rem 3rem;position:relative}
+.ethos-bg{position:absolute;inset:0;background:radial-gradient(ellipse 50% 50% at 50% 50%,rgba(247,147,26,0.04) 0%,transparent 70%)}
+.ethos-q{font-family:‘Cinzel’,serif;font-weight:700;font-size:clamp(1.5rem,4vw,2.8rem);line-height:1.3;position:relative;z-index:1;max-width:800px;margin:0 auto;color:#E8E2D6}
+.ethos-q .gold{color:#F7931A}
+.ethos-sub{font-family:‘EB Garamond’,serif;font-style:italic;color:#8A8275;font-size:1.15rem;margin-top:2rem;position:relative;z-index:1}
 
-/* ===== NAV ===== */
-nav {
-position: fixed;
-top: 0;
-width: 100%;
-z-index: 100;
-padding: 1.2rem 3rem;
-display: flex;
-justify-content: space-between;
-align-items: center;
-backdrop-filter: blur(12px);
-background: rgba(10,10,10,0.7);
-border-bottom: 1px solid rgba(247,147,26,0.08);
-}
-.nav-logo {
-font-family: ‘Cinzel’, serif;
-font-weight: 900;
-font-size: 1.1rem;
-letter-spacing: 0.3em;
-text-transform: uppercase;
-color: var(–gold);
-text-decoration: none;
-}
-.nav-links { display: flex; gap: 2.5rem; align-items: center; }
-.nav-links a {
-font-family: ‘Rajdhani’, sans-serif;
-font-weight: 500;
-font-size: 0.85rem;
-letter-spacing: 0.15em;
-text-transform: uppercase;
-color: var(–text-dim);
-text-decoration: none;
-transition: color 0.3s;
-}
-.nav-links a:hover { color: var(–gold); }
+/* SPECIES */
+.sp-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;margin-top:3rem}
+.sp-card{border:1px solid #1A1A1A;padding:2rem 1.2rem;text-align:center;background-color:#111111;transition:all 0.4s}
+.sp-card:hover{border-color:#C77514;transform:translateY(-4px)}
+.sp-icon{font-size:2.2rem;margin-bottom:1rem}
+.sp-name{font-family:‘Cinzel’,serif;font-weight:700;font-size:1rem;letter-spacing:0.08em;margin-bottom:0.5rem;color:#E8E2D6}
+.sp-pct{font-family:‘Rajdhani’,sans-serif;font-weight:700;font-size:1.6rem;color:#F7931A;line-height:1}
+.sp-bar{width:100%;height:2px;background-color:#1A1A1A;margin-top:1rem;overflow:hidden}
+.sp-fill{height:100%;background-color:#F7931A}
 
-/* ===== HERO ===== */
-.hero {
-min-height: 100vh;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-text-align: center;
-position: relative;
-padding: 6rem 2rem 4rem;
-}
+/* TRAITS */
+.tr-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:3rem}
+.tr-item{border:1px solid #1A1A1A;padding:1.5rem 1.8rem;background-color:#111111;display:flex;align-items:center;gap:1rem;transition:border-color 0.3s}
+.tr-item:hover{border-color:rgba(247,147,26,0.3)}
+.tr-dot{width:6px;height:6px;background-color:#F7931A;flex-shrink:0}
+.tr-name{font-family:‘Rajdhani’,sans-serif;font-weight:500;font-size:0.95rem;letter-spacing:0.1em;text-transform:uppercase;color:#E8E2D6}
 
-.hero-bg {
-position: absolute;
-inset: 0;
-background:
-radial-gradient(ellipse 60% 40% at 50% 30%, rgba(247,147,26,0.06) 0%, transparent 70%),
-radial-gradient(ellipse 80% 60% at 50% 80%, rgba(247,147,26,0.03) 0%, transparent 60%);
-z-index: 0;
-}
+/* FELLOWSHIP */
+.fell-text p{font-family:‘EB Garamond’,serif;font-size:1.15rem;line-height:1.8;color:#8A8275;margin-bottom:1.5rem}
+.fell-text p strong{color:#E8E2D6}
 
-.hero-glyph {
-position: relative;
-z-index: 1;
-width: 120px;
-height: 120px;
-margin-bottom: 2.5rem;
-animation: float 6s ease-in-out infinite, fadeInUp 1.2s ease-out both;
-}
-.hero-glyph svg {
-width: 100%;
-height: 100%;
-filter: drop-shadow(0 0 40px rgba(247,147,26,0.3));
-}
+/* LINKS */
+.links{display:flex;justify-content:center;gap:2rem;padding:4rem 2rem;flex-wrap:wrap}
+.lbtn{display:inline-flex;align-items:center;gap:0.7rem;padding:0.9rem 2rem;border:1px solid #1A1A1A;background-color:#111111;color:#E8E2D6;text-decoration:none;font-family:‘Rajdhani’,sans-serif;font-weight:500;font-size:0.85rem;letter-spacing:0.15em;text-transform:uppercase;transition:all 0.3s}
+.lbtn:hover{border-color:#F7931A;color:#F7931A}
+.lbtn svg{width:16px;height:16px}
 
-.hero-title {
-font-family: ‘Cinzel’, serif;
-font-weight: 900;
-font-size: clamp(3rem, 8vw, 7rem);
-line-height: 0.95;
-letter-spacing: 0.06em;
-text-transform: uppercase;
-color: var(–text);
-position: relative;
-z-index: 1;
-animation: fadeInUp 1.2s ease-out 0.2s both;
-}
-.hero-title span {
-display: block;
-background: linear-gradient(135deg, var(–gold) 0%, var(–gold-light) 50%, var(–gold) 100%);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-background-clip: text;
-}
+/* FOOTER */
+footer{text-align:center;padding:3rem 2rem;border-top:1px solid #1A1A1A}
+.f-logo{font-family:‘Cinzel’,serif;font-weight:900;font-size:0.9rem;letter-spacing:0.4em;color:#F7931A;margin-bottom:1rem}
+.f-text{font-family:‘Rajdhani’,sans-serif;font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:#8A8275}
+.f-btc{font-family:‘EB Garamond’,serif;font-style:italic;font-size:0.95rem;color:#8A8275;margin-top:1.5rem;opacity:0.6}
 
-.hero-tagline {
-font-family: ‘EB Garamond’, serif;
-font-style: italic;
-font-size: clamp(1rem, 2.5vw, 1.5rem);
-color: var(–text-dim);
-margin-top: 1.5rem;
-letter-spacing: 0.05em;
-position: relative;
-z-index: 1;
-animation: fadeInUp 1.2s ease-out 0.4s both;
-}
+/* ANIMATIONS */
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+.reveal{opacity:0;transform:translateY(40px);transition:opacity 0.8s ease-out,transform 0.8s ease-out}
+.reveal.visible{opacity:1;transform:translateY(0)}
 
-.hero-motto {
-font-family: ‘Rajdhani’, sans-serif;
-font-weight: 700;
-font-size: 0.8rem;
-letter-spacing: 0.4em;
-text-transform: uppercase;
-color: var(–gold);
-margin-top: 2.5rem;
-position: relative;
-z-index: 1;
-animation: fadeInUp 1.2s ease-out 0.6s both;
+/* RESPONSIVE */
+@media(max-width:900px){
+nav{padding:1rem 1.5rem}
+.nav-links{gap:1.2rem}
+.nav-links a{font-size:0.75rem}
+section{padding:4rem 1.5rem}
+.stats{grid-template-columns:repeat(3,1fr)}
+.sp-grid{grid-template-columns:repeat(3,1fr)}
+.tr-grid{grid-template-columns:repeat(2,1fr)}
+.ethos{padding:5rem 1.5rem}
 }
-
-.hero-cta {
-display: inline-flex;
-align-items: center;
-gap: 0.8rem;
-margin-top: 3rem;
-padding: 1rem 2.5rem;
-border: 1px solid var(–gold);
-color: var(–gold);
-text-decoration: none;
-font-family: ‘Rajdhani’, sans-serif;
-font-weight: 600;
-font-size: 0.85rem;
-letter-spacing: 0.2em;
-text-transform: uppercase;
-position: relative;
-z-index: 1;
-transition: all 0.4s;
-animation: fadeInUp 1.2s ease-out 0.8s both;
-}
-.hero-cta:hover {
-background: var(–gold);
-color: var(–dark);
-box-shadow: 0 0 40px rgba(247,147,26,0.25);
-}
-.hero-cta svg { width: 14px; height: 14px; transition: transform 0.3s; }
-.hero-cta:hover svg { transform: translateX(4px); }
-
-.hero-scroll {
-position: absolute;
-bottom: 2rem;
-left: 50%;
-transform: translateX(-50%);
-z-index: 1;
-animation: bounce 2s ease-in-out infinite;
-}
-.hero-scroll svg { width: 20px; color: var(–text-dim); opacity: 0.4; }
-
-/* ===== DIVIDER ===== */
-.divider {
-width: 100%;
-height: 1px;
-background: linear-gradient(90deg, transparent 0%, var(–gold-dark) 50%, transparent 100%);
-opacity: 0.3;
-}
-
-/* ===== SECTION COMMON ===== */
-section {
-padding: 6rem 3rem;
-max-width: 1200px;
-margin: 0 auto;
-}
-.section-label {
-font-family: ‘Rajdhani’, sans-serif;
-font-weight: 600;
-font-size: 0.7rem;
-letter-spacing: 0.4em;
-text-transform: uppercase;
-color: var(–gold);
-margin-bottom: 1rem;
-}
-.section-title {
-font-family: ‘Cinzel’, serif;
-font-weight: 700;
-font-size: clamp(1.8rem, 4vw, 3rem);
-letter-spacing: 0.04em;
-margin-bottom: 1.5rem;
-}
-
-/* ===== LORE ===== */
-.lore {
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 4rem;
-align-items: start;
-}
-.lore-text p {
-font-family: ‘EB Garamond’, serif;
-font-size: 1.15rem;
-line-height: 1.8;
-color: var(–text-dim);
-margin-bottom: 1.5rem;
-}
-.lore-text p strong {
-color: var(–text);
-font-weight: 600;
-}
-.lore-stats {
-display: grid;
-grid-template-columns: repeat(6, 1fr);
-gap: 1rem;
-margin-top: 1rem;
-}
-.lore-paragraph {
-font-family: ‘EB Garamond’, serif;
-font-size: 1.15rem;
-line-height: 1.8;
-color: var(–text-dim);
-margin-bottom: 1.5rem;
-}
-.lore-paragraph strong {
-color: var(–text);
-font-weight: 600;
-}
-.stat-card {
-border: 1px solid var(–dark-border);
-padding: 1.8rem;
-background: var(–dark-card);
-position: relative;
-overflow: hidden;
-}
-.stat-card::before {
-content: ‘’;
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 2px;
-background: linear-gradient(90deg, var(–gold), transparent);
-}
-.stat-value {
-font-family: ‘Cinzel’, serif;
-font-weight: 900;
-font-size: 2rem;
-color: var(–gold);
-line-height: 1;
-}
-.stat-label {
-font-family: ‘Rajdhani’, sans-serif;
-font-weight: 400;
-font-size: 0.8rem;
-letter-spacing: 0.15em;
-text-transform: uppercase;
-color: var(–text-dim);
-margin-top: 0.5rem;
-}
-
-/* ===== SPECIES ===== */
-.species-grid {
-display: grid;
-grid-template-columns: repeat(5, 1fr);
-gap: 1rem;
-margin-top: 3rem;
-}
-.species-card {
-border: 1px solid var(–dark-border);
-padding: 2rem 1.2rem;
-text-align: center;
-background: var(–dark-card);
-position: relative;
-transition: all 0.4s;
-cursor: default;
-}
-.species-card:hover {
-border-color: var(–gold-dark);
-transform: translateY(-4px);
-box-shadow: 0 12px 40px rgba(247,147,26,0.08);
-}
-.species-icon {
-font-size: 2.2rem;
-margin-bottom: 1rem;
-filter: grayscale(0.3);
-transition: filter 0.3s;
-}
-.species-card:hover .species-icon { filter: grayscale(0); }
-.species-name {
-font-family: ‘Cinzel’, serif;
-font-weight: 700;
-font-size: 1rem;
-letter-spacing: 0.08em;
-margin-bottom: 0.5rem;
-}
-.species-pct {
-font-family: ‘Rajdhani’, sans-serif;
-font-weight: 700;
-font-size: 1.6rem;
-color: var(–gold);
-line-height: 1;
-}
-.species-bar {
-width: 100%;
-height: 2px;
-background: var(–dark-border);
-margin-top: 1rem;
-position: relative;
-overflow: hidden;
-}
-.species-bar-fill {
-height: 100%;
-background: var(–gold);
-transition: width 1s ease-out;
-}
-
-/* ===== ETHOS ===== */
-.ethos {
-text-align: center;
-padding: 8rem 3rem;
-position: relative;
-}
-.ethos-bg {
-position: absolute;
-inset: 0;
-background: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(247,147,26,0.04) 0%, transparent 70%);
-}
-.ethos-quote {
-font-family: ‘Cinzel’, serif;
-font-weight: 700;
-font-size: clamp(1.5rem, 4vw, 2.8rem);
-line-height: 1.3;
-letter-spacing: 0.03em;
-position: relative;
-z-index: 1;
-max-width: 800px;
-margin: 0 auto;
-}
-.ethos-quote .gold {
-background: linear-gradient(135deg, var(–gold) 0%, var(–gold-light) 100%);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-background-clip: text;
-}
-.ethos-sub {
-font-family: ‘EB Garamond’, serif;
-font-style: italic;
-color: var(–text-dim);
-font-size: 1.15rem;
-margin-top: 2rem;
-position: relative;
-z-index: 1;
-}
-
-/* ===== TRAITS ===== */
-.traits-grid {
-display: grid;
-grid-template-columns: repeat(3, 1fr);
-gap: 1rem;
-margin-top: 3rem;
-}
-.trait-item {
-border: 1px solid var(–dark-border);
-padding: 1.5rem 1.8rem;
-background: var(–dark-card);
-display: flex;
-align-items: center;
-gap: 1rem;
-transition: border-color 0.3s;
-}
-.trait-item:hover { border-color: rgba(247,147,26,0.3); }
-.trait-dot {
-width: 6px;
-height: 6px;
-background: var(–gold);
-flex-shrink: 0;
-}
-.trait-name {
-font-family: ‘Rajdhani’, sans-serif;
-font-weight: 500;
-font-size: 0.95rem;
-letter-spacing: 0.1em;
-text-transform: uppercase;
-}
-
-/* ===== FELLOWSHIP ===== */
-.fellowship-content {
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 4rem;
-align-items: center;
-margin-top: 2rem;
-}
-.fellowship-text p {
-font-family: ‘EB Garamond’, serif;
-font-size: 1.15rem;
-line-height: 1.8;
-color: var(–text-dim);
-margin-bottom: 1.5rem;
-}
-.fellowship-visual {
-display: grid;
-grid-template-columns: repeat(5, 1fr);
-grid-template-rows: repeat(2, 1fr);
-gap: 8px;
-}
-.fellow-node {
-aspect-ratio: 1;
-border: 1px solid var(–dark-border);
-background: var(–dark-card);
-display: flex;
-align-items: center;
-justify-content: center;
-font-family: ‘Cinzel’, serif;
-font-weight: 700;
-font-size: 0.85rem;
-color: var(–gold);
-transition: all 0.4s;
-position: relative;
-}
-.fellow-node:hover {
-border-color: var(–gold);
-box-shadow: 0 0 20px rgba(247,147,26,0.15);
-transform: scale(1.05);
-}
-.fellow-node::after {
-content: ‘’;
-position: absolute;
-inset: 3px;
-border: 1px solid rgba(247,147,26,0.1);
-}
-
-/* ===== LINKS / FOOTER ===== */
-.links-section {
-display: flex;
-justify-content: center;
-gap: 2rem;
-padding: 4rem 2rem;
-flex-wrap: wrap;
-}
-.link-btn {
-display: inline-flex;
-align-items: center;
-gap: 0.7rem;
-padding: 0.9rem 2rem;
-border: 1px solid var(–dark-border);
-background: var(–dark-card);
-color: var(–text);
-text-decoration: none;
-font-family: ‘Rajdhani’, sans-serif;
-font-weight: 500;
-font-size: 0.85rem;
-letter-spacing: 0.15em;
-text-transform: uppercase;
-transition: all 0.3s;
-}
-.link-btn:hover {
-border-color: var(–gold);
-color: var(–gold);
-}
-.link-btn svg { width: 16px; height: 16px; }
-
-footer {
-text-align: center;
-padding: 3rem 2rem;
-border-top: 1px solid var(–dark-border);
-}
-.footer-logo {
-font-family: ‘Cinzel’, serif;
-font-weight: 900;
-font-size: 0.9rem;
-letter-spacing: 0.4em;
-color: var(–gold);
-margin-bottom: 1rem;
-}
-.footer-text {
-font-family: ‘Rajdhani’, sans-serif;
-font-size: 0.75rem;
-letter-spacing: 0.15em;
-text-transform: uppercase;
-color: var(–text-dim);
-}
-.footer-btc {
-font-family: ‘EB Garamond’, serif;
-font-style: italic;
-font-size: 0.95rem;
-color: var(–text-dim);
-margin-top: 1.5rem;
-opacity: 0.6;
-}
-
-/* ===== ANIMATIONS ===== */
-@keyframes fadeInUp {
-from { opacity: 0; transform: translateY(30px); }
-to { opacity: 1; transform: translateY(0); }
-}
-@keyframes float {
-0%, 100% { transform: translateY(0); }
-50% { transform: translateY(-12px); }
-}
-@keyframes bounce {
-0%, 100% { transform: translateX(-50%) translateY(0); }
-50% { transform: translateX(-50%) translateY(8px); }
-}
-@keyframes reveal {
-from { opacity: 0; transform: translateY(40px); }
-to { opacity: 1; transform: translateY(0); }
-}
-
-.reveal {
-opacity: 0;
-transform: translateY(40px);
-transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-.reveal.visible {
-opacity: 1;
-transform: translateY(0);
-}
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 900px) {
-nav { padding: 1rem 1.5rem; }
-.nav-links { gap: 1.2rem; }
-.nav-links a { font-size: 0.75rem; }
-section { padding: 4rem 1.5rem; }
-.lore { grid-template-columns: 1fr; gap: 2rem; }
-.lore-stats { grid-template-columns: repeat(3, 1fr); }
-.species-grid { grid-template-columns: repeat(3, 1fr); }
-.traits-grid { grid-template-columns: repeat(2, 1fr); }
-.fellowship-content { grid-template-columns: 1fr; gap: 2rem; }
-.ethos { padding: 5rem 1.5rem; }
-}
-@media (max-width: 600px) {
-.lore-stats { grid-template-columns: repeat(2, 1fr); }
-.species-grid { grid-template-columns: repeat(2, 1fr); }
-.traits-grid { grid-template-columns: 1fr; }
-.nav-links { display: none; }
-.nav-ticker { display: none; }
-.links-section { flex-direction: column; align-items: center; }
+@media(max-width:600px){
+.stats{grid-template-columns:repeat(2,1fr)}
+.sp-grid{grid-template-columns:repeat(2,1fr)}
+.tr-grid{grid-template-columns:1fr}
+.nav-links{display:none}
+.nav-ticker{display:none}
+.links{flex-direction:column;align-items:center}
 }
 </style>
 
 </head>
 <body>
 
-<!-- NAV -->
-
 <nav>
-  <div style="display:flex;align-items:center;gap:1.5rem;">
+  <div style="display:flex;align-items:center;gap:1.5rem">
     <div class="nav-ticker">
-      <div class="ticker-item">
-        <span class="ticker-value" id="ticker-fee">-- s/vB</span>
-      </div>
-      <div class="ticker-item">
-        <span class="ticker-btc-icon">₿</span>
-        <span class="ticker-value" id="ticker-price">$--</span>
-      </div>
+      <div class="ticker-item"><span class="ticker-val" id="tf">-- s/vB</span></div>
+      <div class="ticker-item"><span class="ticker-btc">&#8383;</span><span class="ticker-val" id="tp">$--</span></div>
     </div>
   </div>
-  <a href="https://thetoshiorder.org" class="nav-logo"><img src="data:image/jpeg;base64,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" alt="Toshi" style="width:28px;height:28px;object-fit:contain;vertical-align:middle;margin-right:8px;border-radius:3px;" />The Toshi Order</a>
+  <a href="https://thetoshiorder.org" class="nav-logo"><img src="data:image/jpeg;base64,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" alt="T">The Toshi Order</a>
   <div class="nav-links">
     <a href="#lore">Lore</a>
     <a href="#species">Species</a>
@@ -640,260 +158,120 @@ section { padding: 4rem 1.5rem; }
   </div>
 </nav>
 
-<!-- HERO -->
-
 <section class="hero">
   <div class="hero-bg"></div>
-
-  <div class="hero-glyph"><img src="data:image/jpeg;base64,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" alt="The Toshi Order" style="width:100%;height:100%;object-fit:contain;border-radius:8px;" /></div>
-
-  <h1 class="hero-title">
-    The<br><span>Toshi Order</span>
-  </h1>
-
+  <div class="hero-glyph"><img src="data:image/jpeg;base64,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" alt="The Toshi Order"></div>
+  <h1 class="hero-title">The<br><span>Toshi Order</span></h1>
   <p class="hero-tagline">The Toshi Order is Bitcoin. The Toshi Order is culture.</p>
-
   <p class="hero-motto">Power to The Order &middot; Power to Bitcoin &middot; #PTTO</p>
-
-  <a href="https://ordinals.com/gallery/1a4487aeb9de2c8dcf36f3e531a038d8a3acfeeb0bd123aeb7212a82c334ad15i0" target="_blank" class="hero-cta">
-    On Chain Gallery
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-  </a>
-
-  <div class="hero-scroll">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
-  </div>
+  <a href="https://ordinals.com/gallery/1a4487aeb9de2c8dcf36f3e531a038d8a3acfeeb0bd123aeb7212a82c334ad15i0" target="_blank" class="hero-cta">On Chain Gallery <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+  <div class="hero-scroll"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></div>
 </section>
 
 <div class="divider"></div>
-
-<!-- LORE -->
 
 <section id="lore" class="reveal">
-  <p class="section-label">Genesis</p>
-  <h2 class="section-title">Born on Bitcoin</h2>
-  <div style="max-width:800px;">
-    <p class="lore-paragraph">
-      On September 28, 2023, the call went out: <strong>&ldquo;FREE TO INSCRIBE &mdash; FIRST COME FIRST SERVE &mdash; 3333 TOSHIS.&rdquo;</strong> The Toshi Order was born &mdash; a collection of 3,333 unique inscriptions etched permanently into Bitcoin through Ordinals.
-    </p>
-    <p class="lore-paragraph">
-      By October 4, the Order was forming. Each Toshi cost roughly <strong>$1.10 to inscribe</strong> at 10 sats/vb. The original minting site at <strong>thetoshiorder.github.io</strong> showed available Toshis, while <strong>OrdinalsBot</strong> handled hash checks and inscriptions on rare sats. <strong>UniSat</strong> was used to verify unconfirmed inscriptions. By October 5, the end of the mint was near &mdash; all 3,333 Toshis claimed, the Order formed and <strong>FINAL</strong>.
-    </p>
-    <p class="lore-paragraph">
-      What began as an anonymous founder&rsquo;s vision quickly evolved into something greater: a decentralized collective governed by <strong>The Fellowship</strong> &mdash; ten stewards chosen to carry the mission forward. No VCs. No roadmap. Just culture, conviction, and the immutable permanence of Bitcoin.
-    </p>
+  <p class="s-label">Genesis</p>
+  <h2 class="s-title">Born on Bitcoin</h2>
+  <div style="max-width:800px">
+    <p class="lore-p">On September 28, 2023, the call went out: <strong>"FREE TO INSCRIBE - FIRST COME FIRST SERVE - 3333 TOSHIS."</strong> The Toshi Order was born - a collection of 3,333 unique inscriptions etched permanently into Bitcoin through Ordinals.</p>
+    <p class="lore-p">By October 4, the Order was forming. Each Toshi cost roughly <strong>$1.10 to inscribe</strong> at 10 sats/vb. The original minting site at <strong>thetoshiorder.github.io</strong> showed available Toshis, while <strong>OrdinalsBot</strong> handled hash checks and inscriptions on rare sats. <strong>UniSat</strong> was used to verify unconfirmed inscriptions. By October 5, the end of the mint was near - all 3,333 Toshis claimed, the Order formed and <strong>FINAL</strong>.</p>
+    <p class="lore-p">What began as an anonymous founder's vision quickly evolved into something greater: a decentralized collective governed by <strong>The Fellowship</strong> - ten stewards chosen to carry the mission forward. No VCs. No roadmap. Just culture, conviction, and the immutable permanence of Bitcoin.</p>
   </div>
-  <div class="lore-stats" style="margin-top:3rem;">
-    <div class="stat-card">
-      <div class="stat-value">3,333</div>
-      <div class="stat-label">Inscriptions</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-value">FREE</div>
-      <div class="stat-label">To Inscribe</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-value">5</div>
-      <div class="stat-label">Species</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-value">9</div>
-      <div class="stat-label">Trait Categories</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-value">10</div>
-      <div class="stat-label">Fellowship Members</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-value">2023</div>
-      <div class="stat-label">Inscribed</div>
-    </div>
+  <div class="stats">
+    <div class="stat"><div class="stat-v">3,333</div><div class="stat-l">Inscriptions</div></div>
+    <div class="stat"><div class="stat-v">FREE</div><div class="stat-l">To Inscribe</div></div>
+    <div class="stat"><div class="stat-v">5</div><div class="stat-l">Species</div></div>
+    <div class="stat"><div class="stat-v">9</div><div class="stat-l">Trait Categories</div></div>
+    <div class="stat"><div class="stat-v">10</div><div class="stat-l">Fellowship Members</div></div>
+    <div class="stat"><div class="stat-v">2023</div><div class="stat-l">Inscribed</div></div>
   </div>
 </section>
 
 <div class="divider"></div>
-
-<!-- ETHOS -->
 
 <div class="ethos reveal">
   <div class="ethos-bg"></div>
-  <p class="ethos-quote">
-    &ldquo;1 Toshi = <span class="gold">1 BTC</span>&rdquo;
-  </p>
+  <p class="ethos-q">"1 Toshi = <span class="gold">1 BTC</span>"</p>
   <p class="ethos-sub">The unshakeable conviction of The Order</p>
 </div>
 
 <div class="divider"></div>
 
-<!-- SPECIES -->
-
 <section id="species" class="reveal">
-  <p class="section-label">Classification</p>
-  <h2 class="section-title">The Five Species</h2>
-  <div class="species-grid">
-    <div class="species-card">
-      <div class="species-icon">👤</div>
-      <div class="species-name">Human</div>
-      <div class="species-pct">80%</div>
-      <div class="species-bar"><div class="species-bar-fill" style="width:80%"></div></div>
-    </div>
-    <div class="species-card">
-      <div class="species-icon">🧟</div>
-      <div class="species-name">Zombie</div>
-      <div class="species-pct">9%</div>
-      <div class="species-bar"><div class="species-bar-fill" style="width:9%"></div></div>
-    </div>
-    <div class="species-card">
-      <div class="species-icon">👹</div>
-      <div class="species-name">Demon</div>
-      <div class="species-pct">7%</div>
-      <div class="species-bar"><div class="species-bar-fill" style="width:7%"></div></div>
-    </div>
-    <div class="species-card">
-      <div class="species-icon">🦍</div>
-      <div class="species-name">Ape</div>
-      <div class="species-pct">3%</div>
-      <div class="species-bar"><div class="species-bar-fill" style="width:3%"></div></div>
-    </div>
-    <div class="species-card">
-      <div class="species-icon">👽</div>
-      <div class="species-name">Alien</div>
-      <div class="species-pct">1%</div>
-      <div class="species-bar"><div class="species-bar-fill" style="width:1%"></div></div>
-    </div>
+  <p class="s-label">Classification</p>
+  <h2 class="s-title">The Five Species</h2>
+  <div class="sp-grid">
+    <div class="sp-card"><div class="sp-icon">&#128100;</div><div class="sp-name">Human</div><div class="sp-pct">80%</div><div class="sp-bar"><div class="sp-fill" style="width:80%"></div></div></div>
+    <div class="sp-card"><div class="sp-icon">&#129503;</div><div class="sp-name">Zombie</div><div class="sp-pct">9%</div><div class="sp-bar"><div class="sp-fill" style="width:9%"></div></div></div>
+    <div class="sp-card"><div class="sp-icon">&#128121;</div><div class="sp-name">Demon</div><div class="sp-pct">7%</div><div class="sp-bar"><div class="sp-fill" style="width:7%"></div></div></div>
+    <div class="sp-card"><div class="sp-icon">&#129429;</div><div class="sp-name">Ape</div><div class="sp-pct">3%</div><div class="sp-bar"><div class="sp-fill" style="width:3%"></div></div></div>
+    <div class="sp-card"><div class="sp-icon">&#128125;</div><div class="sp-name">Alien</div><div class="sp-pct">1%</div><div class="sp-bar"><div class="sp-fill" style="width:1%"></div></div></div>
   </div>
 </section>
 
 <div class="divider"></div>
-
-<!-- TRAITS -->
 
 <section id="traits" class="reveal">
-  <p class="section-label">Anatomy</p>
-  <h2 class="section-title">Trait Categories</h2>
-  <div class="traits-grid">
-    <div class="trait-item"><div class="trait-dot"></div><span class="trait-name">Background</span></div>
-    <div class="trait-item"><div class="trait-dot"></div><span class="trait-name">Base</span></div>
-    <div class="trait-item"><div class="trait-dot"></div><span class="trait-name">Clothing</span></div>
-    <div class="trait-item"><div class="trait-dot"></div><span class="trait-name">Eyes</span></div>
-    <div class="trait-item"><div class="trait-dot"></div><span class="trait-name">Head</span></div>
-    <div class="trait-item"><div class="trait-dot"></div><span class="trait-name">Mouth</span></div>
-    <div class="trait-item"><div class="trait-dot"></div><span class="trait-name">Ear</span></div>
-    <div class="trait-item"><div class="trait-dot"></div><span class="trait-name">Jewellery</span></div>
-    <div class="trait-item"><div class="trait-dot"></div><span class="trait-name">Facial Hair</span></div>
+  <p class="s-label">Anatomy</p>
+  <h2 class="s-title">Trait Categories</h2>
+  <div class="tr-grid">
+    <div class="tr-item"><div class="tr-dot"></div><span class="tr-name">Background</span></div>
+    <div class="tr-item"><div class="tr-dot"></div><span class="tr-name">Base</span></div>
+    <div class="tr-item"><div class="tr-dot"></div><span class="tr-name">Clothing</span></div>
+    <div class="tr-item"><div class="tr-dot"></div><span class="tr-name">Eyes</span></div>
+    <div class="tr-item"><div class="tr-dot"></div><span class="tr-name">Head</span></div>
+    <div class="tr-item"><div class="tr-dot"></div><span class="tr-name">Mouth</span></div>
+    <div class="tr-item"><div class="tr-dot"></div><span class="tr-name">Ear</span></div>
+    <div class="tr-item"><div class="tr-dot"></div><span class="tr-name">Jewellery</span></div>
+    <div class="tr-item"><div class="tr-dot"></div><span class="tr-name">Facial Hair</span></div>
   </div>
 </section>
 
 <div class="divider"></div>
-
-<!-- FELLOWSHIP -->
 
 <section id="fellowship" class="reveal">
-  <div class="fellowship-content">
-    <div class="fellowship-text">
-      <p class="section-label">Governance</p>
-      <h2 class="section-title">The Fellowship</h2>
-      <p>
-        In November 2023, the anonymous founder transferred stewardship of The Toshi Order to a council of ten &mdash; <strong>The Fellowship</strong>. They govern the project&rsquo;s direction, community, and mission.
-      </p>
-      <p>
-        The Fellowship holds the keys to the official channels and carries the flame of the original vision: decentralized, community-first, forever on Bitcoin.
-      </p>
-    </div>
+  <div class="fell-text">
+    <p class="s-label">Governance</p>
+    <h2 class="s-title">The Fellowship</h2>
+    <p>In November 2023, the anonymous founder transferred stewardship of The Toshi Order to a council of ten - <strong>The Fellowship</strong>. They govern the project's direction, community, and mission.</p>
+    <p>The Fellowship holds the keys to the official channels and carries the flame of the original vision: decentralized, community-first, forever on Bitcoin.</p>
   </div>
 </section>
 
 <div class="divider"></div>
 
-<!-- COLLECT -->
-
-<section class="reveal" style="text-align:center;">
-  <p class="section-label">Collect</p>
-  <h2 class="section-title">Get Your Toshi</h2>
-  <div class="links-section" style="padding-top:1.5rem;">
-    <a href="https://ordinalswallet.com/collection/toshis" target="_blank" class="link-btn">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="6" width="20" height="13" rx="2"/><path d="M22 10H2M6 14h4"/></svg>
-      Ordinals Wallet
-    </a>
-    <a href="https://www.satflow.com/ordinals/thetoshiorder" target="_blank" class="link-btn">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-      SatFlow
-    </a>
-    <a href="https://www.trio.xyz/collections/thetoshiorder" target="_blank" class="link-btn">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5"/><line x1="12" y1="22" x2="12" y2="15.5"/><line x1="22" y1="8.5" x2="12" y2="15.5"/><line x1="2" y1="8.5" x2="12" y2="15.5"/></svg>
-      Trio
-    </a>
+<section class="reveal" style="text-align:center">
+  <p class="s-label">Collect</p>
+  <h2 class="s-title">Get Your Toshi</h2>
+  <div class="links" style="padding-top:1.5rem">
+    <a href="https://ordinalswallet.com/collection/toshis" target="_blank" class="lbtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="6" width="20" height="13" rx="2"/><path d="M22 10H2M6 14h4"/></svg>Ordinals Wallet</a>
+    <a href="https://www.satflow.com/ordinals/thetoshiorder" target="_blank" class="lbtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>SatFlow</a>
+    <a href="https://www.trio.xyz/collections/thetoshiorder" target="_blank" class="lbtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5"/></svg>Trio</a>
   </div>
 </section>
 
 <div class="divider"></div>
 
-<!-- LINKS -->
-
-<div class="links-section reveal">
-  <a href="https://thetoshiorder.org" target="_blank" class="link-btn">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-    thetoshiorder.org
-  </a>
-  <a href="https://x.com/thetoshiorder" target="_blank" class="link-btn">
-    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-    @thetoshiorder
-  </a>
-  <a href="https://x.com/sat_toshis" target="_blank" class="link-btn">
-    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-    @sat_toshis
-  </a>
-  <a href="https://ordinals.com/gallery/1a4487aeb9de2c8dcf36f3e531a038d8a3acfeeb0bd123aeb7212a82c334ad15i0" target="_blank" class="link-btn">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg>
-    Ordinals Gallery
-  </a>
-  <a href="https://discord.gg/3Z5bBkhQs" target="_blank" class="link-btn">
-    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
-    Discord
-  </a>
+<div class="links reveal">
+  <a href="https://thetoshiorder.org" target="_blank" class="lbtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>thetoshiorder.org</a>
+  <a href="https://x.com/thetoshiorder" target="_blank" class="lbtn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@thetoshiorder</a>
+  <a href="https://x.com/sat_toshis" target="_blank" class="lbtn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@sat_toshis</a>
+  <a href="https://ordinals.com/gallery/1a4487aeb9de2c8dcf36f3e531a038d8a3acfeeb0bd123aeb7212a82c334ad15i0" target="_blank" class="lbtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg>Ordinals Gallery</a>
+  <a href="https://discord.gg/3Z5bBkhQs" target="_blank" class="lbtn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>Discord</a>
 </div>
 
-<!-- FOOTER -->
-
 <footer>
-  <div class="footer-logo">THE TOSHI ORDER</div>
-  <p class="footer-text">Inscribed on Bitcoin &middot; Governed by The Fellowship &middot; Powered by The Order</p>
-  <p class="footer-btc">&ldquo;Power to The Order, Power to Bitcoin&rdquo;</p>
+  <div class="f-logo">THE TOSHI ORDER</div>
+  <p class="f-text">Inscribed on Bitcoin &middot; Governed by The Fellowship &middot; Powered by The Order</p>
+  <p class="f-btc">"Power to The Order, Power to Bitcoin"</p>
 </footer>
 
 <script>
-  // Intersection Observer for reveal animations
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-  // Live Bitcoin ticker
-  async function updateTicker() {
-    try {
-      const [feeRes, priceRes] = await Promise.allSettled([
-        fetch('https://mempool.space/api/v1/fees/recommended'),
-        fetch('https://mempool.space/api/v1/prices')
-      ]);
-      if (feeRes.status === 'fulfilled' && feeRes.value.ok) {
-        const fees = await feeRes.value.json();
-        document.getElementById('ticker-fee').textContent = fees.halfHourFee + ' s/vB';
-      }
-      if (priceRes.status === 'fulfilled' && priceRes.value.ok) {
-        const prices = await priceRes.value.json();
-        const price = prices.USD;
-        const formatted = price >= 1000 ? '$' + (price / 1000).toFixed(1) + 'K' : '$' + price;
-        document.getElementById('ticker-price').textContent = formatted;
-      }
-    } catch (e) {}
-  }
-  updateTicker();
-  setInterval(updateTicker, 60000);
+var o=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('visible')})},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(function(el){o.observe(el)});
+async function tick(){try{var a=await Promise.allSettled([fetch('https://mempool.space/api/v1/fees/recommended'),fetch('https://mempool.space/api/v1/prices')]);if(a[0].status==='fulfilled'&&a[0].value.ok){var f=await a[0].value.json();document.getElementById('tf').textContent=f.halfHourFee+' s/vB'}if(a[1].status==='fulfilled'&&a[1].value.ok){var p=await a[1].value.json();var u=p.USD;document.getElementById('tp').textContent=u>=1000?'$'+(u/1000).toFixed(1)+'K':'$'+u}}catch(e){}}
+tick();setInterval(tick,60000);
 </script>
 
 </body>
